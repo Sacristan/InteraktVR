@@ -22,6 +22,8 @@ public class InteractionCursorController : MonoBehaviour
     private float maxDistance = 4.0f;
     private Vector2 cursorSize = new Vector2(25, 25);
 
+    UIInteractableObject objectItemMenuController;
+
     public CursorState CursorState
     {
         get => cursorState;
@@ -65,7 +67,6 @@ public class InteractionCursorController : MonoBehaviour
         cursorPos = new Vector2(pos.x, pos.y);
         GUI.Label(pos, cursorImage);
     }
-    ObjectItemMenuController objectItemMenuController;
 
     //TODO: REMOVE ENTER / EXIT / CLICK MAGIC
     void Update()
@@ -78,7 +79,7 @@ public class InteractionCursorController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100.0f, buttonLayerMask))
         {
-            ObjectItemMenuController newObjectItemMenuController = hit.collider.gameObject.GetComponent<ObjectItemMenuController>();
+            UIInteractableObject newObjectItemMenuController = hit.collider.gameObject.GetComponent<UIInteractableObject>();
 
             if (newObjectItemMenuController != null)
             {
