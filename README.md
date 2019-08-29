@@ -1,5 +1,5 @@
 # InteraktVR
-BEWARE -> this is not even in ALPHA -> might accidentaly set Your house on fire
+BEWARE -> this is not even in ALPHA -> might accidentaly set Your house on fire or accidentaly kidnap Your dog!
 
 Supports:
 * Vive
