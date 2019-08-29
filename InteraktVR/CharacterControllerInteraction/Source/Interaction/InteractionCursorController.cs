@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using InteraktVR.Utils;
 
 public enum CursorState { None = 0, Idle, Over, Clicked }
 
