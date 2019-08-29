@@ -18,7 +18,7 @@ It is supposed to be used as a submodule under Assets folder
 
 ### Add this as submodule
 ```bash
-git submodule add https://github.com/Sacristan/InteraktVR "Assets/InteraktVR"
+git submodule add git@github.com:Sacristan/InteraktVR.git "Assets/InteraktVR"
 ```
 
 # DESC
