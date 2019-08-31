@@ -301,7 +301,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return false;//TODO: fix
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return !GetComponent<InteraktVR.VRHandEmulation>().IsRightHand;
 
 #if Int_SteamVR
                 if (isSteamVR())
@@ -444,7 +444,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated && Input.GetMouseButton(1)) return 1f;
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated && Input.GetMouseButton(LeftHand ? 0 : 1)) return 1f;
 
 #if Int_SteamVR
                 if (isSteamVR())

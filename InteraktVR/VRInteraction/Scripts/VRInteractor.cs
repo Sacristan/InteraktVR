@@ -127,10 +127,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
-                {
-                    return InteraktVR.VRSimulatorRig.instance.Velocity;
-                }
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.Velocity;
 
 #if Int_SteamVR
                 if (vrInput.isSteamVR())

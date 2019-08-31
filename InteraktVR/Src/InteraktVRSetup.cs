@@ -2,6 +2,7 @@
 
 namespace InteraktVR
 {
+    [ExecuteInEditMode()]
     public class InteraktVRSetup : MonoBehaviour
     {
         private static InteraktVRSetup instance;
@@ -14,10 +15,9 @@ namespace InteraktVR
 
         public static bool IsVRSimulated => instance?.enableRigMode == EnableRigMode.StandaloneSimulator;
 
-        void Awake()
+        private void OnEnable()
         {
-            if (instance == null) instance = this;
-            else Destroy(this);
+            instance = this;
         }
 
         void Start()
