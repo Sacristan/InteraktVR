@@ -284,6 +284,7 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return HMDType.STANDALONE;
 #if Int_SteamVR
                 if ((GetComponent<SteamVR_TrackedObject>() != null || GetComponentInParent<SteamVR_PlayArea>() != null) || (SteamVR.active && SteamVR.instance != null && SteamVR.instance.hmd_TrackingSystemName != "oculus"))
                     return HMDType.VIVE;
@@ -300,6 +301,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return false;//TODO: fix
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -441,6 +444,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated && Input.GetMouseButton(1)) return 1f;
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
