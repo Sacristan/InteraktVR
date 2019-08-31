@@ -22,7 +22,8 @@ namespace VRInteraction
         public enum HMDType
         {
             VIVE,
-            OCULUS
+            OCULUS,
+            STANDALONE
         }
 
         public string[] VRActions;

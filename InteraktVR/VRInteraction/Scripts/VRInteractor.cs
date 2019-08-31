@@ -80,10 +80,28 @@ namespace VRInteraction
             }
         }
 
+        public InteraktVR.VRSimulatorRig VRSimulatorRig
+        {
+            get
+            {
+                return GetComponentInParent<InteraktVR.VRSimulatorRig>();
+            }
+        }
+
         virtual public Transform GetVRRigRoot
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
+                {
+                    if (_vrRigRoot == null)
+                    {
+                        _vrRigRoot = VRSimulatorRig.transform;
+                    }
+
+                    return _vrRigRoot; //WORKAROUND
+                }
+
 #if Int_SteamVR
                 if (vrInput.isSteamVR())
                 {
@@ -117,6 +135,11 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
+                {
+                    return VRSimulatorRig.Velocity;
+                }
+
 #if Int_SteamVR
                 if (vrInput.isSteamVR())
                 {
@@ -147,6 +170,12 @@ namespace VRInteraction
         {
             get
             {
+
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
+                {
+                    return VRSimulatorRig.AngularVelocity;
+                }
+
 #if Int_SteamVR
                 if (vrInput.isSteamVR())
                 {

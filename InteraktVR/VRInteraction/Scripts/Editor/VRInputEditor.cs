@@ -1,10 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Editor for VRInput
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using UnityEditor.SceneManagement;
