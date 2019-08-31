@@ -103,7 +103,9 @@ namespace InteraktVR
 
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                if (hit.collider.gameObject.LookupComponent<VRInteraction.VRInteractableItem>() && hit.distance < maxDistance)
+                VRInteraction.VRInteractableItem interactionItem = hit.collider.gameObject.LookupComponent<VRInteraction.VRInteractableItem>();
+
+                if (interactionItem != null && hit.distance < maxDistance)
                 {
                     if (!isMouseDown) CursorState = CursorState.Over;
 

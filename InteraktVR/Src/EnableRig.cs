@@ -4,16 +4,16 @@ namespace InteraktVR
 {
     public class EnableRig : MonoBehaviour
     {
-        enum EnableRigMode { VR, Desktop }
+        enum EnableRigMode { VR, StandaloneSimulator }
 
         [SerializeField] EnableRigMode enableRigMode;
         [SerializeField] GameObject vrRig;
-        [SerializeField] GameObject desktopRig;
+        [SerializeField] GameObject vrSimulatorRig;
 
         void Start()
         {
             vrRig.SetActive(enableRigMode == EnableRigMode.VR);
-            desktopRig.SetActive(enableRigMode == EnableRigMode.Desktop);
+            vrSimulatorRig.SetActive(enableRigMode == EnableRigMode.StandaloneSimulator);
         }
     }
 }
