@@ -127,7 +127,13 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.Velocity;
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
+                {
+                    Vector3 velocity = GetComponent<Rigidbody>().velocity; //TODO: isolate
+                    // Vector3 velocity = GetComponent<Valve.VR.InteractionSystem.VelocityEstimator>().GetVelocityEstimate(); //TODO: isolate
+                    Debug.Log("Velocity: " + velocity);
+                    return velocity;
+                }
 
 #if Int_SteamVR
                 if (vrInput.isSteamVR())
@@ -159,10 +165,12 @@ namespace VRInteraction
         {
             get
             {
-
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    return InteraktVR.VRSimulatorRig.instance.AngularVelocity;
+                    Vector3 velocity = GetComponent<Rigidbody>().angularVelocity; //TODO: isolate
+                    // Vector3 velocity = GetComponent<Valve.VR.InteractionSystem.VelocityEstimator>().GetAngularVelocityEstimate(); //TODO: isolate
+                    Debug.Log("AngularVelocity: " + velocity);
+                    return velocity;
                 }
 
 #if Int_SteamVR

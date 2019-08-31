@@ -9,9 +9,6 @@ namespace InteraktVR
         [SerializeField] private VRInteraction.VRInteractor rightHand;
         [SerializeField] private VRInteraction.VRInteractor leftHand;
 
-        public Vector3 Velocity => Vector3.zero;
-        public Vector3 AngularVelocity => Vector3.zero;
-
         public VRInteraction.VRInteractor RightHand => rightHand;
         public VRInteraction.VRInteractor LeftHand => leftHand;
 
