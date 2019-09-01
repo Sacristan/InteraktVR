@@ -2,52 +2,56 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class UIInteractableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+namespace InteraktVR
 {
-    [SerializeField] private UnityEvent onClickEvent;
 
-    private Color originalColor;
-    private Texture originalTexture;
-    private Renderer _renderer;
-    private Color highlightColor = Color.yellow;
-
-    private void Start()
+    public class UIInteractableObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
-        _renderer = GetComponent<Renderer>();
-        originalColor = _renderer.material.color;
-        originalColor = _renderer.material.color;
-        originalTexture = _renderer.material.mainTexture;
-    }
+        [SerializeField] private UnityEvent onClickEvent;
 
-    public void Enter()
-    {
-        _renderer.material.color = highlightColor;
-        _renderer.material.mainTexture = null;
-    }
+        private Color originalColor;
+        private Texture originalTexture;
+        private Renderer _renderer;
+        private Color highlightColor = Color.yellow;
 
-    public void Exit()
-    {
-        _renderer.material.color = originalColor;
-        _renderer.material.mainTexture = originalTexture;
-    }
+        private void Start()
+        {
+            _renderer = GetComponent<Renderer>();
+            originalColor = _renderer.material.color;
+            originalColor = _renderer.material.color;
+            originalTexture = _renderer.material.mainTexture;
+        }
 
-    public void Click()
-    {
-        onClickEvent?.Invoke();
-    }
+        public void Enter()
+        {
+            _renderer.material.color = highlightColor;
+            _renderer.material.mainTexture = null;
+        }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Enter();
-    }
+        public void Exit()
+        {
+            _renderer.material.color = originalColor;
+            _renderer.material.mainTexture = originalTexture;
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Exit();
-    }
+        public void Click()
+        {
+            onClickEvent?.Invoke();
+        }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Click();
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            Enter();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            Exit();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Click();
+        }
     }
 }

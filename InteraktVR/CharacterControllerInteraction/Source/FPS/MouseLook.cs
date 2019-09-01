@@ -15,7 +15,7 @@ using System.Collections;
 /// - Add a MouseLook script to the camera.
 ///   -> Set the mouse look to use LookY. (You want the camera to tilt up and down like a head. The character already turns.)
 
-namespace Sublime.Interaction
+namespace InteraktVR
 {
     [AddComponentMenu("Camera-Control/Mouse Look")]
     public class MouseLook : MonoBehaviour
