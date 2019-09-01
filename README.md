@@ -22,6 +22,11 @@ git clone --recurse-submodules https://github.com/Sacristan/InteraktVR.git
 cd InteraktVR && git submodule init && git submodule update && cd ..
 ```
 
+### To update submodule run:
+```bash
+git submodule update --recursive
+```
+
 # DESC
 Consists of:
 * modified: https://assetstore.unity.com/packages/tools/input-management/vr-interaction-119934
