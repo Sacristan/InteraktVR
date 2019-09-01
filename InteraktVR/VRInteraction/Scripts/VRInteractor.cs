@@ -131,7 +131,7 @@ namespace VRInteraction
                 {
                     // Vector3 velocity = GetComponent<Rigidbody>().velocity; //TODO: isolate
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetVelocity();
-                    Debug.Log("Velocity: " + velocity);
+                    // Debug.Log("Velocity: " + velocity);
                     return velocity;
                 }
 
@@ -169,7 +169,7 @@ namespace VRInteraction
                 {
                     // Vector3 velocity = GetComponent<Rigidbody>().angularVelocity; //TODO: isolate
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetAngularVelocity();
-                    Debug.Log("AngularVelocity: " + velocity);
+                    // Debug.Log("AngularVelocity: " + velocity);
                     return velocity;
                 }
 
