@@ -129,8 +129,8 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    Vector3 velocity = GetComponent<Rigidbody>().velocity; //TODO: isolate
-                    // Vector3 velocity = GetComponent<Valve.VR.InteractionSystem.VelocityEstimator>().GetVelocityEstimate(); //TODO: isolate
+                    // Vector3 velocity = GetComponent<Rigidbody>().velocity; //TODO: isolate
+                    Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetVelocity();
                     Debug.Log("Velocity: " + velocity);
                     return velocity;
                 }
@@ -167,8 +167,8 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    Vector3 velocity = GetComponent<Rigidbody>().angularVelocity; //TODO: isolate
-                    // Vector3 velocity = GetComponent<Valve.VR.InteractionSystem.VelocityEstimator>().GetAngularVelocityEstimate(); //TODO: isolate
+                    // Vector3 velocity = GetComponent<Rigidbody>().angularVelocity; //TODO: isolate
+                    Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetAngularVelocity();
                     Debug.Log("AngularVelocity: " + velocity);
                     return velocity;
                 }
