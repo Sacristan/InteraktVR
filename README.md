@@ -19,6 +19,7 @@ It is supposed to be used as a submodule under Assets folder
 ### Add this as submodule
 ```bash
 git submodule add git@github.com:Sacristan/InteraktVR.git "Assets/InteraktVR"
+git submodule update --init --recursive
 ```
 
 # DESC
