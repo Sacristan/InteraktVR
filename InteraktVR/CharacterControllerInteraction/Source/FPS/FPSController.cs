@@ -43,6 +43,7 @@ namespace InteraktVR
 
         [Header("General")]
         [SerializeField] private Transform pivot;
+        [SerializeField] private bool canCrouch = true;
 
         [Header("Movement Settings")]
         [SerializeField] private MovementSpeed walkSpeed = new MovementSpeed(3.0f, 4.0f, 2.0f);
@@ -179,10 +180,17 @@ namespace InteraktVR
         {
             Vector3 newVec;
 
-            if (Input.GetKeyDown(KeyCode.LeftControl) && !_characterMotor.inputJump && _characterController.isGrounded)
+            if (canCrouch)
             {
-                isCrouching = !isCrouching;
-                vScale = isCrouching ? crouchScale : standingScale;
+                if (Input.GetKeyDown(KeyCode.LeftControl) && !_characterMotor.inputJump && _characterController.isGrounded)
+                {
+                    isCrouching = !isCrouching;
+                    vScale = isCrouching ? crouchScale : standingScale;
+                }
+            }
+            else
+            {
+                if (isCrouching) isCrouching = false;
             }
 
             if (!isCrouching)

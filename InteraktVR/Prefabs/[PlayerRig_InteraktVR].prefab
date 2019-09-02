@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988505131368391454}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3946209600732967720}
@@ -275,8 +275,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   hapticAction:
-    actionPath: /actions//out/Haptic
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/out/Haptic
+    needsReinit: 0
   controllerHand: 1
 --- !u!1 &3946209599352919084
 GameObject:
@@ -811,8 +811,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   hapticAction:
-    actionPath: /actions//out/Haptic
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/out/Haptic
+    needsReinit: 0
   controllerHand: 2
 --- !u!1 &3946209599722398254
 GameObject:
@@ -975,9 +975,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -1129,9 +1130,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -1548,7 +1550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3946209600124226760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.9872247, z: 0.10709704}
+  m_LocalPosition: {x: 0, y: 0, z: 0.10709704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3946209600446440812}
@@ -1591,6 +1593,33 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
+  expandMixedRealityCapturePropertySheet: 0
+  enableMixedReality: 0
+  compositionMethod: 0
+  extraHiddenLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  externalCompositionBackdropColor: {r: 0, g: 0, b: 0, a: 0}
+  capturingCameraDevice: 0
+  flipCameraFrameHorizontally: 0
+  flipCameraFrameVertically: 0
+  handPoseStateLatency: 0
+  sandwichCompositionRenderLatency: 0
+  sandwichCompositionBufferedFrames: 8
+  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
+  chromaKeySimilarity: 0.6
+  chromaKeySmoothRange: 0.03
+  chromaKeySpillRange: 0.06
+  useDynamicLighting: 0
+  depthQuality: 1
+  dynamicLightingSmoothFactor: 8
+  dynamicLightingDepthVariationClampingValue: 0.001
+  virtualGreenScreenType: 0
+  virtualGreenScreenTopY: 10
+  virtualGreenScreenBottomY: -10
+  virtualGreenScreenApplyDepthCulling: 0
+  virtualGreenScreenDepthTolerance: 0.2
+  mrcActivationMode: 0
   _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
@@ -1598,7 +1627,6 @@ MonoBehaviour:
   resetTrackerOnLoad: 0
   AllowRecenter: 1
   _reorientHMDOnControllerRecenter: 1
-  LateControllerUpdate: 1
 --- !u!114 &3946209600124226766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,8 +1760,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   hapticAction:
-    actionPath: /actions//out/Haptic
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/out/Haptic
+    needsReinit: 0
   controllerHand: 0
 --- !u!114 &3946209600180852350
 MonoBehaviour:
@@ -2120,7 +2148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3946209600273623891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.9872247, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3946209600180852345}
@@ -2317,8 +2345,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   hapticAction:
-    actionPath: /actions//out/Haptic
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/out/Haptic
+    needsReinit: 0
   controllerHand: 0
 --- !u!114 &3946209600299876263
 MonoBehaviour:
@@ -3238,6 +3266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 3946209601454923442}
+  canCrouch: 1
   walkSpeed:
     maxForwardSpeed: 6
     maxSidewaysSpeed: 6
@@ -3622,9 +3651,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -3753,20 +3783,20 @@ MonoBehaviour:
   handType: 0
   booleanActions: []
   triggerPressure:
-    actionPath: /actions//in/TriggerPressure
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TriggerPressure
+    needsReinit: 0
   touchPosition:
-    actionPath: /actions//in/TouchPosition
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TouchPosition
+    needsReinit: 0
   padTouched:
-    actionPath: /actions//in/PadTouched
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/PadTouched
+    needsReinit: 0
   padPressed:
-    actionPath: /actions//in/PadPressed
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/PadPressed
+    needsReinit: 0
   hapticAction:
-    actionPath: /actions//out/Haptic
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/out/Haptic
+    needsReinit: 0
   controllerHand: 2
 --- !u!114 &1719066907
 MonoBehaviour:
@@ -3874,9 +3904,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -4029,20 +4060,20 @@ MonoBehaviour:
   handType: 0
   booleanActions: []
   triggerPressure:
-    actionPath: /actions//in/TriggerPressure
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TriggerPressure
+    needsReinit: 0
   touchPosition:
-    actionPath: /actions//in/TouchPosition
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TouchPosition
+    needsReinit: 0
   padTouched:
-    actionPath: /actions//in/PadTouched
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/PadTouched
+    needsReinit: 0
   padPressed:
-    actionPath: /actions//in/PadPressed
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/PadPressed
+    needsReinit: 0
   hapticAction:
-    actionPath: /actions//out/Haptic
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/out/Haptic
+    needsReinit: 0
   controllerHand: 2
 --- !u!114 &1761641463
 MonoBehaviour:
@@ -4336,9 +4367,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
