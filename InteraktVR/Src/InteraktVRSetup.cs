@@ -2,7 +2,6 @@
 
 namespace InteraktVR
 {
-    [ExecuteInEditMode()]
     public class InteraktVRSetup : MonoBehaviour
     {
         private static InteraktVRSetup instance;
@@ -13,7 +12,7 @@ namespace InteraktVR
         [SerializeField] GameObject vrRig;
         [SerializeField] GameObject vrSimulatorRig;
 
-        public static bool IsVRSimulated => instance?.enableRigMode == EnableRigMode.StandaloneSimulator;
+        public static bool IsVRSimulated => instance?.enableRigMode == EnableRigMode.StandaloneSimulator; //TODO: need this at editor time
 
         private void OnEnable()
         {
