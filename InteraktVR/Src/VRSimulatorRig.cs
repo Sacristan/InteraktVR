@@ -9,6 +9,9 @@ namespace InteraktVR
         [SerializeField] private VRInteraction.VRInteractor rightHand;
         [SerializeField] private VRInteraction.VRInteractor leftHand;
 
+        [SerializeField] private Transform bodyTransform;
+
+        public Transform BodyTransform => bodyTransform;
         public VRInteraction.VRInteractor RightHand => rightHand;
         public VRInteraction.VRInteractor LeftHand => leftHand;
 
