@@ -373,7 +373,7 @@ namespace VRInteraction
 
         public void ResetToInteractbaleDefault()
         {
-            input.VRActions = new string[] { GlobalKeys.KEY_NONE, GlobalKeys.KEY_ACTION, GlobalKeys.KEY_PICKUP_DROP };
+            input.VRActions = GlobalKeys.VR_ACTIONS_ARRAY;
 #if Int_Oculus || (Int_SteamVR && !Int_SteamVR2)
 
             input.triggerKey = 1;

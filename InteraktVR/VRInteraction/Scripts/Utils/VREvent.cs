@@ -7,6 +7,7 @@
 //
 //===================Contact Email: Sam@MassGames.co.uk===========================
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -75,7 +76,12 @@ public class VREvent : MonoBehaviour
 		}
 	}
 
-	/*public delegate void Handler(params object[] args);
+    internal static void Send(object kEY_DROP, object[] v)
+    {
+        throw new NotImplementedException();
+    }
+
+    /*public delegate void Handler(params object[] args);
 
 	public static void Listen(string message, Handler action)
 	{

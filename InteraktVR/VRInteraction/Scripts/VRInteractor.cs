@@ -29,7 +29,7 @@ namespace VRInteraction
         public const string KEY_INPUT_RECEIVED = "InputReceived";
         public const string KEY_DROP = "Drop";
 
-        public static string[] VR_ACTIONS_ARRAY = new string[] { KEY_NONE, KEY_ACTION, KEY_PICKUP_DROP, KEY_TELEPORT }; 
+        public static readonly string[] VR_ACTIONS_ARRAY = new string[] { KEY_NONE, KEY_ACTION, KEY_PICKUP_DROP, KEY_TELEPORT }; 
     }
 
     public class VRInteractor : MonoBehaviour
