@@ -24,17 +24,19 @@ namespace InteraktVR
             Cursor.visible = false;
         }
 
-        internal bool IsTriggerPressed(bool isLeftHand) => Input.GetMouseButton(isLeftHand ? 0 : 1);
-        internal bool IsGripPressed(bool isLeftHand) => false;
+        internal bool IsTriggerPressed(bool isLeftHand) => !Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButton(isLeftHand ? 0 : 1);
+        internal bool IsGripPressed(bool isLeftHand) => Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButton(isLeftHand ? 0 : 1);
+        internal bool IsPadPressed(bool isLeftHand) => Input.GetKey(isLeftHand ? KeyCode.Q : KeyCode.E);
+        internal bool IsPadTouched(bool isLeftHand) => false;
+        internal bool IsMenuPressed(bool isLeftHand) => false;
+        internal bool IsAXPressed(bool isLeftHand) => false;
+
+        internal bool IsPadCentrePressed(bool isLeftHand) => false;
         internal bool IsPadTopPressed(bool isLeftHand) => false;
         internal bool IsPadLeftPressed(bool isLeftHand) => false;
         internal bool IsPadRightPressed(bool isLeftHand) => false;
         internal bool IsPadBottomPressed(bool isLeftHand) => false;
-        internal bool IsPadCentrePressed(bool isLeftHand) => false;
-        internal bool IsPadTouched(bool isLeftHand) => false;
-        internal bool IsPadPressed(bool isLeftHand) => false;
-        internal bool IsMenuPressed(bool isLeftHand) => false;
-        internal bool IsAXPressed(bool isLeftHand) => false;
+
         internal Vector2 PadPosition(bool isLeftHand) => Vector2.zero;
     }
 }

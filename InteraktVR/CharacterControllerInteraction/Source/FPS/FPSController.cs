@@ -44,6 +44,7 @@ namespace InteraktVR
         [Header("General")]
         [SerializeField] private Transform pivot;
         [SerializeField] private bool canCrouch = true;
+        [SerializeField] private bool canLean = true;
 
         [Header("Movement Settings")]
         [SerializeField] private MovementSpeed walkSpeed = new MovementSpeed(3.0f, 4.0f, 2.0f);
@@ -154,13 +155,13 @@ namespace InteraktVR
 
         private void HandleLeaning()
         {
-            if (Input.GetKey(KeyCode.Q))
+            if (canLean && Input.GetKey(KeyCode.Q))
             {
                 currentLeanAngle = Mathf.MoveTowardsAngle(currentLeanAngle, maxAngle, speed * Time.deltaTime);
                 currentLeanPos = Vector3.MoveTowards(currentLeanPos, -Vector3.right * leanPosAmount, leanPosSpeed * Time.deltaTime);
             }
 
-            else if (Input.GetKey(KeyCode.E))
+            if (canLean && Input.GetKey(KeyCode.E))
             {
                 currentLeanAngle = Mathf.MoveTowardsAngle(currentLeanAngle, -maxAngle, speed * Time.deltaTime);
                 currentLeanPos = Vector3.MoveTowards(currentLeanPos, Vector3.right * leanPosAmount, leanPosSpeed * Time.deltaTime);
