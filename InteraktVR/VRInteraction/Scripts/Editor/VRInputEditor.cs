@@ -412,7 +412,7 @@ namespace VRInteraction
                 input.padTouched = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadTouched");
                 input.padPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadPressed");
 
-                input.handType = input.LeftHand ? SteamVR_Input_Sources.LeftHand : SteamVR_Input_Sources.RightHand;
+                input.handType = input.IsLeftHand ? SteamVR_Input_Sources.LeftHand : SteamVR_Input_Sources.RightHand;
                 SteamVR_Behaviour_Pose poseComp = input.GetComponent<SteamVR_Behaviour_Pose>();
                 if (poseComp == null)
                 {

@@ -516,23 +516,23 @@ namespace VRInteraction
             if (hand == null || hand.ikTarget == null) return;
             if (pickingUp)
             {
-                Transform handIKAnchor = hand.vrInput.LeftHand ? leftHandIKAnchor : rightHandIKAnchor;
+                Transform handIKAnchor = hand.vrInput.IsLeftHand ? leftHandIKAnchor : rightHandIKAnchor;
                 if (handIKAnchor != null) hand.SetIKTarget(handIKAnchor);
-                if ((hand.vrInput.LeftHand && leftHandIKPoseName != "") ||
-                    (!hand.vrInput.LeftHand && rightHandIkPoseName != ""))
+                if ((hand.vrInput.IsLeftHand && leftHandIKPoseName != "") ||
+                    (!hand.vrInput.IsLeftHand && rightHandIkPoseName != ""))
                 {
                     //	Method is in HandPoseController.cs, found in the FinalIK integrations folder (make sure to open the FinalIK package in VRInteraction first).
-                    hand.GetVRRigRoot.BroadcastMessage(hand.vrInput.LeftHand ? "ApplyPoseLeftHand" : "ApplyPoseRightHand", hand.vrInput.LeftHand ? leftHandIKPoseName : rightHandIkPoseName, SendMessageOptions.DontRequireReceiver);
+                    hand.GetVRRigRoot.BroadcastMessage(hand.vrInput.IsLeftHand ? "ApplyPoseLeftHand" : "ApplyPoseRightHand", hand.vrInput.IsLeftHand ? leftHandIKPoseName : rightHandIkPoseName, SendMessageOptions.DontRequireReceiver);
                 }
             }
             else
             {
                 hand.SetIKTarget(null);
-                if ((hand.vrInput.LeftHand && leftHandIKPoseName != "") ||
-                    (!hand.vrInput.LeftHand && rightHandIkPoseName != ""))
+                if ((hand.vrInput.IsLeftHand && leftHandIKPoseName != "") ||
+                    (!hand.vrInput.IsLeftHand && rightHandIkPoseName != ""))
                 {
                     //	Method is in HandPoseController.cs, found in the FinalIK integrations folder (make sure to open the FinalIK package in VRInteraction first).
-                    hand.GetVRRigRoot.BroadcastMessage("ClearPose", hand.vrInput.LeftHand, SendMessageOptions.DontRequireReceiver);
+                    hand.GetVRRigRoot.BroadcastMessage("ClearPose", hand.vrInput.IsLeftHand, SendMessageOptions.DontRequireReceiver);
                 }
             }
         }
@@ -596,23 +596,23 @@ namespace VRInteraction
 
         virtual public Vector3 GetLocalHeldPosition(VRInteractor hand)
         {
-            if (linkedLeftAndRightHeldPositions || hand.vrInput.LeftHand)
+            if (linkedLeftAndRightHeldPositions || hand.vrInput.IsLeftHand)
                 return heldPosition;
-            else if (!linkedLeftAndRightHeldPositions && !hand.vrInput.LeftHand)
+            else if (!linkedLeftAndRightHeldPositions && !hand.vrInput.IsLeftHand)
                 return heldPositionRightHand;
 
-            Debug.LogError("No held position. LinkedLeftAndRightHeldPositions: " + linkedLeftAndRightHeldPositions + " hand.LeftHand: " + hand.vrInput.LeftHand);
+            Debug.LogError("No held position. LinkedLeftAndRightHeldPositions: " + linkedLeftAndRightHeldPositions + " hand.LeftHand: " + hand.vrInput.IsLeftHand);
             return Vector3.zero;
         }
 
         virtual public Quaternion GetLocalHeldRotation(VRInteractor hand)
         {
-            if (linkedLeftAndRightHeldPositions || hand.vrInput.LeftHand)
+            if (linkedLeftAndRightHeldPositions || hand.vrInput.IsLeftHand)
                 return heldRotation;
-            else if (!linkedLeftAndRightHeldPositions && !hand.vrInput.LeftHand)
+            else if (!linkedLeftAndRightHeldPositions && !hand.vrInput.IsLeftHand)
                 return heldRotationRightHand;
 
-            Debug.LogError("No held rotation. LinkedLeftAndRightHeldPositions: " + linkedLeftAndRightHeldPositions + " hand.LeftHand: " + hand.vrInput.LeftHand);
+            Debug.LogError("No held rotation. LinkedLeftAndRightHeldPositions: " + linkedLeftAndRightHeldPositions + " hand.LeftHand: " + hand.vrInput.IsLeftHand);
             return Quaternion.identity;
         }
 

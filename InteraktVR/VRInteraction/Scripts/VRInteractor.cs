@@ -15,23 +15,6 @@ using Valve.VR;
 
 namespace VRInteraction
 {
-    public static class GlobalKeys
-    {
-        public const string KEY_NONE = "NONE";
-
-        //ACTIONS
-        public const string KEY_ACTION = "ACTION";
-        public const string KEY_TELEPORT = "TELEPORT";
-
-        //CAUSES
-        public const string KEY_PICKUP = "PICKUP";
-        public const string KEY_PICKUP_DROP = "PICKUP_DROP";
-        public const string KEY_INPUT_RECEIVED = "InputReceived";
-        public const string KEY_DROP = "Drop";
-
-        public static readonly string[] VR_ACTIONS_ARRAY = new string[] { KEY_NONE, KEY_ACTION, KEY_PICKUP_DROP, KEY_TELEPORT }; 
-    }
-
     public class VRInteractor : MonoBehaviour
     {
         public const string anchorOffsetName = "ControllerAnchorOffset";
@@ -320,6 +303,7 @@ namespace VRInteraction
         virtual protected void Update()
         {
             if (!enabled) return;
+            CheckTeleport();
             CheckHover();
             PositionHoverLine();
 
@@ -330,6 +314,18 @@ namespace VRInteraction
                 _currentRotation = _heldItem.transform.rotation;
             }
 #endif
+        }
+
+        private void CheckTeleport()
+        {
+            if (vrInput.ActionPressed(GlobalKeys.KEY_TELEPORT))
+            {
+                Debug.Log("TELEPORT PRESSED");
+            }
+            else
+            {
+                // Debug.Log("TELEPORT NOT PRESSED ATM");
+            }
         }
 
         virtual protected void OnDestroy()
@@ -384,7 +380,7 @@ namespace VRInteraction
                     canGrab = true;
                 if ((item.interactionDistance < forceGrabDistance &&
                     VRUtils.PositionWithinCone(controllerPosition,
-                            getControllerAnchorOffset.TransformVector(new Vector3(vrInput.LeftHand ? forceGrabDirection.x : -forceGrabDirection.x, forceGrabDirection.y, forceGrabDirection.z)),
+                            getControllerAnchorOffset.TransformVector(new Vector3(vrInput.IsLeftHand ? forceGrabDirection.x : -forceGrabDirection.x, forceGrabDirection.y, forceGrabDirection.z)),
                             targetPosition, 20f, forceGrabDistance)))
                 {
                     canGrab = true;
@@ -520,7 +516,7 @@ namespace VRInteraction
                     //Debug.LogWarning("Can't find OVRAvatar as parent of controller, using FindObjectOfType, warning this is slow and may result in a long frame");
                 }
                 if (avatar == null) return;
-                if (vrInput.LeftHand)
+                if (vrInput.IsLeftHand)
                 {
                     ToggleAllChildRenderers(avatar.ControllerLeft.gameObject, enable);
                     ToggleAllChildRenderers(avatar.HandLeft.gameObject, enable);

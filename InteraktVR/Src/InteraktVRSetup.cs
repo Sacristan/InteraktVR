@@ -42,7 +42,7 @@ namespace InteraktVR
 
             for (int i = 0; i < 2; i++)
             {
-                if (vrInputs[i].LeftHand) leftController = vrInputs[i];
+                if (vrInputs[i].IsLeftHand) leftController = vrInputs[i];
                 else rightController = vrInputs[i];
             }
 
