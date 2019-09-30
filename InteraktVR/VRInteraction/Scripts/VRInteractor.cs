@@ -366,6 +366,7 @@ namespace VRInteraction
             VRInteractableItem closestItem = null;
             float closestDist = float.MaxValue;
             bool forceGrab = false;
+
             foreach (VRInteractableItem item in VRInteractableItem.items)
             {
                 if (item == null || !item.CanInteract()) continue;
@@ -411,6 +412,7 @@ namespace VRInteraction
                     string actionDown = GlobalKeys.KEY_PICKUP;
                     if (vrInput.ActionPressed(GlobalKeys.KEY_PICKUP_DROP)) actionDown = GlobalKeys.KEY_PICKUP_DROP;
                     else if (vrInput.ActionPressed(GlobalKeys.KEY_ACTION)) actionDown = GlobalKeys.KEY_ACTION;
+
                     SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, actionDown, SendMessageOptions.DontRequireReceiver);
                     return;
                 }

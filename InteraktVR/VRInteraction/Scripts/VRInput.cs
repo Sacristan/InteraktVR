@@ -91,6 +91,8 @@ namespace VRInteraction
 #endif
         }
 
+
+        //MAP: to trackpad. Isolate Standalone Logic
         virtual protected void Update()
         {
 #if !(Int_SteamVR && !Int_SteamVR2)
@@ -382,53 +384,35 @@ namespace VRInteraction
             return false;
         }
 
+
+        //TODO: DEBUG VRActions
         public bool ActionPressed(int action)
         {
             if (hmdType == HMDType.VIVE)
             {
-                if (triggerKey == action && TriggerPressed)
-                    return true;
-                if (padTop == action && PadTopPressed)
-                    return true;
-                if (padLeft == action && PadLeftPressed)
-                    return true;
-                if (padRight == action && PadRightPressed)
-                    return true;
-                if (padBottom == action && PadBottomPressed)
-                    return true;
-                if (padCentre == action && PadCentrePressed)
-                    return true;
-                if (padTouch == action && PadTouched)
-                    return true;
-                if (menuKey == action && MenuPressed)
-                    return true;
-                if (gripKey == action && GripPressed)
-                    return true;
-                if (AXKey == action && AXPressed)
-                    return true;
+                if (triggerKey == action && TriggerPressed) return true;
+                if (padTop == action && PadTopPressed) return true;
+                if (padLeft == action && PadLeftPressed) return true;
+                if (padRight == action && PadRightPressed) return true;
+                if (padBottom == action && PadBottomPressed) return true;
+                if (padCentre == action && PadCentrePressed) return true;
+                if (padTouch == action && PadTouched) return true;
+                if (menuKey == action && MenuPressed) return true;
+                if (gripKey == action && GripPressed) return true;
+                if (AXKey == action && AXPressed) return true;
             }
             else
             {
-                if (triggerKeyOculus == action && TriggerPressed)
-                    return true;
-                if (padTopOculus == action && PadTopPressed)
-                    return true;
-                if (padLeftOculus == action && PadLeftPressed)
-                    return true;
-                if (padRightOculus == action && PadRightPressed)
-                    return true;
-                if (padBottomOculus == action && PadBottomPressed)
-                    return true;
-                if (padCentreOculus == action && PadCentrePressed)
-                    return true;
-                if (padTouchOculus == action && PadTouched)
-                    return true;
-                if (menuKeyOculus == action && MenuPressed)
-                    return true;
-                if (gripKeyOculus == action && GripPressed)
-                    return true;
-                if (AXKeyOculus == action && AXPressed)
-                    return true;
+                if (triggerKeyOculus == action && TriggerPressed) return true;
+                if (padTopOculus == action && PadTopPressed) return true;
+                if (padLeftOculus == action && PadLeftPressed) return true;
+                if (padRightOculus == action && PadRightPressed) return true;
+                if (padBottomOculus == action && PadBottomPressed) return true;
+                if (padCentreOculus == action && PadCentrePressed) return true;
+                if (padTouchOculus == action && PadTouched) return true;
+                if (menuKeyOculus == action && MenuPressed) return true;
+                if (gripKeyOculus == action && GripPressed) return true;
+                if (AXKeyOculus == action && AXPressed) return true;
             }
             return false;
         }

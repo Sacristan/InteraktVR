@@ -342,6 +342,8 @@ namespace VRInteraction
 
         virtual public bool Pickup(VRInteractor hand)
         {
+            Debug.Log("PICKUP");
+
             if (canBeHeld && item != null)
             {
                 //TODO: check this
@@ -480,7 +482,6 @@ namespace VRInteraction
         virtual protected void PICKUP(VRInteractor hand)
         {
             if (hand.heldItem != null) return;
-
             hand.TryPickup();
         }
 
