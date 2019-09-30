@@ -30,6 +30,7 @@ namespace InteraktVR
         internal bool IsPadTouched(bool isLeftHand) => false;
         internal bool IsMenuPressed(bool isLeftHand) => false;
         internal bool IsAXPressed(bool isLeftHand) => false;
+        internal bool IsBYPressed(bool isLeftHand) => false;
 
         internal bool IsPadCentrePressed(bool isLeftHand) => false;
         internal bool IsPadTopPressed(bool isLeftHand) => false;

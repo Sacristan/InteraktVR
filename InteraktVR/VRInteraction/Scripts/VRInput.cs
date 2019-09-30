@@ -779,6 +779,26 @@ namespace VRInteraction
             }
         }
 
+        virtual public bool BYPressed
+        {
+            get
+            {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsBYPressed(IsLeftHand);
+
+#if Int_SteamVR && !Int_SteamVR2
+				if (isSteamVR()) return false;
+#endif
+#if Int_Oculus
+                if (!isSteamVR())
+                {
+                    return OVRInput.Get(OVRInput.Button.Two, controllerHand);
+                }
+#endif
+                return false;
+            }
+        }
+
+
         public bool isTriggerPressed { get { return _triggerPressedFlag; } }
         public bool isPadPressed { get { return _padPressedFlag; } }
         public bool isPadTouched { get { return _padTouchedFlag; } }
