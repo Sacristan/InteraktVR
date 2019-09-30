@@ -714,7 +714,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.GripPressed(IsLeftHand);
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsGripPressed(IsLeftHand);
 
 #if Int_SteamVR && !Int_SteamVR2
 				if (isSteamVR())
@@ -735,7 +735,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.MenuPressed(IsLeftHand);
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsMenuPressed(IsLeftHand);
 
 #if Int_SteamVR && !Int_SteamVR2
 				if (isSteamVR())
@@ -756,7 +756,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.AXPressed(IsLeftHand);
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsAXPressed(IsLeftHand);
 
 #if Int_SteamVR && !Int_SteamVR2
 				if (isSteamVR())

@@ -24,11 +24,8 @@ namespace InteraktVR
             Cursor.visible = false;
         }
 
-        public bool IsTriggerPressed(bool leftHand)
-        {
-            return Input.GetMouseButton(leftHand ? 0 : 1);
-        }
-
+        internal bool IsTriggerPressed(bool isLeftHand) => Input.GetMouseButton(isLeftHand ? 0 : 1);
+        internal bool IsGripPressed(bool isLeftHand) => false;
         internal bool IsPadTopPressed(bool isLeftHand) => false;
         internal bool IsPadLeftPressed(bool isLeftHand) => false;
         internal bool IsPadRightPressed(bool isLeftHand) => false;
@@ -36,9 +33,8 @@ namespace InteraktVR
         internal bool IsPadCentrePressed(bool isLeftHand) => false;
         internal bool IsPadTouched(bool isLeftHand) => false;
         internal bool IsPadPressed(bool isLeftHand) => false;
+        internal bool IsMenuPressed(bool isLeftHand) => false;
+        internal bool IsAXPressed(bool isLeftHand) => false;
         internal Vector2 PadPosition(bool isLeftHand) => Vector2.zero;
-        internal bool GripPressed(bool isLeftHand) => false;
-        internal bool MenuPressed(bool isLeftHand) => false;
-        internal bool AXPressed(bool isLeftHand) => false;
     }
 }
