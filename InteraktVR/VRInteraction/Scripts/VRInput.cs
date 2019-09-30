@@ -142,7 +142,7 @@ namespace VRInteraction
                     if (PadLeftPressed && !_stickLeftDown)
                     {
                         _stickLeftDown = true;
-                        SendMessage("InputReceived", VRActions[padLeftOculus], SendMessageOptions.DontRequireReceiver);
+                        SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padLeftOculus], SendMessageOptions.DontRequireReceiver);
                     }
                     else if (!PadLeftPressed && _stickLeftDown)
                         _stickLeftDown = false;
@@ -150,7 +150,7 @@ namespace VRInteraction
                     if (PadRightPressed && !_stickRightDown)
                     {
                         _stickRightDown = true;
-                        SendMessage("InputReceived", VRActions[padRightOculus], SendMessageOptions.DontRequireReceiver);
+                        SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padRightOculus], SendMessageOptions.DontRequireReceiver);
                     }
                     else if (!PadRightPressed && _stickRightDown)
                         _stickRightDown = false;
@@ -158,7 +158,7 @@ namespace VRInteraction
                     if (PadBottomPressed && !_stickBottomDown)
                     {
                         _stickBottomDown = true;
-                        SendMessage("InputReceived", VRActions[padBottomOculus], SendMessageOptions.DontRequireReceiver);
+                        SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padBottomOculus], SendMessageOptions.DontRequireReceiver);
                     }
                     else if (!PadBottomPressed && _stickBottomDown)
                         _stickBottomDown = false;
@@ -166,7 +166,7 @@ namespace VRInteraction
                     if (PadTopPressed && !_stickTopDown)
                     {
                         _stickTopDown = true;
-                        SendMessage("InputReceived", VRActions[padTopOculus], SendMessageOptions.DontRequireReceiver);
+                        SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padTopOculus], SendMessageOptions.DontRequireReceiver);
                     }
                     else if (!PadTopPressed && _stickTopDown)
                         _stickTopDown = false;
@@ -765,7 +765,7 @@ namespace VRInteraction
 
         virtual public void SendMessageToInteractor(string message)
         {
-            SendMessage("InputReceived", message, SendMessageOptions.DontRequireReceiver);
+            SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, message, SendMessageOptions.DontRequireReceiver);
         }
 
         protected void TriggerClicked()

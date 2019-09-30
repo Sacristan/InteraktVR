@@ -472,7 +472,7 @@ namespace VRInteraction
 
         virtual protected void PICKUP_DROPReleased(VRInteractor hand)
         {
-            if (hand.heldItem == null || toggleToPickup || hand.vrInput.ActionPressed("PICKUP") || hand.vrInput.ActionPressed("ACTION") || hand.vrInput.ActionPressed("PICKUP_DROP")) return;
+            if (hand.heldItem == null || toggleToPickup || hand.vrInput.ActionPressed(GlobalKeys.KEY_PICKUP) || hand.vrInput.ActionPressed(GlobalKeys.KEY_ACTION) || hand.vrInput.ActionPressed(GlobalKeys.KEY_PICKUP_DROP)) return;
 
             hand.Drop();
         }

@@ -373,7 +373,7 @@ namespace VRInteraction
 
         public void ResetToInteractbaleDefault()
         {
-            input.VRActions = new string[] { "NONE", "ACTION", "PICKUP_DROP" };
+            input.VRActions = new string[] { GlobalKeys.KEY_NONE, GlobalKeys.KEY_ACTION, GlobalKeys.KEY_PICKUP_DROP };
 #if Int_Oculus || (Int_SteamVR && !Int_SteamVR2)
 
             input.triggerKey = 1;
@@ -401,8 +401,8 @@ namespace VRInteraction
 #if Int_SteamVR2
             if (input.isSteamVR())
             {
-                SteamVR_Action_Boolean actionAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("ACTION");
-                SteamVR_Action_Boolean pickupDropAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PICKUP_DROP");
+                SteamVR_Action_Boolean actionAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>(GlobalKeys.KEY_ACTION);
+                SteamVR_Action_Boolean pickupDropAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>(GlobalKeys.KEY_PICKUP_DROP);
                 input.booleanActions.Clear();
                 input.booleanActions.Add(actionAction);
                 input.booleanActions.Add(pickupDropAction);

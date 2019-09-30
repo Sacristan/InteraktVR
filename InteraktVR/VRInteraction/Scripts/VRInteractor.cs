@@ -15,6 +15,20 @@ using Valve.VR;
 
 namespace VRInteraction
 {
+    public static class GlobalKeys
+    {
+        //ACTIONS
+        public const string KEY_ACTION = "ACTION";
+        public const string KEY_TELEPORT = "TELEPORT";
+
+        //CAUSES
+        public const string KEY_PICKUP = "PICKUP";
+        public const string KEY_PICKUP_DROP = "PICKUP_DROP";
+        public const string KEY_INPUT_RECEIVED = "InputReceived";
+        public const string KEY_DROP = "Drop";
+        public const string KEY_NONE = "NONE";
+    }
+
     public class VRInteractor : MonoBehaviour
     {
         public const string anchorOffsetName = "ControllerAnchorOffset";
@@ -392,13 +406,13 @@ namespace VRInteraction
                 bool forceToggleAllowed = true;
                 if (forceToggle != null) forceToggleAllowed = !forceGrab || !vrInput.ActionPressed(forceToggle.actionName);
 
-                if (_lastDropped + 0.5f < Time.time && forceToggleAllowed && (vrInput.ActionPressed("ACTION") || vrInput.ActionPressed("PICKUP_DROP") || vrInput.ActionPressed("PICKUP")))
+                if (_lastDropped + 0.5f < Time.time && forceToggleAllowed && (vrInput.ActionPressed(GlobalKeys.KEY_ACTION) || vrInput.ActionPressed(GlobalKeys.KEY_PICKUP_DROP) || vrInput.ActionPressed(GlobalKeys.KEY_PICKUP)))
                 {
                     hoverItem = closestItem;
-                    string actionDown = "PICKUP";
-                    if (vrInput.ActionPressed("PICKUP_DROP")) actionDown = "PICKUP_DROP";
-                    else if (vrInput.ActionPressed("ACTION")) actionDown = "ACTION";
-                    SendMessage("InputReceived", actionDown, SendMessageOptions.DontRequireReceiver);
+                    string actionDown = GlobalKeys.KEY_PICKUP;
+                    if (vrInput.ActionPressed(GlobalKeys.KEY_PICKUP_DROP)) actionDown = GlobalKeys.KEY_PICKUP_DROP;
+                    else if (vrInput.ActionPressed(GlobalKeys.KEY_ACTION)) actionDown = GlobalKeys.KEY_ACTION;
+                    SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, actionDown, SendMessageOptions.DontRequireReceiver);
                     return;
                 }
                 else if (hoverItem != closestItem)
@@ -467,14 +481,14 @@ namespace VRInteraction
 
             if (hideControllersWhileHolding) ToggleControllers(false);
 
-            VREvent.Send("Pickup", new object[] { _heldItem });
+            VREvent.Send(GlobalKeys.KEY_PICKUP, new object[] { _heldItem });
             return true;
         }
 
         virtual public void Drop()
         {
             if (_heldItem == null || beingDestroyed) return;
-            VREvent.Send("Drop", new object[] { _heldItem });
+            VREvent.Send(GlobalKeys.KEY_DROP, new object[] { _heldItem });
             if (hoverItem != null)
             {
                 hoverItem.DisableHover(this);

@@ -6,7 +6,7 @@ namespace VRInteraction
 {
 	public class ForceGrabToggle : MonoBehaviour 
 	{
-		public string actionName = "PICKUP_DROP";
+		public string actionName = GlobalKeys.KEY_PICKUP_DROP;
 		public float defaultForceDistance = 5f;
 
 		private VRInteractor vrInteractor;
