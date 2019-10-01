@@ -5,6 +5,7 @@ Supports:
 * Vive
 * Oculus Rift
 * Oculus Quest
+* WMR (via SteamVR)
 
 Probably works for:
 * Valve Index (not tested)
