@@ -64,8 +64,8 @@ namespace VRInteraction
         public SteamVR_Action_Vector2 touchPosition = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("TouchPosition");
         public SteamVR_Action_Boolean padTouched = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadTouched");
         public SteamVR_Action_Boolean padPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadPressed");
+        public SteamVR_Action_Boolean teleport = SteamVR_Input.GetAction<SteamVR_Action_Boolean>(GlobalKeys.KEY_TELEPORT);
         public SteamVR_Action_Vibration hapticAction = SteamVR_Input.GetAction<SteamVR_Action_Vibration>("Haptic");
-
 
 #endif
 
