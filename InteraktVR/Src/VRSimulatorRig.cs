@@ -26,14 +26,15 @@ namespace InteraktVR
 
         internal bool IsTriggerPressed(bool isLeftHand) => !Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButton(isLeftHand ? 0 : 1);
         internal bool IsGripPressed(bool isLeftHand) => Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButton(isLeftHand ? 0 : 1);
-        internal bool IsPadPressed(bool isLeftHand) => Input.GetKey(isLeftHand ? KeyCode.Q : KeyCode.E);
+        internal bool IsPadPressed(bool isLeftHand) => false;
         internal bool IsPadTouched(bool isLeftHand) => false;
         internal bool IsMenuPressed(bool isLeftHand) => false;
         internal bool IsAXPressed(bool isLeftHand) => false;
         internal bool IsBYPressed(bool isLeftHand) => false;
 
         internal bool IsPadCentrePressed(bool isLeftHand) => false;
-        internal bool IsPadTopPressed(bool isLeftHand) => (isLeftHand ^ Input.GetKey(KeyCode.LeftAlt)) && Input.GetMouseButton(2);
+        // internal bool IsPadTopPressed(bool isLeftHand) => (isLeftHand ^ Input.GetKey(KeyCode.LeftAlt)) && Input.GetMouseButton(2);
+        internal bool IsPadTopPressed(bool isLeftHand) => Input.GetKey(isLeftHand ? KeyCode.Q : KeyCode.E);
         internal bool IsPadLeftPressed(bool isLeftHand) => false;
         internal bool IsPadRightPressed(bool isLeftHand) => false;
         internal bool IsPadBottomPressed(bool isLeftHand) => false;

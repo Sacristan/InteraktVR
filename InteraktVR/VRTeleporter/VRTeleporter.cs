@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: optimise
 public class VRTeleporter : MonoBehaviour
 {
 
