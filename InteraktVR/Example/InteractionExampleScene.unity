@@ -204,24 +204,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127767678}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &186142681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3946209600273623891, guid: 5090900cb9a644b46816ea76a9edefe0,
-    type: 3}
-  m_PrefabInstance: {fileID: 3946209599313032218}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &186142686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186142681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e481736f8f1a1b42b374a14ea2de007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &327070620 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8189179952207219059, guid: cae9ceba2a1ae49788c848951781854e,
@@ -1955,24 +1937,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1163475424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3946209600732967723, guid: 5090900cb9a644b46816ea76a9edefe0,
-    type: 3}
-  m_PrefabInstance: {fileID: 3946209599313032218}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1163475425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163475424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e481736f8f1a1b42b374a14ea2de007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1200589586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2839,24 +2803,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077341204}
   m_CullTransparentMesh: 0
---- !u!1 &2082071555 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3946209600124226760, guid: 5090900cb9a644b46816ea76a9edefe0,
-    type: 3}
-  m_PrefabInstance: {fileID: 3946209599313032218}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2082071560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082071555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e481736f8f1a1b42b374a14ea2de007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2134909459
 GameObject:
   m_ObjectHideFlags: 0
@@ -2956,75 +2902,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &1195905725793378967
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 3946209599313032219}
-    m_Modifications:
-    - target: {fileID: 1195905725598010833, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_Name
-      value: Locomotion
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 563e944418bb14520b2acca3b91f946b, type: 3}
 --- !u!1001 &3946209599313032218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3036,11 +2913,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[PlayerRig_InteraktVR]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209600124226760, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946209601223538660, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
@@ -3107,186 +2979,5 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 545637960}
-    - target: {fileID: 3946209601223538663, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: enableRigMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601447072944, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.data[3]
-      value: TELEPORT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentre
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentreOculus
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTop
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTopOculus
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.data[3]
-      value: TELEPORT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentre
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentreOculus
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTop
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTopOculus
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.data[3]
-      value: TELEPORT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentre
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentreOculus
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: triggerKey
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: triggerKeyOculus
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTop
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTopOculus
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: VRActions.Array.data[3]
-      value: TELEPORT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentre
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padCentreOculus
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: triggerKey
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: triggerKeyOculus
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTop
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: padTopOculus
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209600732967721, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: canLean
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209600180852351, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: booleanActions.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209600180852351, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: booleanActions.Array.data[2].actionPath
-      value: /actions/VRInteraction/in/TELEPORT
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209600299876260, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: booleanActions.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3946209600299876260, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: booleanActions.Array.data[2].actionPath
-      value: /actions/VRInteraction/in/TELEPORT
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5090900cb9a644b46816ea76a9edefe0, type: 3}
---- !u!4 &3946209599313032219 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3946209601223538660, guid: 5090900cb9a644b46816ea76a9edefe0,
-    type: 3}
-  m_PrefabInstance: {fileID: 3946209599313032218}
-  m_PrefabAsset: {fileID: 0}
