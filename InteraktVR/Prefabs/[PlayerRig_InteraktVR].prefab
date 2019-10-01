@@ -234,10 +234,11 @@ MonoBehaviour:
   - NONE
   - ACTION
   - PICKUP_DROP
+  - TELEPORT
   mirrorControls: 1
   displayViveButtons: 0
   triggerKey: 1
-  padTop: 0
+  padTop: 3
   padLeft: 0
   padRight: 0
   padBottom: 0
@@ -247,7 +248,7 @@ MonoBehaviour:
   menuKey: 0
   AXKey: 0
   triggerKeyOculus: 1
-  padTopOculus: 0
+  padTopOculus: 3
   padLeftOculus: 0
   padRightOculus: 0
   padBottomOculus: 0
@@ -274,9 +275,12 @@ MonoBehaviour:
   padPressed:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
+  teleport:
+    actionPath: /actions//in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
-    needsReinit: 0
+    needsReinit: 1
   controllerHand: 1
 --- !u!1 &3946209599352919084
 GameObject:
@@ -770,10 +774,11 @@ MonoBehaviour:
   - NONE
   - ACTION
   - PICKUP_DROP
+  - TELEPORT
   mirrorControls: 1
   displayViveButtons: 0
   triggerKey: 1
-  padTop: 0
+  padTop: 3
   padLeft: 0
   padRight: 0
   padBottom: 0
@@ -783,7 +788,7 @@ MonoBehaviour:
   menuKey: 0
   AXKey: 0
   triggerKeyOculus: 1
-  padTopOculus: 0
+  padTopOculus: 3
   padLeftOculus: 0
   padRightOculus: 0
   padBottomOculus: 0
@@ -810,9 +815,12 @@ MonoBehaviour:
   padPressed:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
+  teleport:
+    actionPath: /actions//in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
-    needsReinit: 0
+    needsReinit: 1
   controllerHand: 2
 --- !u!1 &3946209599722398254
 GameObject:
@@ -975,10 +983,9 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -1130,10 +1137,9 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -1535,6 +1541,7 @@ GameObject:
   - component: {fileID: 3946209600124226764}
   - component: {fileID: 3946209600124226767}
   - component: {fileID: 3946209600124226766}
+  - component: {fileID: 2082071560}
   m_Layer: 0
   m_Name: OculusPlayer
   m_TagString: Untagged
@@ -1593,33 +1600,6 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
-  expandMixedRealityCapturePropertySheet: 0
-  enableMixedReality: 0
-  compositionMethod: 0
-  extraHiddenLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  externalCompositionBackdropColor: {r: 0, g: 0, b: 0, a: 0}
-  capturingCameraDevice: 0
-  flipCameraFrameHorizontally: 0
-  flipCameraFrameVertically: 0
-  handPoseStateLatency: 0
-  sandwichCompositionRenderLatency: 0
-  sandwichCompositionBufferedFrames: 8
-  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
-  chromaKeySimilarity: 0.6
-  chromaKeySmoothRange: 0.03
-  chromaKeySpillRange: 0.06
-  useDynamicLighting: 0
-  depthQuality: 1
-  dynamicLightingSmoothFactor: 8
-  dynamicLightingDepthVariationClampingValue: 0.001
-  virtualGreenScreenType: 0
-  virtualGreenScreenTopY: 10
-  virtualGreenScreenBottomY: -10
-  virtualGreenScreenApplyDepthCulling: 0
-  virtualGreenScreenDepthTolerance: 0.2
-  mrcActivationMode: 0
   _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
@@ -1627,6 +1607,7 @@ MonoBehaviour:
   resetTrackerOnLoad: 0
   AllowRecenter: 1
   _reorientHMDOnControllerRecenter: 1
+  LateControllerUpdate: 1
 --- !u!114 &3946209600124226766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1644,6 +1625,18 @@ MonoBehaviour:
   resetHmdPoseByMiddleMouseButton: 1
   activateKeys: 3201000031010000
   pitchKeys: 3401000033010000
+--- !u!114 &2082071560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3946209600124226760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e481736f8f1a1b42b374a14ea2de007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3946209600180852344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,6 +1740,8 @@ MonoBehaviour:
     needsReinit: 0
   - actionPath: /actions/VRInteraction/in/PICKUP_DROP
     needsReinit: 0
+  - actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   triggerPressure:
     actionPath: /actions/VRInteraction/in/TriggerPressure
     needsReinit: 1
@@ -1759,9 +1754,12 @@ MonoBehaviour:
   padPressed:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
+  teleport:
+    actionPath: /actions//in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
-    needsReinit: 0
+    needsReinit: 1
   controllerHand: 0
 --- !u!114 &3946209600180852350
 MonoBehaviour:
@@ -2133,6 +2131,7 @@ GameObject:
   - component: {fileID: 3946209600273623895}
   - component: {fileID: 3946209600273623894}
   - component: {fileID: 3946209600273623889}
+  - component: {fileID: 186142686}
   m_Layer: 0
   m_Name: SteamPlayer
   m_TagString: Untagged
@@ -2229,6 +2228,18 @@ MonoBehaviour:
   - {x: -1.65, y: 0.01, z: -1.275}
   - {x: -1.65, y: 0.01, z: 1.275}
   - {x: 1.65, y: 0.01, z: 1.275}
+--- !u!114 &186142686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3946209600273623891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e481736f8f1a1b42b374a14ea2de007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3946209600299876257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2332,6 +2343,8 @@ MonoBehaviour:
     needsReinit: 0
   - actionPath: /actions/VRInteraction/in/PICKUP_DROP
     needsReinit: 0
+  - actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   triggerPressure:
     actionPath: /actions/VRInteraction/in/TriggerPressure
     needsReinit: 1
@@ -2344,9 +2357,12 @@ MonoBehaviour:
   padPressed:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
+  teleport:
+    actionPath: /actions//in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
-    needsReinit: 0
+    needsReinit: 1
   controllerHand: 0
 --- !u!114 &3946209600299876263
 MonoBehaviour:
@@ -3124,6 +3140,7 @@ GameObject:
   - component: {fileID: 3946209600732967727}
   - component: {fileID: 3946209600732967726}
   - component: {fileID: 3946209600732967721}
+  - component: {fileID: 1163475425}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3267,6 +3284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 3946209601454923442}
   canCrouch: 0
+  canLean: 0
   walkSpeed:
     maxForwardSpeed: 6
     maxSidewaysSpeed: 6
@@ -3289,6 +3307,18 @@ MonoBehaviour:
   crouchBobbing:
     bobSpeed: 0.05
     bobAmount: 0.065
+--- !u!114 &1163475425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3946209600732967723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e481736f8f1a1b42b374a14ea2de007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3946209600804234249
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,10 +3681,9 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -3758,10 +3787,11 @@ MonoBehaviour:
   - NONE
   - ACTION
   - PICKUP_DROP
+  - TELEPORT
   mirrorControls: 1
   displayViveButtons: 0
   triggerKey: 1
-  padTop: 0
+  padTop: 3
   padLeft: 0
   padRight: 0
   padBottom: 0
@@ -3771,7 +3801,7 @@ MonoBehaviour:
   menuKey: 0
   AXKey: 0
   triggerKeyOculus: 1
-  padTopOculus: 0
+  padTopOculus: 3
   padLeftOculus: 0
   padRightOculus: 0
   padBottomOculus: 0
@@ -3784,19 +3814,22 @@ MonoBehaviour:
   booleanActions: []
   triggerPressure:
     actionPath: /actions/VRInteraction/in/TriggerPressure
-    needsReinit: 0
+    needsReinit: 1
   touchPosition:
     actionPath: /actions/VRInteraction/in/TouchPosition
-    needsReinit: 0
+    needsReinit: 1
   padTouched:
     actionPath: /actions/VRInteraction/in/PadTouched
-    needsReinit: 0
+    needsReinit: 1
   padPressed:
     actionPath: /actions/VRInteraction/in/PadPressed
-    needsReinit: 0
+    needsReinit: 1
+  teleport:
+    actionPath: /actions//in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
-    needsReinit: 0
+    needsReinit: 1
   controllerHand: 2
 --- !u!114 &1719066907
 MonoBehaviour:
@@ -3904,10 +3937,9 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -4035,10 +4067,11 @@ MonoBehaviour:
   - NONE
   - ACTION
   - PICKUP_DROP
+  - TELEPORT
   mirrorControls: 1
   displayViveButtons: 0
   triggerKey: 1
-  padTop: 0
+  padTop: 3
   padLeft: 0
   padRight: 0
   padBottom: 0
@@ -4048,7 +4081,7 @@ MonoBehaviour:
   menuKey: 0
   AXKey: 0
   triggerKeyOculus: 1
-  padTopOculus: 0
+  padTopOculus: 3
   padLeftOculus: 0
   padRightOculus: 0
   padBottomOculus: 0
@@ -4061,19 +4094,22 @@ MonoBehaviour:
   booleanActions: []
   triggerPressure:
     actionPath: /actions/VRInteraction/in/TriggerPressure
-    needsReinit: 0
+    needsReinit: 1
   touchPosition:
     actionPath: /actions/VRInteraction/in/TouchPosition
-    needsReinit: 0
+    needsReinit: 1
   padTouched:
     actionPath: /actions/VRInteraction/in/PadTouched
-    needsReinit: 0
+    needsReinit: 1
   padPressed:
     actionPath: /actions/VRInteraction/in/PadPressed
-    needsReinit: 0
+    needsReinit: 1
+  teleport:
+    actionPath: /actions//in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
-    needsReinit: 0
+    needsReinit: 1
   controllerHand: 2
 --- !u!114 &1761641463
 MonoBehaviour:
@@ -4246,6 +4282,7 @@ Transform:
   m_Children:
   - {fileID: 2988505131368391455}
   - {fileID: 3946209601447072945}
+  - {fileID: 3946209600208837469}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4367,10 +4404,9 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -4906,6 +4942,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4072534952706226576, guid: 97c3ec17c552d49d78f4716a873ee343,
     type: 3}
   m_PrefabInstance: {fileID: 1028874943454255380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2763931795170727565
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3946209601223538660}
+    m_Modifications:
+    - target: {fileID: 1195905725598010833, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_Name
+      value: Locomotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 563e944418bb14520b2acca3b91f946b, type: 3}
+--- !u!4 &3946209600208837469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1195905725598010832, guid: 563e944418bb14520b2acca3b91f946b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2763931795170727565}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4760865511965871123
 PrefabInstance:
