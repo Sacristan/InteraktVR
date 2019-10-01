@@ -298,7 +298,6 @@ namespace VRInteraction
         virtual protected void Update()
         {
             if (!enabled) return;
-            CheckTeleport();
             CheckHover();
             PositionHoverLine();
 
@@ -309,18 +308,6 @@ namespace VRInteraction
                 _currentRotation = _heldItem.transform.rotation;
             }
 #endif
-        }
-
-        private void CheckTeleport()
-        {
-            if (vrInput.ActionPressed(GlobalKeys.KEY_TELEPORT))
-            {
-                Debug.Log("TELEPORT PRESSED");
-            }
-            else
-            {
-                // Debug.Log("TELEPORT NOT PRESSED ATM");
-            }
         }
 
         virtual protected void OnDestroy()

@@ -33,7 +33,7 @@ namespace InteraktVR
         internal bool IsBYPressed(bool isLeftHand) => false;
 
         internal bool IsPadCentrePressed(bool isLeftHand) => false;
-        internal bool IsPadTopPressed(bool isLeftHand) => false;
+        internal bool IsPadTopPressed(bool isLeftHand) => (isLeftHand ^ Input.GetKey(KeyCode.LeftAlt)) && Input.GetMouseButton(2);
         internal bool IsPadLeftPressed(bool isLeftHand) => false;
         internal bool IsPadRightPressed(bool isLeftHand) => false;
         internal bool IsPadBottomPressed(bool isLeftHand) => false;

@@ -3330,6 +3330,36 @@ PrefabInstance:
       propertyPath: VRActions.Array.data[3]
       value: TELEPORT
       objectReference: {fileID: 0}
+    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padCentre
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padCentreOculus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: triggerKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: triggerKeyOculus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTop
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTopOculus
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: VRActions.Array.size
@@ -3339,6 +3369,36 @@ PrefabInstance:
         type: 3}
       propertyPath: VRActions.Array.data[3]
       value: TELEPORT
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padCentre
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padCentreOculus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: triggerKey
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: triggerKeyOculus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTop
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209601074673647, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTopOculus
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3946209600732967721, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}

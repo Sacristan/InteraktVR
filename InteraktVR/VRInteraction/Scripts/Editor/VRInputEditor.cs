@@ -65,13 +65,13 @@ namespace VRInteraction
 			hasLegacySteamVR = true;
 			
 #endif
-            if (input.hmdType == VRInput.HMDType.STANDALONE)
-            {
-                GUIContent title1Content = new GUIContent("VR Simulator");
-                float height = titleStyle.CalcHeight(title1Content, 10f);
-                EditorGUILayout.LabelField(title1Content, titleStyle, GUILayout.Height(height));
-                return;
-            }
+            // if (input.hmdType == VRInput.HMDType.STANDALONE)
+            // {
+            //     GUIContent title1Content = new GUIContent("VR Simulator");
+            //     float height = titleStyle.CalcHeight(title1Content, 10f);
+            //     EditorGUILayout.LabelField(title1Content, titleStyle, GUILayout.Height(height));
+            //     return;
+            // }
 
             if ((input.isSteamVR() && hasLegacySteamVR) || (!input.isSteamVR() && hasOculus))
             {
