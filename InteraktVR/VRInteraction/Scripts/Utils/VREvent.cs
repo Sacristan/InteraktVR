@@ -7,75 +7,81 @@
 //
 //===================Contact Email: Sam@MassGames.co.uk===========================
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class VREvent : MonoBehaviour
-{	
-	[System.Serializable]
-	public class ObjectEvent : UnityEvent<object[]>
-	{}
+{
+    [System.Serializable]
+    public class ObjectEvent : UnityEvent<object[]>
+    { }
 
-	private Dictionary <string, ObjectEvent> eventDictionary;
+    private Dictionary<string, ObjectEvent> eventDictionary;
 
-	private static VREvent eventManager;
+    private static VREvent eventManager;
 
-	public static VREvent instance
-	{
-		get
-		{
-			if (eventManager == null)
-			{
-				GameObject eventMangerObj = new GameObject("EventManager");
-				eventManager = eventMangerObj.AddComponent<VREvent>();
-				eventManager.Init();
-			}
-			return eventManager;
-		}
-	}
+    public static VREvent instance
+    {
+        get
+        {
+            if (eventManager == null)
+            {
+                GameObject eventMangerObj = new GameObject("EventManager");//TODO: Some objects were not cleaned up when closing the scene. 
+                eventManager = eventMangerObj.AddComponent<VREvent>();
+                eventManager.Init();
+            }
+            return eventManager;
+        }
+    }
 
-	void Init ()
-	{
-		if (eventDictionary == null) eventDictionary = new Dictionary<string, ObjectEvent>();
-	}
+    void Init()
+    {
+        if (eventDictionary == null) eventDictionary = new Dictionary<string, ObjectEvent>();
+    }
 
-	public static void Listen (string eventName, UnityAction<object[]> listener)
-	{
-		ObjectEvent thisEvent = null;
-		if (instance.eventDictionary.TryGetValue (eventName, out thisEvent))
-		{
-			thisEvent.AddListener (listener);
-		} 
-		else
-		{
-			thisEvent = new ObjectEvent();
-			thisEvent.AddListener (listener);
-			instance.eventDictionary.Add (eventName, thisEvent);
-		}
-	}
+    public static void Listen(string eventName, UnityAction<object[]> listener)
+    {
+        ObjectEvent thisEvent = null;
+        if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent.AddListener(listener);
+        }
+        else
+        {
+            thisEvent = new ObjectEvent();
+            thisEvent.AddListener(listener);
+            instance.eventDictionary.Add(eventName, thisEvent);
+        }
+    }
 
-	public static void Remove (string eventName, UnityAction<object[]> listener)
-	{
-		if (eventManager == null) return;
-		ObjectEvent thisEvent = null;
-		if (instance.eventDictionary.TryGetValue (eventName, out thisEvent))
-		{
-			thisEvent.RemoveListener (listener);
-		}
-	}
+    public static void Remove(string eventName, UnityAction<object[]> listener)
+    {
+        if (eventManager == null) return;
+        ObjectEvent thisEvent = null;
+        if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent.RemoveListener(listener);
+        }
+    }
 
-	public static void Send (string eventName, object[] param)
-	{
-		ObjectEvent thisEvent = null;
-		if (instance.eventDictionary.TryGetValue (eventName, out thisEvent))
-		{
-			thisEvent.Invoke(param);
-		}
-	}
+    public static void Send(string eventName, object[] param)
+    {
+        ObjectEvent thisEvent = null;
+        if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
+        {
+            thisEvent.Invoke(param);
+        }
+    }
 
-	/*public delegate void Handler(params object[] args);
+    internal static void Send(object kEY_DROP, object[] v)
+    {
+        throw new NotImplementedException();
+    }
+
+    /*public delegate void Handler(params object[] args);
 
 	public static void Listen(string message, Handler action)
 	{

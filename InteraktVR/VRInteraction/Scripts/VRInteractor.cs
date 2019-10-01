@@ -86,12 +86,9 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    if (_vrRigRoot == null)
-                    {
-                        _vrRigRoot = InteraktVR.VRSimulatorRig.instance.transform;
-                    }
-
-                    return _vrRigRoot; //WORKAROUND
+                    //WORKAROUND
+                    if (_vrRigRoot == null) _vrRigRoot = InteraktVR.VRSimulatorRig.instance.transform;
+                    return _vrRigRoot;
                 }
 
 #if Int_SteamVR
@@ -129,7 +126,6 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    // Vector3 velocity = GetComponent<Rigidbody>().velocity; //TODO: isolate
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetVelocity();
                     // Debug.Log("Velocity: " + velocity);
                     return velocity;
@@ -167,7 +163,6 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    // Vector3 velocity = GetComponent<Rigidbody>().angularVelocity; //TODO: isolate
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetAngularVelocity();
                     // Debug.Log("AngularVelocity: " + velocity);
                     return velocity;
@@ -353,6 +348,7 @@ namespace VRInteraction
             VRInteractableItem closestItem = null;
             float closestDist = float.MaxValue;
             bool forceGrab = false;
+
             foreach (VRInteractableItem item in VRInteractableItem.items)
             {
                 if (item == null || !item.CanInteract()) continue;
@@ -367,7 +363,7 @@ namespace VRInteraction
                     canGrab = true;
                 if ((item.interactionDistance < forceGrabDistance &&
                     VRUtils.PositionWithinCone(controllerPosition,
-                            getControllerAnchorOffset.TransformVector(new Vector3(vrInput.LeftHand ? forceGrabDirection.x : -forceGrabDirection.x, forceGrabDirection.y, forceGrabDirection.z)),
+                            getControllerAnchorOffset.TransformVector(new Vector3(vrInput.IsLeftHand ? forceGrabDirection.x : -forceGrabDirection.x, forceGrabDirection.y, forceGrabDirection.z)),
                             targetPosition, 20f, forceGrabDistance)))
                 {
                     canGrab = true;
@@ -392,13 +388,14 @@ namespace VRInteraction
                 bool forceToggleAllowed = true;
                 if (forceToggle != null) forceToggleAllowed = !forceGrab || !vrInput.ActionPressed(forceToggle.actionName);
 
-                if (_lastDropped + 0.5f < Time.time && forceToggleAllowed && (vrInput.ActionPressed("ACTION") || vrInput.ActionPressed("PICKUP_DROP") || vrInput.ActionPressed("PICKUP")))
+                if (_lastDropped + 0.5f < Time.time && forceToggleAllowed && (vrInput.ActionPressed(GlobalKeys.KEY_ACTION) || vrInput.ActionPressed(GlobalKeys.KEY_PICKUP_DROP) || vrInput.ActionPressed(GlobalKeys.KEY_PICKUP)))
                 {
                     hoverItem = closestItem;
-                    string actionDown = "PICKUP";
-                    if (vrInput.ActionPressed("PICKUP_DROP")) actionDown = "PICKUP_DROP";
-                    else if (vrInput.ActionPressed("ACTION")) actionDown = "ACTION";
-                    SendMessage("InputReceived", actionDown, SendMessageOptions.DontRequireReceiver);
+                    string actionDown = GlobalKeys.KEY_PICKUP;
+                    if (vrInput.ActionPressed(GlobalKeys.KEY_PICKUP_DROP)) actionDown = GlobalKeys.KEY_PICKUP_DROP;
+                    else if (vrInput.ActionPressed(GlobalKeys.KEY_ACTION)) actionDown = GlobalKeys.KEY_ACTION;
+
+                    SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, actionDown, SendMessageOptions.DontRequireReceiver);
                     return;
                 }
                 else if (hoverItem != closestItem)
@@ -467,14 +464,14 @@ namespace VRInteraction
 
             if (hideControllersWhileHolding) ToggleControllers(false);
 
-            VREvent.Send("Pickup", new object[] { _heldItem });
+            VREvent.Send(GlobalKeys.KEY_PICKUP, new object[] { _heldItem });
             return true;
         }
 
         virtual public void Drop()
         {
             if (_heldItem == null || beingDestroyed) return;
-            VREvent.Send("Drop", new object[] { _heldItem });
+            VREvent.Send(GlobalKeys.KEY_DROP, new object[] { _heldItem });
             if (hoverItem != null)
             {
                 hoverItem.DisableHover(this);
@@ -503,7 +500,7 @@ namespace VRInteraction
                     //Debug.LogWarning("Can't find OVRAvatar as parent of controller, using FindObjectOfType, warning this is slow and may result in a long frame");
                 }
                 if (avatar == null) return;
-                if (vrInput.LeftHand)
+                if (vrInput.IsLeftHand)
                 {
                     ToggleAllChildRenderers(avatar.ControllerLeft.gameObject, enable);
                     ToggleAllChildRenderers(avatar.HandLeft.gameObject, enable);

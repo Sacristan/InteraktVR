@@ -64,8 +64,8 @@ namespace VRInteraction
         public SteamVR_Action_Vector2 touchPosition = SteamVR_Input.GetAction<SteamVR_Action_Vector2>("TouchPosition");
         public SteamVR_Action_Boolean padTouched = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadTouched");
         public SteamVR_Action_Boolean padPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadPressed");
+        public SteamVR_Action_Boolean teleport = SteamVR_Input.GetAction<SteamVR_Action_Boolean>(GlobalKeys.KEY_TELEPORT);
         public SteamVR_Action_Vibration hapticAction = SteamVR_Input.GetAction<SteamVR_Action_Vibration>("Haptic");
-
 
 #endif
 
@@ -86,128 +86,26 @@ namespace VRInteraction
 #if Int_Oculus
             if (!isSteamVR())
             {
-                bool leftHand = LeftHand; //Assigns LTouch and RTouch if unassigned
+                bool leftHand = IsLeftHand; //Assigns LTouch and RTouch if unassigned
             }
 #endif
         }
 
+
+        //TODO: MAP to trackpad. Isolate Standalone Logic
         virtual protected void Update()
         {
+            if (hmdType == HMDType.STANDALONE)
+            {
+                StandaloneOrOculusControls();
+                return;
+            }
+
 #if !(Int_SteamVR && !Int_SteamVR2)
             if (!isSteamVR())
             {
 #endif
-                bool trigger = TriggerPressed;
-                if (trigger && !_triggerPressedFlag)
-                {
-                    _triggerPressedFlag = true;
-                    TriggerClicked();
-                }
-                else if (!trigger && _triggerPressedFlag)
-                {
-                    _triggerPressedFlag = false;
-                    TriggerReleased();
-                }
-
-                bool thumbstick = PadPressed;
-                if (thumbstick && !_padPressedFlag)
-                {
-                    _padPressedFlag = true;
-                    TrackpadDown();
-                }
-                else if (!thumbstick && _padPressedFlag)
-                {
-                    _padPressedFlag = false;
-                    TrackpadUp();
-                }
-
-                bool thumbstickTouch = PadTouched;
-                if (thumbstickTouch && !_padTouchedFlag)
-                {
-                    _padTouchedFlag = true;
-                    TrackpadTouch();
-                }
-                else if (!thumbstickTouch && _padTouchedFlag)
-                {
-                    _padTouchedFlag = false;
-                    _stickLeftDown = false;
-                    _stickTopDown = false;
-                    _stickBottomDown = false;
-                    _stickRightDown = false;
-                    TrackpadUnTouch();
-                }
-
-                if (hmdType == HMDType.OCULUS && _padTouchedFlag)
-                {
-                    if (PadLeftPressed && !_stickLeftDown)
-                    {
-                        _stickLeftDown = true;
-                        SendMessage("InputReceived", VRActions[padLeftOculus], SendMessageOptions.DontRequireReceiver);
-                    }
-                    else if (!PadLeftPressed && _stickLeftDown)
-                        _stickLeftDown = false;
-
-                    if (PadRightPressed && !_stickRightDown)
-                    {
-                        _stickRightDown = true;
-                        SendMessage("InputReceived", VRActions[padRightOculus], SendMessageOptions.DontRequireReceiver);
-                    }
-                    else if (!PadRightPressed && _stickRightDown)
-                        _stickRightDown = false;
-
-                    if (PadBottomPressed && !_stickBottomDown)
-                    {
-                        _stickBottomDown = true;
-                        SendMessage("InputReceived", VRActions[padBottomOculus], SendMessageOptions.DontRequireReceiver);
-                    }
-                    else if (!PadBottomPressed && _stickBottomDown)
-                        _stickBottomDown = false;
-
-                    if (PadTopPressed && !_stickTopDown)
-                    {
-                        _stickTopDown = true;
-                        SendMessage("InputReceived", VRActions[padTopOculus], SendMessageOptions.DontRequireReceiver);
-                    }
-                    else if (!PadTopPressed && _stickTopDown)
-                        _stickTopDown = false;
-                }
-
-                bool grip = GripPressed;
-                if (grip && !_grippedFlag)
-                {
-                    _grippedFlag = true;
-                    Gripped();
-                }
-                else if (!grip && _grippedFlag)
-                {
-                    _grippedFlag = false;
-                    UnGripped();
-                }
-
-                bool menu = MenuPressed;
-                if (menu && !_menuPressedFlag)
-                {
-                    _menuPressedFlag = true;
-                    MenuClicked();
-                }
-                else if (!menu && _menuPressedFlag)
-                {
-                    _menuPressedFlag = false;
-                    MenuReleased();
-                }
-
-                bool AX = AXPressed;
-                if (AX && !_AX_PressedFlag)
-                {
-                    _AX_PressedFlag = true;
-                    AXClicked();
-                }
-                else if (!AX && _AX_PressedFlag)
-                {
-                    _AX_PressedFlag = false;
-                    AXReleased();
-                }
-
+                StandaloneOrOculusControls();
 #if !(Int_SteamVR && !Int_SteamVR2)
             }
 #endif
@@ -226,12 +124,128 @@ namespace VRInteraction
                 }
                 if (boolAction.GetStateUp(handType))
                 {
-                    SendMessageToInteractor(boolAction.GetShortName() + "Released");
+                    SendMessageToInteractor(boolAction.GetShortName() + "Released");//TODO FIX
                 }
             }
 
 #endif
         }
+
+        private void StandaloneOrOculusControls()
+        {
+            bool trigger = TriggerPressed;
+            if (trigger && !_triggerPressedFlag)
+            {
+                _triggerPressedFlag = true;
+                TriggerClicked();
+            }
+            else if (!trigger && _triggerPressedFlag)
+            {
+                _triggerPressedFlag = false;
+                TriggerReleased();
+            }
+
+            bool thumbstick = PadPressed;
+            if (thumbstick && !_padPressedFlag)
+            {
+                _padPressedFlag = true;
+                TrackpadDown();
+            }
+            else if (!thumbstick && _padPressedFlag)
+            {
+                _padPressedFlag = false;
+                TrackpadUp();
+            }
+
+            bool thumbstickTouch = PadTouched;
+            if (thumbstickTouch && !_padTouchedFlag)
+            {
+                _padTouchedFlag = true;
+                TrackpadTouch();
+            }
+            else if (!thumbstickTouch && _padTouchedFlag)
+            {
+                _padTouchedFlag = false;
+                _stickLeftDown = false;
+                _stickTopDown = false;
+                _stickBottomDown = false;
+                _stickRightDown = false;
+                TrackpadUnTouch();
+            }
+
+            if (hmdType == HMDType.OCULUS && _padTouchedFlag)
+            {
+                if (PadLeftPressed && !_stickLeftDown)
+                {
+                    _stickLeftDown = true;
+                    SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padLeftOculus], SendMessageOptions.DontRequireReceiver);
+                }
+                else if (!PadLeftPressed && _stickLeftDown)
+                    _stickLeftDown = false;
+
+                if (PadRightPressed && !_stickRightDown)
+                {
+                    _stickRightDown = true;
+                    SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padRightOculus], SendMessageOptions.DontRequireReceiver);
+                }
+                else if (!PadRightPressed && _stickRightDown)
+                    _stickRightDown = false;
+
+                if (PadBottomPressed && !_stickBottomDown)
+                {
+                    _stickBottomDown = true;
+                    SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padBottomOculus], SendMessageOptions.DontRequireReceiver);
+                }
+                else if (!PadBottomPressed && _stickBottomDown)
+                    _stickBottomDown = false;
+
+                if (PadTopPressed && !_stickTopDown)
+                {
+                    _stickTopDown = true;
+                    SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, VRActions[padTopOculus], SendMessageOptions.DontRequireReceiver);
+                }
+                else if (!PadTopPressed && _stickTopDown)
+                    _stickTopDown = false;
+            }
+
+            bool grip = GripPressed;
+            if (grip && !_grippedFlag)
+            {
+                _grippedFlag = true;
+                Gripped();
+            }
+            else if (!grip && _grippedFlag)
+            {
+                _grippedFlag = false;
+                UnGripped();
+            }
+
+            bool menu = MenuPressed;
+            if (menu && !_menuPressedFlag)
+            {
+                _menuPressedFlag = true;
+                MenuClicked();
+            }
+            else if (!menu && _menuPressedFlag)
+            {
+                _menuPressedFlag = false;
+                MenuReleased();
+            }
+
+            bool AX = AXPressed;
+            if (AX && !_AX_PressedFlag)
+            {
+                _AX_PressedFlag = true;
+                AXClicked();
+            }
+            else if (!AX && _AX_PressedFlag)
+            {
+                _AX_PressedFlag = false;
+                AXReleased();
+            }
+
+        }
+
 
 #if Int_SteamVR && !Int_SteamVR2
 
@@ -297,7 +311,7 @@ namespace VRInteraction
 #endif
             }
         }
-        virtual public bool LeftHand
+        virtual public bool IsLeftHand
         {
             get
             {
@@ -382,53 +396,35 @@ namespace VRInteraction
             return false;
         }
 
+
+        //TODO: DEBUG VRActions
         public bool ActionPressed(int action)
         {
             if (hmdType == HMDType.VIVE)
             {
-                if (triggerKey == action && TriggerPressed)
-                    return true;
-                if (padTop == action && PadTopPressed)
-                    return true;
-                if (padLeft == action && PadLeftPressed)
-                    return true;
-                if (padRight == action && PadRightPressed)
-                    return true;
-                if (padBottom == action && PadBottomPressed)
-                    return true;
-                if (padCentre == action && PadCentrePressed)
-                    return true;
-                if (padTouch == action && PadTouched)
-                    return true;
-                if (menuKey == action && MenuPressed)
-                    return true;
-                if (gripKey == action && GripPressed)
-                    return true;
-                if (AXKey == action && AXPressed)
-                    return true;
+                if (triggerKey == action && TriggerPressed) return true;
+                if (padTop == action && PadTopPressed) return true;
+                if (padLeft == action && PadLeftPressed) return true;
+                if (padRight == action && PadRightPressed) return true;
+                if (padBottom == action && PadBottomPressed) return true;
+                if (padCentre == action && PadCentrePressed) return true;
+                if (padTouch == action && PadTouched) return true;
+                if (menuKey == action && MenuPressed) return true;
+                if (gripKey == action && GripPressed) return true;
+                if (AXKey == action && AXPressed) return true;
             }
             else
             {
-                if (triggerKeyOculus == action && TriggerPressed)
-                    return true;
-                if (padTopOculus == action && PadTopPressed)
-                    return true;
-                if (padLeftOculus == action && PadLeftPressed)
-                    return true;
-                if (padRightOculus == action && PadRightPressed)
-                    return true;
-                if (padBottomOculus == action && PadBottomPressed)
-                    return true;
-                if (padCentreOculus == action && PadCentrePressed)
-                    return true;
-                if (padTouchOculus == action && PadTouched)
-                    return true;
-                if (menuKeyOculus == action && MenuPressed)
-                    return true;
-                if (gripKeyOculus == action && GripPressed)
-                    return true;
-                if (AXKeyOculus == action && AXPressed)
-                    return true;
+                if (triggerKeyOculus == action && TriggerPressed) return true;
+                if (padTopOculus == action && PadTopPressed) return true;
+                if (padLeftOculus == action && PadLeftPressed) return true;
+                if (padRightOculus == action && PadRightPressed) return true;
+                if (padBottomOculus == action && PadBottomPressed) return true;
+                if (padCentreOculus == action && PadCentrePressed) return true;
+                if (padTouchOculus == action && PadTouched) return true;
+                if (menuKeyOculus == action && MenuPressed) return true;
+                if (gripKeyOculus == action && GripPressed) return true;
+                if (AXKeyOculus == action && AXPressed) return true;
             }
             return false;
         }
@@ -444,7 +440,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated && Input.GetMouseButton(LeftHand ? 0 : 1)) return 1f;
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated && InteraktVR.VRSimulatorRig.instance.IsTriggerPressed(IsLeftHand)) return 1f;
 
 #if Int_SteamVR
                 if (isSteamVR())
@@ -474,6 +470,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsPadTopPressed(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -505,6 +503,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsPadLeftPressed(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -535,6 +535,9 @@ namespace VRInteraction
         {
             get
             {
+
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsPadRightPressed(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -565,6 +568,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsPadBottomPressed(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -595,6 +600,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsPadCentrePressed(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -624,6 +631,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsPadTouched(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -648,6 +657,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsPadPressed(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -672,6 +683,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.PadPosition(IsLeftHand);
+
 #if Int_SteamVR
                 if (isSteamVR())
                 {
@@ -697,6 +710,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsGripPressed(IsLeftHand);
+
 #if Int_SteamVR && !Int_SteamVR2
 				if (isSteamVR())
 				{
@@ -716,6 +731,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsMenuPressed(IsLeftHand);
+
 #if Int_SteamVR && !Int_SteamVR2
 				if (isSteamVR())
 				{
@@ -735,6 +752,8 @@ namespace VRInteraction
         {
             get
             {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsAXPressed(IsLeftHand);
+
 #if Int_SteamVR && !Int_SteamVR2
 				if (isSteamVR())
 				{
@@ -756,6 +775,26 @@ namespace VRInteraction
             }
         }
 
+        virtual public bool BYPressed
+        {
+            get
+            {
+                if (InteraktVR.InteraktVRSetup.IsVRSimulated) return InteraktVR.VRSimulatorRig.instance.IsBYPressed(IsLeftHand);
+
+#if Int_SteamVR && !Int_SteamVR2
+				if (isSteamVR()) return false;
+#endif
+#if Int_Oculus
+                if (!isSteamVR())
+                {
+                    return OVRInput.Get(OVRInput.Button.Two, controllerHand);
+                }
+#endif
+                return false;
+            }
+        }
+
+
         public bool isTriggerPressed { get { return _triggerPressedFlag; } }
         public bool isPadPressed { get { return _padPressedFlag; } }
         public bool isPadTouched { get { return _padTouchedFlag; } }
@@ -765,7 +804,7 @@ namespace VRInteraction
 
         virtual public void SendMessageToInteractor(string message)
         {
-            SendMessage("InputReceived", message, SendMessageOptions.DontRequireReceiver);
+            SendMessage(GlobalKeys.KEY_INPUT_RECEIVED, message, SendMessageOptions.DontRequireReceiver);
         }
 
         protected void TriggerClicked()

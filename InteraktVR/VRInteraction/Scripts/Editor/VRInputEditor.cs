@@ -65,13 +65,13 @@ namespace VRInteraction
 			hasLegacySteamVR = true;
 			
 #endif
-            if (input.hmdType == VRInput.HMDType.STANDALONE)
-            {
-                GUIContent title1Content = new GUIContent("VR Simulator");
-                float height = titleStyle.CalcHeight(title1Content, 10f);
-                EditorGUILayout.LabelField(title1Content, titleStyle, GUILayout.Height(height));
-                return;
-            }
+            // if (input.hmdType == VRInput.HMDType.STANDALONE)
+            // {
+            //     GUIContent title1Content = new GUIContent("VR Simulator");
+            //     float height = titleStyle.CalcHeight(title1Content, 10f);
+            //     EditorGUILayout.LabelField(title1Content, titleStyle, GUILayout.Height(height));
+            //     return;
+            // }
 
             if ((input.isSteamVR() && hasLegacySteamVR) || (!input.isSteamVR() && hasOculus))
             {
@@ -373,7 +373,7 @@ namespace VRInteraction
 
         public void ResetToInteractbaleDefault()
         {
-            input.VRActions = new string[] { "NONE", "ACTION", "PICKUP_DROP" };
+            input.VRActions = GlobalKeys.VR_ACTIONS_ARRAY;
 #if Int_Oculus || (Int_SteamVR && !Int_SteamVR2)
 
             input.triggerKey = 1;
@@ -401,8 +401,8 @@ namespace VRInteraction
 #if Int_SteamVR2
             if (input.isSteamVR())
             {
-                SteamVR_Action_Boolean actionAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("ACTION");
-                SteamVR_Action_Boolean pickupDropAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PICKUP_DROP");
+                SteamVR_Action_Boolean actionAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>(GlobalKeys.KEY_ACTION);
+                SteamVR_Action_Boolean pickupDropAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>(GlobalKeys.KEY_PICKUP_DROP);
                 input.booleanActions.Clear();
                 input.booleanActions.Add(actionAction);
                 input.booleanActions.Add(pickupDropAction);
@@ -412,7 +412,7 @@ namespace VRInteraction
                 input.padTouched = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadTouched");
                 input.padPressed = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("PadPressed");
 
-                input.handType = input.LeftHand ? SteamVR_Input_Sources.LeftHand : SteamVR_Input_Sources.RightHand;
+                input.handType = input.IsLeftHand ? SteamVR_Input_Sources.LeftHand : SteamVR_Input_Sources.RightHand;
                 SteamVR_Behaviour_Pose poseComp = input.GetComponent<SteamVR_Behaviour_Pose>();
                 if (poseComp == null)
                 {

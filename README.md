@@ -23,7 +23,15 @@ git clone --recurse-submodules https://github.com/Sacristan/InteraktVR.git
 cd InteraktVR && git submodule init && git submodule update && cd ..
 ```
 
+# Consists of:
+* VR Emulator -> WASD/Mouse Interaction system 
+* Common VR Input system for Vive and Oculus
+* Interaction module
+* Teleportation module
+
 # Thanks
 * https://github.com/MasOverflow/VR-Interaction. A highly modified version is used for input basis and interactions
+* Standalone Teleporter script: https://github.com/IJEMIN/Simple-Unity-VR-Teleporter
+
 
 None of the solutions are currently integrated with Unity event system.
