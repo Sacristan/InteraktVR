@@ -23,9 +23,7 @@ cd InteraktVR && git submodule init && git submodule update && cd ..
 ```
 
 # DESC
-Consists of:
+Some of the stuff that was used:
 * modified: https://github.com/MasOverflow/VR-Interaction under GNU General Public License v3.0
-* WASD/Mouse Interaction system
-* Some custom code 
 
 None of the solutions are currently integrated with Unity event system.
