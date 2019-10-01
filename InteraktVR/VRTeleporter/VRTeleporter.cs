@@ -34,6 +34,7 @@ public class VRTeleporter : MonoBehaviour
 
     private bool displayActive = false; // don't update path when it's false.
 
+    public VRInteraction.VRInput VRInput { get; set; } = null;
 
     // Teleport target transform to ground position
     public void Teleport()
@@ -56,15 +57,29 @@ public class VRTeleporter : MonoBehaviour
         displayActive = active;
     }
 
-
-
-
-
     private void Awake()
     {
         arcRenderer = GetComponent<LineRenderer>();
         arcRenderer.enabled = false;
         positionMarker.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (!VRInput) return;
+
+        if (VRInput.ActionPressed(VRInteraction.GlobalKeys.KEY_TELEPORT))
+        {
+            ToggleDisplay(true);
+        }
+        else
+        {
+            if (displayActive)
+            {
+                Teleport();
+                ToggleDisplay(false);
+            }
+        }
     }
 
     private void FixedUpdate()

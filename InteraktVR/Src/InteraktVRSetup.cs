@@ -56,9 +56,11 @@ namespace InteraktVR
             leftTeleporter.bodyTransforn = Body;
             rightTeleporter.bodyTransforn = Body;
 
+            leftTeleporter.VRInput = LeftController;
             leftTeleporter.transform.parent = LeftController.transform;
             leftTeleporter.transform.localPosition = Vector3.zero;
 
+            rightTeleporter.VRInput = RightController;
             rightTeleporter.transform.parent = RightController.transform;
             rightTeleporter.transform.localPosition = Vector3.zero;
         }
