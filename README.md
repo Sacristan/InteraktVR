@@ -22,8 +22,7 @@ git clone --recurse-submodules https://github.com/Sacristan/InteraktVR.git
 cd InteraktVR && git submodule init && git submodule update && cd ..
 ```
 
-# DESC
-Some of the stuff that was used:
-* modified: https://github.com/MasOverflow/VR-Interaction under GNU General Public License v3.0
+# Thanks
+* https://github.com/MasOverflow/VR-Interaction. A highly modified version is used for input basis and interactions
 
 None of the solutions are currently integrated with Unity event system.
