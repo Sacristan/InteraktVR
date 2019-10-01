@@ -53,16 +53,17 @@ namespace InteraktVR
 
         internal static void SetupTeleport(VRTeleporter rightTeleporter, VRTeleporter leftTeleporter)
         {
-            leftTeleporter.bodyTransforn = Body;
-            rightTeleporter.bodyTransforn = Body;
+            SetupTeleporter(leftTeleporter, LeftController);
+            SetupTeleporter(rightTeleporter, RightController);
+        }
 
-            leftTeleporter.VRInput = LeftController;
-            leftTeleporter.transform.parent = LeftController.transform;
-            leftTeleporter.transform.localPosition = Vector3.zero;
+        private static void SetupTeleporter(VRTeleporter teleporter, VRInteraction.VRInput controller)
+        {
+            teleporter.bodyTransforn = Body;
 
-            rightTeleporter.VRInput = RightController;
-            rightTeleporter.transform.parent = RightController.transform;
-            rightTeleporter.transform.localPosition = Vector3.zero;
+            teleporter.VRInput = controller;
+            teleporter.transform.parent = controller.transform;
+            teleporter.transform.localPosition = Vector3.zero;
         }
 
     }
