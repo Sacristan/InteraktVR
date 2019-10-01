@@ -86,12 +86,9 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    if (_vrRigRoot == null)
-                    {
-                        _vrRigRoot = InteraktVR.VRSimulatorRig.instance.transform;
-                    }
-
-                    return _vrRigRoot; //WORKAROUND
+                    //WORKAROUND
+                    if (_vrRigRoot == null) _vrRigRoot = InteraktVR.VRSimulatorRig.instance.transform;
+                    return _vrRigRoot;
                 }
 
 #if Int_SteamVR
@@ -129,7 +126,6 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    // Vector3 velocity = GetComponent<Rigidbody>().velocity; //TODO: isolate
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetVelocity();
                     // Debug.Log("Velocity: " + velocity);
                     return velocity;
@@ -167,7 +163,6 @@ namespace VRInteraction
             {
                 if (InteraktVR.InteraktVRSetup.IsVRSimulated)
                 {
-                    // Vector3 velocity = GetComponent<Rigidbody>().angularVelocity; //TODO: isolate
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetAngularVelocity();
                     // Debug.Log("AngularVelocity: " + velocity);
                     return velocity;

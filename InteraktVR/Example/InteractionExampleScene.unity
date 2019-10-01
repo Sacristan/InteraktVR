@@ -3253,7 +3253,7 @@ PrefabInstance:
     - target: {fileID: 3946209601223538663, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: enableRigMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946209601447072944, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
@@ -3273,11 +3273,21 @@ PrefabInstance:
     - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: padCentre
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: padCentreOculus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTop
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209599346667234, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTopOculus
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
@@ -3293,11 +3303,21 @@ PrefabInstance:
     - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: padCentre
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: padCentreOculus
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTop
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946209599685408816, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: padTopOculus
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3946209601023431939, guid: 5090900cb9a644b46816ea76a9edefe0,

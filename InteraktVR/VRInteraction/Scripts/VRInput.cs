@@ -92,7 +92,7 @@ namespace VRInteraction
         }
 
 
-        //MAP: to trackpad. Isolate Standalone Logic
+        //TODO: to trackpad. Isolate Standalone Logic
         virtual protected void Update()
         {
 #if !(Int_SteamVR && !Int_SteamVR2)
