@@ -22,10 +22,7 @@ git clone --recurse-submodules https://github.com/Sacristan/InteraktVR.git
 cd InteraktVR && git submodule init && git submodule update && cd ..
 ```
 
-# DESC
-Consists of:
-* modified: https://assetstore.unity.com/packages/tools/input-management/vr-interaction-119934
-* WASD/Mouse Interaction system
-* Some custom code 
+# Thanks
+* https://github.com/MasOverflow/VR-Interaction. A highly modified version is used for input basis and interactions
 
 None of the solutions are currently integrated with Unity event system.
