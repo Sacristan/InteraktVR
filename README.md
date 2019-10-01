@@ -24,8 +24,7 @@ cd InteraktVR && git submodule init && git submodule update && cd ..
 
 # DESC
 Consists of:
-* modified: https://assetstore.unity.com/packages/tools/input-management/vr-interaction-119934
-* WASD/Mouse Interaction system
-* Some custom code 
+* Highly modified: https://assetstore.unity.com/packages/tools/input-management/vr-interaction-119934
+* VR Emulator -> WASD/Mouse Interaction system 
 
 None of the solutions are currently integrated with Unity event system.
