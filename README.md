@@ -24,7 +24,7 @@ cd InteraktVR && git submodule init && git submodule update && cd ..
 
 # DESC
 Consists of:
-* modified: https://assetstore.unity.com/packages/tools/input-management/vr-interaction-119934
+* modified: https://github.com/MasOverflow/VR-Interaction under GNU General Public License v3.0
 * WASD/Mouse Interaction system
 * Some custom code 
 
