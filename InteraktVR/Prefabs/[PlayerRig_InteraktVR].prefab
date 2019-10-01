@@ -2407,76 +2407,6 @@ MonoBehaviour:
     m_TypeName: Valve.VR.SteamVR_Behaviour_Pose_DeviceIndexChangedEvent, SteamVR,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   broadcastDeviceChanges: 1
---- !u!1 &3946209600301998878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3946209600301998879}
-  - component: {fileID: 3946209600301998877}
-  - component: {fileID: 3946209600301998876}
-  m_Layer: 0
-  m_Name: InteractionModule
-  m_TagString: ScriptGO
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &3946209600301998879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946209600301998878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3946209600732967720}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3946209600301998877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946209600301998878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221b7ae51e67ccc4797da75826863b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defCursor: {fileID: 2800000, guid: dc24956dbfcd54549958c79b46c579f4, type: 3}
-  idleCursor: {fileID: 2800000, guid: 6d79ef49be519e6468441ca576338184, type: 3}
-  overCursor: {fileID: 2800000, guid: 80af2b6b608827f46acbe91f591bfb19, type: 3}
-  clickedCursor: {fileID: 2800000, guid: ef73ebe0478039747b404735b16fba51, type: 3}
-  cursorPos: {x: 0, y: 0}
---- !u!114 &3946209600301998876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946209600301998878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29af10f77739bb14ab91eab199273371, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spring: 400
-  damper: 5
-  drag: 10
-  angularDrag: 5
-  maxDistance: 0.2
-  pushForce: 0.2
-  attachToCenterOfMass: 0
-  screenY: 0.6
-  removeKinematic: 1
 --- !u!1 &3946209600326629600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,7 +3090,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3946209601454923442}
-  - {fileID: 3946209600301998879}
   m_Father: {fileID: 2988505131368391455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
