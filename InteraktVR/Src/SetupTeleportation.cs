@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SetupTeleportation : MonoBehaviour
+namespace InteraktVR
 {
-    [SerializeField] VRTeleporter rightTeleporter;
-    [SerializeField] VRTeleporter leftTeleporter;
-
-    IEnumerator Start()
+    public class SetupTeleportation : MonoBehaviour
     {
-        yield return new WaitUntil(() => InteraktVR.InteraktVRSetup.IsReady);
-        InteraktVR.InteraktVRSetup.SetupTeleport(rightTeleporter, leftTeleporter);
-    }
+        [SerializeField] VRTeleporter rightTeleporter;
+        [SerializeField] VRTeleporter leftTeleporter;
 
+        IEnumerator Start()
+        {
+            yield return new WaitUntil(() => InteraktVR.InteraktVRSetup.IsReady);
+            InteraktVR.InteraktVRSetup.SetupTeleport(rightTeleporter, leftTeleporter);
+        }
+
+    }
 }

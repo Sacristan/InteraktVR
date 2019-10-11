@@ -1,140 +1,125 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class VRTeleporter : MonoBehaviour
+namespace InteraktVR
 {
-    [SerializeField] GameObject positionMarker; // marker for display ground position
-    [SerializeField] LineRenderer arcRenderer;
-
-    [SerializeField] LayerMask excludeLayers; // excluding for performance
-
-    [SerializeField] float angle = 45f; // Arc take off angle
-
-    [SerializeField] float strength = 10f; // Increasing this value will increase overall arc length
-
-    int maxVertexcount = 100; // limitation of vertices for performance. 
-
-    internal Transform bodyTransform; // target transferred by teleport
-    private float vertexDelta = 0.08f; // Delta between each Vertex on arc. Decresing this value may cause performance problem.
-
-    private Vector3 velocity; // Velocity of latest vertex
-
-    private Vector3 groundPos; // detected ground position
-
-    private Vector3 lastNormal; // detected surface normal
-
-    private bool groundDetected = false;
-    private List<Vector3> vertexList = new List<Vector3>(); // vertex on arc
-
-    private bool displayActive = false; // don't update path when it's false.
-
-    public VRInteraction.VRInput VRInput { get; set; } = null;
-
-    // Teleport target transform to ground position
-    public void Teleport()
+    public class VRTeleporter : MonoBehaviour
     {
-        if (groundDetected)
+        const int MaxVertexcount = 100;
+        const float VertexDelta = 0.08f;
+
+        [SerializeField] GameObject positionMarker;
+        [SerializeField] LineRenderer arcRenderer;
+        [SerializeField] LayerMask excludeLayers;
+        [SerializeField] float arcAngle = 45f;
+        [SerializeField] float arcLength = 10f;
+
+        private Vector3 lastVertexVelocity;
+        private Vector3 detectedGroundPos;
+        private Vector3 lastDetectedSurfaceNormal;
+
+        private bool groundDetected = false;
+        private List<Vector3> vertexList = new List<Vector3>();
+        private bool isBeingDisplayed = false;
+
+        #region Properties
+        public Transform BodyTransform { get; set; }
+        public VRInteraction.VRInput VRInput { get; set; } = null;
+        #endregion
+
+        private void Awake()
         {
-            bodyTransform.position = groundPos + lastNormal * 0.1f;
+            arcRenderer.enabled = false;
+            positionMarker.SetActive(false);
         }
-        else
+
+        private void Update()
         {
-            Debug.Log("Ground wasn't detected");
-        }
-    }
+            if (!VRInput) return;
 
-    // Active Teleporter Arc Path
-    public void ToggleDisplay(bool active)
-    {
-        arcRenderer.enabled = active;
-        positionMarker.SetActive(active);
-        displayActive = active;
-    }
-
-    private void Awake()
-    {
-        // arcRenderer = GetComponentInChildren<LineRenderer>();
-        arcRenderer.enabled = false;
-        positionMarker.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (!VRInput) return;
-
-        if (VRInput.ActionPressed(VRInteraction.GlobalKeys.KEY_TELEPORT))
-        {
-            ToggleDisplay(true);
-        }
-        else
-        {
-            if (displayActive)
+            if (VRInput.ActionPressed(VRInteraction.GlobalKeys.KEY_TELEPORT))
             {
-                Teleport();
-                ToggleDisplay(false);
+                ToggleDisplay(true);
+            }
+            else
+            {
+                if (isBeingDisplayed)
+                {
+                    Teleport();
+                    ToggleDisplay(false);
+                }
             }
         }
-    }
 
-    private void FixedUpdate()
-    {
-        if (displayActive)
+        private void FixedUpdate()
         {
-            UpdatePath();
-        }
-    }
-
-
-    private void UpdatePath()
-    {
-        groundDetected = false;
-
-        vertexList.Clear(); // delete all previouse vertices
-
-
-        velocity = Quaternion.AngleAxis(-angle, transform.right) * transform.forward * strength;
-
-        RaycastHit hit;
-
-
-        Vector3 pos = transform.position; // take off position
-
-        vertexList.Add(pos);
-
-        while (!groundDetected && vertexList.Count < maxVertexcount)
-        {
-            Vector3 newPos = pos + velocity * vertexDelta
-                + 0.5f * Physics.gravity * vertexDelta * vertexDelta;
-
-            velocity += Physics.gravity * vertexDelta;
-
-            vertexList.Add(newPos); // add new calculated vertex
-
-            // linecast between last vertex and current vertex
-            if (Physics.Linecast(pos, newPos, out hit, ~excludeLayers))
+            if (isBeingDisplayed)
             {
-                groundDetected = true;
-                groundPos = hit.point;
-                lastNormal = hit.normal;
+                UpdatePath();
             }
-            pos = newPos; // update current vertex as last vertex
         }
 
-
-        positionMarker.SetActive(groundDetected);
-
-        if (groundDetected)
+        public void Teleport()
         {
-            positionMarker.transform.position = groundPos + lastNormal * 0.1f;
-            positionMarker.transform.LookAt(groundPos);
+            if (groundDetected)
+            {
+                BodyTransform.position = detectedGroundPos + lastDetectedSurfaceNormal * 0.1f;
+            }
+            else
+            {
+                Debug.Log("Ground wasn't detected");
+            }
         }
 
-        // Update Line Renderer
+        public void ToggleDisplay(bool active)
+        {
+            arcRenderer.enabled = active;
+            positionMarker.SetActive(active);
+            isBeingDisplayed = active;
+        }
 
-        arcRenderer.positionCount = vertexList.Count;
-        arcRenderer.SetPositions(vertexList.ToArray());
+
+        private void UpdatePath()
+        {
+            groundDetected = false;
+
+            vertexList.Clear();
+
+            lastVertexVelocity = Quaternion.AngleAxis(-arcAngle, transform.right) * transform.forward * arcLength;
+
+            Vector3 pos = transform.position;
+
+            vertexList.Add(pos);
+
+            while (!groundDetected && vertexList.Count < MaxVertexcount)
+            {
+                Vector3 newPos = pos + lastVertexVelocity * VertexDelta
+                    + 0.5f * Physics.gravity * VertexDelta * VertexDelta;
+
+                lastVertexVelocity += Physics.gravity * VertexDelta;
+
+                vertexList.Add(newPos);
+
+                if (Physics.Linecast(pos, newPos, out RaycastHit hit, ~excludeLayers))
+                {
+                    groundDetected = true;
+                    detectedGroundPos = hit.point;
+                    lastDetectedSurfaceNormal = hit.normal;
+                }
+                pos = newPos;
+            }
+
+
+            positionMarker.SetActive(groundDetected);
+
+            if (groundDetected)
+            {
+                positionMarker.transform.position = detectedGroundPos + lastDetectedSurfaceNormal * 0.1f;
+                positionMarker.transform.LookAt(detectedGroundPos);
+            }
+
+            arcRenderer.positionCount = vertexList.Count;
+            arcRenderer.SetPositions(vertexList.ToArray());
+        }
     }
-
-
 }
