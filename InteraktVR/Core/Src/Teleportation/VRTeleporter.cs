@@ -93,9 +93,7 @@ namespace InteraktVR
 
             while (!groundDetected && vertexList.Count < MaxVertexcount)
             {
-                Vector3 newPos = pos + lastVertexVelocity * VertexDelta
-                    + 0.5f * Physics.gravity * VertexDelta * VertexDelta;
-
+                Vector3 newPos = pos + lastVertexVelocity * VertexDelta + 0.5f * Physics.gravity * VertexDelta * VertexDelta;
                 lastVertexVelocity += Physics.gravity * VertexDelta;
 
                 vertexList.Add(newPos);

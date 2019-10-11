@@ -64,6 +64,7 @@ namespace InteraktVR
             teleporter.VRInput = controller;
             teleporter.transform.parent = controller.transform;
             teleporter.transform.localPosition = Vector3.zero;
+            teleporter.transform.localRotation = Quaternion.identity;
         }
 
     }

@@ -276,8 +276,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -816,8 +816,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -983,9 +983,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -1137,9 +1138,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -1600,6 +1602,33 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
+  expandMixedRealityCapturePropertySheet: 0
+  enableMixedReality: 0
+  compositionMethod: 0
+  extraHiddenLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  externalCompositionBackdropColor: {r: 0, g: 0, b: 0, a: 0}
+  capturingCameraDevice: 0
+  flipCameraFrameHorizontally: 0
+  flipCameraFrameVertically: 0
+  handPoseStateLatency: 0
+  sandwichCompositionRenderLatency: 0
+  sandwichCompositionBufferedFrames: 8
+  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
+  chromaKeySimilarity: 0.6
+  chromaKeySmoothRange: 0.03
+  chromaKeySpillRange: 0.06
+  useDynamicLighting: 0
+  depthQuality: 1
+  dynamicLightingSmoothFactor: 8
+  dynamicLightingDepthVariationClampingValue: 0.001
+  virtualGreenScreenType: 0
+  virtualGreenScreenTopY: 10
+  virtualGreenScreenBottomY: -10
+  virtualGreenScreenApplyDepthCulling: 0
+  virtualGreenScreenDepthTolerance: 0.2
+  mrcActivationMode: 0
   _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
@@ -1607,7 +1636,6 @@ MonoBehaviour:
   resetTrackerOnLoad: 0
   AllowRecenter: 1
   _reorientHMDOnControllerRecenter: 1
-  LateControllerUpdate: 1
 --- !u!114 &3946209600124226766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,8 +1783,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -2358,8 +2386,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -3610,9 +3638,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -3754,8 +3783,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -3866,9 +3895,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -4034,8 +4064,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -4333,9 +4363,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
