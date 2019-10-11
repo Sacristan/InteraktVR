@@ -62,7 +62,9 @@ namespace InteraktVR
             teleporter.BodyTransform = Body;
 
             teleporter.VRInput = controller;
-            teleporter.transform.parent = controller.transform;
+            teleporter.VRInteractor = controller.GetComponent<VRInteraction.VRInteractor>();
+            teleporter.transform.parent = teleporter.VRInteractor?.controllerAnchorOffset ?? controller.transform;
+
             teleporter.transform.localPosition = Vector3.zero;
             teleporter.transform.localRotation = Quaternion.identity;
         }

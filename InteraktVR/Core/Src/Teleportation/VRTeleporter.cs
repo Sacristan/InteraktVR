@@ -24,6 +24,7 @@ namespace InteraktVR
 
         #region Properties
         public Transform BodyTransform { get; set; }
+        public VRInteraction.VRInteractor VRInteractor { get; set; } = null;
         public VRInteraction.VRInput VRInput { get; set; } = null;
         #endregion
 
