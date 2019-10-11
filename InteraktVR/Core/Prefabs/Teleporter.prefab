@@ -50,8 +50,8 @@ MonoBehaviour:
   excludeLayers:
     serializedVersion: 2
     m_Bits: 38
-  angle: 45
-  strength: 10
+  arcAngle: 45
+  arcLength: 10
 --- !u!1 &3298054104206716967
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1956271871233948051
 Transform:
   m_ObjectHideFlags: 0
