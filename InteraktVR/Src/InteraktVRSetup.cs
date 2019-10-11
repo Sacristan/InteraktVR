@@ -59,7 +59,7 @@ namespace InteraktVR
 
         private static void SetupTeleporter(VRTeleporter teleporter, VRInteraction.VRInput controller)
         {
-            teleporter.bodyTransforn = Body;
+            teleporter.bodyTransform = Body;
 
             teleporter.VRInput = controller;
             teleporter.transform.parent = controller.transform;

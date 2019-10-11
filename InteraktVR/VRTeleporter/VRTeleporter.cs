@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO: optimise
 public class VRTeleporter : MonoBehaviour
 {
+    [SerializeField] GameObject positionMarker; // marker for display ground position
+    [SerializeField] LineRenderer arcRenderer;
 
-    public GameObject positionMarker; // marker for display ground position
+    [SerializeField] LayerMask excludeLayers; // excluding for performance
 
-    public Transform bodyTransforn; // target transferred by teleport
+    [SerializeField] float angle = 45f; // Arc take off angle
 
-    public LayerMask excludeLayers; // excluding for performance
-
-    public float angle = 45f; // Arc take off angle
-
-    public float strength = 10f; // Increasing this value will increase overall arc length
-
+    [SerializeField] float strength = 10f; // Increasing this value will increase overall arc length
 
     int maxVertexcount = 100; // limitation of vertices for performance. 
 
+    internal Transform bodyTransform; // target transferred by teleport
     private float vertexDelta = 0.08f; // Delta between each Vertex on arc. Decresing this value may cause performance problem.
-
-    private LineRenderer arcRenderer;
 
     private Vector3 velocity; // Velocity of latest vertex
 
@@ -30,7 +25,6 @@ public class VRTeleporter : MonoBehaviour
     private Vector3 lastNormal; // detected surface normal
 
     private bool groundDetected = false;
-
     private List<Vector3> vertexList = new List<Vector3>(); // vertex on arc
 
     private bool displayActive = false; // don't update path when it's false.
@@ -42,7 +36,7 @@ public class VRTeleporter : MonoBehaviour
     {
         if (groundDetected)
         {
-            bodyTransforn.position = groundPos + lastNormal * 0.1f;
+            bodyTransform.position = groundPos + lastNormal * 0.1f;
         }
         else
         {
@@ -60,7 +54,7 @@ public class VRTeleporter : MonoBehaviour
 
     private void Awake()
     {
-        arcRenderer = GetComponent<LineRenderer>();
+        // arcRenderer = GetComponentInChildren<LineRenderer>();
         arcRenderer.enabled = false;
         positionMarker.SetActive(false);
     }
