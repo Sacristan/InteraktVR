@@ -17,7 +17,7 @@ It is supposed to be used as a submodule under Assets folder
 * https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
 * https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647
 
-### Add this as submodule (go to Assets foldeR)
+### Add this as submodule (go to Assets folder)
 ```bash
 git clone --recurse-submodules https://github.com/Sacristan/InteraktVR.git
 cd InteraktVR && git submodule init && git submodule update && cd ..

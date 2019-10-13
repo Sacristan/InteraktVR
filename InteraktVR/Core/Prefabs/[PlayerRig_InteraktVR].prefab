@@ -276,8 +276,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions/interaktvr/in/TELEPORT
-    needsReinit: 0
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -816,8 +816,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions/interaktvr/in/TELEPORT
-    needsReinit: 0
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -1771,19 +1771,19 @@ MonoBehaviour:
     needsReinit: 0
   triggerPressure:
     actionPath: /actions/interaktvr/in/TriggerPressure
-    needsReinit: 0
+    needsReinit: 1
   touchPosition:
     actionPath: /actions/interaktvr/in/TouchPosition
-    needsReinit: 0
+    needsReinit: 1
   padTouched:
     actionPath: /actions/interaktvr/in/PadTouched
-    needsReinit: 0
+    needsReinit: 1
   padPressed:
     actionPath: /actions/interaktvr/in/PadPressed
-    needsReinit: 0
+    needsReinit: 1
   teleport:
-    actionPath: /actions/interaktvr/in/TELEPORT
-    needsReinit: 0
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poseAction:
     actionPath: /actions/interaktvr/in/Pose
-    needsReinit: 0
+    needsReinit: 1
   inputSource: 1
   origin: {fileID: 0}
   onTransformUpdated:
@@ -2374,19 +2374,19 @@ MonoBehaviour:
     needsReinit: 0
   triggerPressure:
     actionPath: /actions/interaktvr/in/TriggerPressure
-    needsReinit: 0
+    needsReinit: 1
   touchPosition:
     actionPath: /actions/interaktvr/in/TouchPosition
-    needsReinit: 0
+    needsReinit: 1
   padTouched:
     actionPath: /actions/interaktvr/in/PadTouched
-    needsReinit: 0
+    needsReinit: 1
   padPressed:
     actionPath: /actions/interaktvr/in/PadPressed
-    needsReinit: 0
+    needsReinit: 1
   teleport:
-    actionPath: /actions/interaktvr/in/TELEPORT
-    needsReinit: 0
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poseAction:
     actionPath: /actions/interaktvr/in/Pose
-    needsReinit: 0
+    needsReinit: 1
   inputSource: 2
   origin: {fileID: 0}
   onTransformUpdated:
@@ -3781,8 +3781,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions/interaktvr/in/TELEPORT
-    needsReinit: 0
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -4061,8 +4061,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions/interaktvr/in/TELEPORT
-    needsReinit: 0
+    actionPath: /actions/VRInteraction/in/TELEPORT
+    needsReinit: 1
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
