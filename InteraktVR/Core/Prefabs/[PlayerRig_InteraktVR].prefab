@@ -276,8 +276,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -816,8 +816,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -1600,6 +1600,33 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
+  expandMixedRealityCapturePropertySheet: 0
+  enableMixedReality: 0
+  compositionMethod: 0
+  extraHiddenLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  externalCompositionBackdropColor: {r: 0, g: 0, b: 0, a: 0}
+  capturingCameraDevice: 0
+  flipCameraFrameHorizontally: 0
+  flipCameraFrameVertically: 0
+  handPoseStateLatency: 0
+  sandwichCompositionRenderLatency: 0
+  sandwichCompositionBufferedFrames: 8
+  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
+  chromaKeySimilarity: 0.6
+  chromaKeySmoothRange: 0.03
+  chromaKeySpillRange: 0.06
+  useDynamicLighting: 0
+  depthQuality: 1
+  dynamicLightingSmoothFactor: 8
+  dynamicLightingDepthVariationClampingValue: 0.001
+  virtualGreenScreenType: 0
+  virtualGreenScreenTopY: 10
+  virtualGreenScreenBottomY: -10
+  virtualGreenScreenApplyDepthCulling: 0
+  virtualGreenScreenDepthTolerance: 0.2
+  mrcActivationMode: 0
   _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
@@ -1736,27 +1763,27 @@ MonoBehaviour:
   AXKeyOculus: 0
   handType: 1
   booleanActions:
-  - actionPath: /actions/VRInteraction/in/ACTION
+  - actionPath: /actions/interaktvr/in/ACTION
     needsReinit: 0
-  - actionPath: /actions/VRInteraction/in/PICKUP_DROP
+  - actionPath: /actions/interaktvr/in/PICKUP_DROP
     needsReinit: 0
-  - actionPath: /actions/VRInteraction/in/TELEPORT
+  - actionPath: /actions/interaktvr/in/TELEPORT
     needsReinit: 0
   triggerPressure:
-    actionPath: /actions/VRInteraction/in/TriggerPressure
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TriggerPressure
+    needsReinit: 0
   touchPosition:
-    actionPath: /actions/VRInteraction/in/TouchPosition
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TouchPosition
+    needsReinit: 0
   padTouched:
-    actionPath: /actions/VRInteraction/in/PadTouched
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/PadTouched
+    needsReinit: 0
   padPressed:
-    actionPath: /actions/VRInteraction/in/PadPressed
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/PadPressed
+    needsReinit: 0
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -1774,8 +1801,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseAction:
-    actionPath: /actions/VRInteraction/in/Pose
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/Pose
+    needsReinit: 0
   inputSource: 1
   origin: {fileID: 0}
   onTransformUpdated:
@@ -2339,27 +2366,27 @@ MonoBehaviour:
   AXKeyOculus: 0
   handType: 2
   booleanActions:
-  - actionPath: /actions/VRInteraction/in/ACTION
+  - actionPath: /actions/interaktvr/in/ACTION
     needsReinit: 0
-  - actionPath: /actions/VRInteraction/in/PICKUP_DROP
+  - actionPath: /actions/interaktvr/in/PICKUP_DROP
     needsReinit: 0
-  - actionPath: /actions/VRInteraction/in/TELEPORT
+  - actionPath: /actions/interaktvr/in/TELEPORT
     needsReinit: 0
   triggerPressure:
-    actionPath: /actions/VRInteraction/in/TriggerPressure
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TriggerPressure
+    needsReinit: 0
   touchPosition:
-    actionPath: /actions/VRInteraction/in/TouchPosition
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TouchPosition
+    needsReinit: 0
   padTouched:
-    actionPath: /actions/VRInteraction/in/PadTouched
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/PadTouched
+    needsReinit: 0
   padPressed:
-    actionPath: /actions/VRInteraction/in/PadPressed
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/PadPressed
+    needsReinit: 0
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -2377,8 +2404,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poseAction:
-    actionPath: /actions/VRInteraction/in/Pose
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/Pose
+    needsReinit: 0
   inputSource: 2
   origin: {fileID: 0}
   onTransformUpdated:
@@ -3754,8 +3781,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1
@@ -4034,8 +4061,8 @@ MonoBehaviour:
     actionPath: /actions/VRInteraction/in/PadPressed
     needsReinit: 1
   teleport:
-    actionPath: /actions//in/TELEPORT
-    needsReinit: 1
+    actionPath: /actions/interaktvr/in/TELEPORT
+    needsReinit: 0
   hapticAction:
     actionPath: /actions/VRInteraction/out/Haptic
     needsReinit: 1

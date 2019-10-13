@@ -1,0 +1,207 @@
+{
+   "action_manifest_version" : 0,
+   "alias_info" : {},
+   
+   "bindings" : {
+      "/actions/interaktvr" : {
+         "haptics" : [
+            {
+               "output" : "/actions/interaktvr/out/haptic",
+               "path" : "/user/hand/left/output/haptic"
+            },
+            {
+               "output" : "/actions/interaktvr/out/haptic",
+               "path" : "/user/hand/right/output/haptic"
+            }
+         ],
+         "poses" : [
+            {
+               "output" : "/actions/interaktvr/in/pose",
+               "path" : "/user/hand/left/pose/gdc2015"
+            },
+            {
+               "output" : "/actions/interaktvr/in/pose",
+               "path" : "/user/hand/right/pose/gdc2015"
+            }
+         ],
+         "skeleton" : [
+            {
+               "output" : "/actions/interaktvr/in/skeletonrighthand",
+               "path" : "/user/hand/left/input/skeleton/right"
+            },
+            {
+               "output" : "/actions/interaktvr/in/skeletonrighthand",
+               "path" : "/user/hand/right/input/skeleton/right"
+            }
+         ],
+         "sources" : [
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/action"
+                  },
+                  "pull" : {
+                     "output" : "/actions/interaktvr/in/triggerpressure"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/action"
+                  },
+                  "pull" : {
+                     "output" : "/actions/interaktvr/in/triggerpressure"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "east" : {
+                     "output" : "/actions/interaktvr/in/lighttoggle"
+                  },
+                  "north" : {
+                     "output" : "/actions/interaktvr/in/sliderelease"
+                  },
+                  "south" : {
+                     "output" : "/actions/interaktvr/in/eject"
+                  },
+                  "west" : {
+                     "output" : "/actions/interaktvr/in/scopetoggle"
+                  }
+               },
+               "mode" : "dpad",
+               "parameters" : {
+                  "sub_mode" : "touch"
+               },
+               "path" : "/user/hand/left/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "east" : {
+                     "output" : "/actions/interaktvr/in/lighttoggle"
+                  },
+                  "north" : {
+                     "output" : "/actions/interaktvr/in/sliderelease"
+                  },
+                  "south" : {
+                     "output" : "/actions/interaktvr/in/eject"
+                  },
+                  "west" : {
+                     "output" : "/actions/interaktvr/in/scopetoggle"
+                  }
+               },
+               "mode" : "dpad",
+               "parameters" : {
+                  "sub_mode" : "touch"
+               },
+               "path" : "/user/hand/right/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/padpressed"
+                  },
+                  "position" : {
+                     "output" : "/actions/interaktvr/in/touchposition"
+                  },
+                  "touch" : {
+                     "output" : "/actions/interaktvr/in/padtouched"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/left/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/padpressed"
+                  },
+                  "position" : {
+                     "output" : "/actions/interaktvr/in/touchposition"
+                  },
+                  "touch" : {
+                     "output" : "/actions/interaktvr/in/padtouched"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/thumbstick"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/teleport"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/teleport"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/pickup_drop"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/pickup_drop"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/switch"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/a"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/interaktvr/in/switch"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/a"
+            },
+            {
+               "inputs" : {},
+               "mode" : "none",
+               "path" : "/user/hand/left/input/skeleton/left"
+            },
+            {
+               "inputs" : {},
+               "mode" : "none",
+               "path" : "/user/hand/right/input/skeleton/left"
+            }
+         ]
+      }
+   },
+   "category" : "steamvr_input",
+   "controller_type" : "knuckles",
+   "description" : "Binding_interaktvr_Knuckles",
+   "name" : "Binding_interaktvr_Knuckles",
+   "options" : {},
+   "simulated_actions" : []
+}

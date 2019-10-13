@@ -384,7 +384,7 @@ namespace VRInteraction
             {
                 if (booleanAction == null)
                 {
-                    Debug.LogError("SteamVR Inputs have not been setup. Refer to the SteamVR 2.0 section of the Setup Guide. Found in Assets/VRInteraction/Docs.");
+                    Debug.LogError("SteamVR Inputs have not been setup for. Refer to the SteamVR 2.0 section of the Setup Guide. Found in Assets/VRInteraction/Docs.");
                     continue;
                 }
                 if (booleanAction.GetShortName() == action)

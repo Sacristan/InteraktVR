@@ -1,0 +1,103 @@
+{
+   "action_sets" : [
+      {
+         "name" : "/actions/interaktvr",
+         "usage" : "single"
+      }
+   ],
+   "actions" : [
+      {
+         "name" : "/actions/interaktvr/in/ACTION",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/PICKUP_DROP",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/PICKUP",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/DROP",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/Pose",
+         "type" : "pose"
+      },
+      {
+         "name" : "/actions/interaktvr/in/SkeletonLeftHand",
+         "skeleton" : "/skeleton/hand/left",
+         "type" : "skeleton"
+      },
+      {
+         "name" : "/actions/interaktvr/in/SkeletonRightHand",
+         "skeleton" : "/skeleton/hand/right",
+         "type" : "skeleton"
+      },
+      {
+         "name" : "/actions/interaktvr/in/TriggerPressure",
+         "type" : "vector1"
+      },
+      {
+         "name" : "/actions/interaktvr/in/TouchPosition",
+         "type" : "vector2"
+      },
+      {
+         "name" : "/actions/interaktvr/in/PadTouched",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/PadPressed",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/Eject",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/SlideRelease",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/LightToggle",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/ScopeToggle",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/TELEPORT",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/in/SWITCH",
+         "type" : "boolean"
+      },
+      {
+         "name" : "/actions/interaktvr/out/Haptic",
+         "type" : "vibration"
+      }
+   ],
+   "default_bindings" : [
+      {
+         "binding_url" : "application_generated_unity_interaktvr_binding_vive_controller.json",
+         "controller_type" : "vive_controller"
+      },
+      {
+         "binding_url" : "application_generated_unity_interaktvr_binding_knuckles.json",
+         "controller_type" : "knuckles"
+      },
+      {
+         "binding_url" : "application_generated_unity_interaktvr_binding_oculus_touch.json",
+         "controller_type" : "oculus_touch"
+      }
+   ],
+   "localization" : [
+      {
+         "language_tag" : "en_US"
+      }
+   ]
+}
