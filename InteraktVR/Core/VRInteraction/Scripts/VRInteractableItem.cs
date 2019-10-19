@@ -22,6 +22,7 @@ namespace VRInteraction
         {
             FIXED_POSITION,
             PICKUP_POSITION,
+            FIXED_JOINT,
             SPRING_JOINT
         }
 
@@ -134,7 +135,9 @@ namespace VRInteraction
         //protected string originalShaderName;
         protected Rigidbody _selfBody;
         protected Collider itemCollider;
-        protected List<SpringJoint> _springJoints = new List<SpringJoint>();
+        protected List<Joint> _springJoints = new List<Joint>();
+        protected List<Joint> _fixedJoints = new List<Joint>();
+
         protected bool activeHover = false;
         protected float currentFollowForce = -1f;
         protected bool _pickingUp;
@@ -277,7 +280,7 @@ namespace VRInteraction
 
         virtual protected void Step()
         {
-            if (item == null || heldBy == null || interactionDisabled || holdType == HoldType.SPRING_JOINT) return;
+            if (item == null || heldBy == null || interactionDisabled || holdType == HoldType.SPRING_JOINT || holdType == HoldType.FIXED_JOINT) return;
 
             if (useBreakDistance && Vector3.Distance(heldBy.getControllerAnchorOffset.position, GetWorldHeldPosition(heldBy)) > breakDistance)
             {
@@ -369,17 +372,24 @@ namespace VRInteraction
                         StartCoroutine(PickingUp(hand));
                         VRInteractableItem.HeldFreezeItem(item.gameObject);
                         break;
+                    case HoldType.FIXED_JOINT:
+                        FixedJoint fixedJoint = item.gameObject.AddComponent<FixedJoint>();
+                        Rigidbody controllerBodyFixed = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
+                        if (controllerBodyFixed == null) controllerBodyFixed = hand.getControllerAnchorOffset.gameObject.AddComponent<Rigidbody>();
+
+                        ConfigureJoint(fixedJoint, controllerBodyFixed, hand);
+
+                        _fixedJoints.Add(fixedJoint);
+                        _heldBys.Add(hand);
+                        break;
                     case HoldType.SPRING_JOINT:
+
                         SpringJoint springJoint = item.gameObject.AddComponent<SpringJoint>();
-                        Rigidbody controllerBody = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
-                        if (controllerBody == null) controllerBody = hand.getControllerAnchorOffset.gameObject.AddComponent<Rigidbody>();
-                        controllerBody.isKinematic = true;
-                        controllerBody.useGravity = false;
-                        springJoint.connectedBody = controllerBody;
-                        //springJoint.anchor = Vector3.zero;
-                        springJoint.anchor = item.InverseTransformPoint(hand.getControllerAnchorOffset.position);
-                        springJoint.autoConfigureConnectedAnchor = false;
-                        springJoint.connectedAnchor = Vector3.zero;
+                        Rigidbody controllerBodySpring = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
+                        if (controllerBodySpring == null) controllerBodySpring = hand.getControllerAnchorOffset.gameObject.AddComponent<Rigidbody>();
+
+                        ConfigureJoint(springJoint, controllerBodySpring, hand);
+
                         springJoint.spring = followForce * 100f;
                         springJoint.damper = 100f;
                         _springJoints.Add(springJoint);
@@ -395,6 +405,18 @@ namespace VRInteraction
             heldBy = hand;
             if (pickupEvent != null) pickupEvent.Invoke();
             return true;
+        }
+
+        private void ConfigureJoint(Joint joint, Rigidbody rigidbody, VRInteractor hand)
+        {
+            rigidbody.isKinematic = true;
+            rigidbody.useGravity = false;
+
+            joint.connectedBody = rigidbody;
+            joint.anchor = item.InverseTransformPoint(hand.getControllerAnchorOffset.position);
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = Vector3.zero;
+
         }
 
         virtual protected IEnumerator PickingUp(VRInteractor heldBy)
@@ -447,16 +469,14 @@ namespace VRInteraction
                             }
                         }
                         break;
+
+                    case HoldType.FIXED_JOINT:
+                        DropJointConfig(hand, _fixedJoints);
+
+                        break;
+
                     case HoldType.SPRING_JOINT:
-                        for (int i = _heldBys.Count - 1; i >= 0; i--)
-                        {
-                            if (_heldBys[i] != hand) continue;
-                            _heldBys.RemoveAt(i);
-                            Destroy(_springJoints[i]);
-                            _springJoints.RemoveAt(i);
-                        }
-                        Rigidbody controllerBody = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
-                        if (controllerBody != null) Destroy(controllerBody);
+                        DropJointConfig(hand, _springJoints);
                         break;
                 }
                 PlaySound(dropSound);
@@ -464,6 +484,19 @@ namespace VRInteraction
             CheckIK(false, hand);
             if (dropEvent != null) dropEvent.Invoke();
             heldBy = null;
+        }
+
+        private void DropJointConfig(VRInteractor hand, List<Joint> joints)
+        {
+            for (int i = _heldBys.Count - 1; i >= 0; i--)
+            {
+                if (_heldBys[i] != hand) continue;
+                _heldBys.RemoveAt(i);
+                Destroy(joints[i]);
+                joints.RemoveAt(i);
+            }
+            Rigidbody controllerBody = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
+            if (controllerBody != null) Destroy(controllerBody);
         }
 
         virtual protected void PICKUP_DROP(VRInteractor hand)
@@ -562,6 +595,7 @@ namespace VRInteraction
                     return item.position - (item.rotation * (Quaternion.Inverse(GetLocalHeldRotation(hand)) * GetLocalHeldPosition(hand)));
                 case HoldType.PICKUP_POSITION:
                 case HoldType.SPRING_JOINT:
+                case HoldType.FIXED_JOINT:
                     return item.position;
             }
             return Vector3.zero;

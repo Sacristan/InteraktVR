@@ -451,7 +451,7 @@ namespace VRInteraction
         {
             if (_heldItem != null || /*already holding something*/
                 hoverItem == null || /*have something were hovering over*/
-                (hoverItem.holdType != VRInteractableItem.HoldType.SPRING_JOINT && hoverItem.heldBy != null) /*Thing were hovering over is not a joint hold and is already being held*/)
+                (hoverItem.holdType != VRInteractableItem.HoldType.SPRING_JOINT && hoverItem.holdType != VRInteractableItem.HoldType.FIXED_JOINT && hoverItem.heldBy != null) /*Thing were hovering over is not a joint hold and is already being held*/)
                 return false;
             _heldItem = hoverItem;
             _heldItem.DisableHover(this);
