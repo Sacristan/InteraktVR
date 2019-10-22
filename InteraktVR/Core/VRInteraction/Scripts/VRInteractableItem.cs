@@ -85,6 +85,9 @@ namespace VRInteraction
         public bool canBeHeld = true;
         public bool interactionDisabled = false;
         public HoldType holdType = HoldType.FIXED_POSITION;
+
+        [SerializeField] private Transform holdOffsetTransform;
+
         public bool useBreakDistance = false;
         public float breakDistance = 0.1f;
         public bool linkedLeftAndRightHeldPositions = true;
@@ -169,6 +172,8 @@ namespace VRInteraction
                 return selfParam;
             }
         }
+
+        private Vector3 LocalOffsetVector => holdOffsetTransform?.localPosition ?? transform.localPosition;
 
         void Start()
         {
@@ -409,7 +414,8 @@ namespace VRInteraction
             joint.connectedBody = rigidbody;
             joint.anchor = item.InverseTransformPoint(hand.getControllerAnchorOffset.position);
             joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = Vector3.zero;
+            joint.connectedAnchor = LocalOffsetVector;
+
 
         }
 

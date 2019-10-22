@@ -1,10 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Editor for VRInteractableItem. Allows for local held position and rotation
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
@@ -23,6 +17,7 @@ namespace VRInteraction
 
         public override void OnInspectorGUI()
         {
+            // base.DrawDefaultInspector();
             ItemSection(serializedObject);
         }
 
@@ -66,6 +61,9 @@ namespace VRInteraction
                         newWindow.interactableItem = (VRInteractableItem)interactableItem.targetObject;
                         newWindow.Init();
                     }
+
+                    SerializedProperty holdOffsetTransform = interactableItem.FindProperty("holdOffsetTransform");
+                    EditorGUILayout.PropertyField(holdOffsetTransform);
 
                     SerializedProperty followForce = interactableItem.FindProperty("followForce");
                     var oldFollowForce = followForce.floatValue;
