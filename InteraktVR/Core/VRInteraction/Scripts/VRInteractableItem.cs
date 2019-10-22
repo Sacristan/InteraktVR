@@ -1,10 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Base InteractableItem can be picked up and dropped by a VRInteractor
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
@@ -22,8 +16,8 @@ namespace VRInteraction
         {
             FIXED_POSITION,
             PICKUP_POSITION,
+            SPRING_JOINT,
             FIXED_JOINT,
-            SPRING_JOINT
         }
 
         static private List<VRInteractableItem> _items;
