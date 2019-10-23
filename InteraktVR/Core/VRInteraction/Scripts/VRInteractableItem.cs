@@ -71,25 +71,25 @@ namespace VRInteraction
 
         //References
         public Transform item;
-        public List<Collider> triggerColliders = new List<Collider>();
-        public Transform leftHandIKAnchor;
-        public Transform rightHandIKAnchor;
-        public string leftHandIKPoseName;
-        public string rightHandIkPoseName;
+        [SerializeField] public List<Collider> triggerColliders = new List<Collider>(); //TODO: Property
+        [SerializeField] private Transform leftHandIKAnchor;
+        [SerializeField] private Transform rightHandIKAnchor;
+        [SerializeField] private string leftHandIKPoseName;
+        [SerializeField] private string rightHandIkPoseName;
 
         //Set parent if this item can't be interacted with unless the parent is being held
         public List<VRInteractableItem> parents = new List<VRInteractableItem>();
 
         //Variables
-        public string itemId;
-        public bool canBeHeld = true;
-        public bool interactionDisabled = false;
-        public HoldType holdType = HoldType.FIXED_POSITION;
+        [SerializeField] private string itemId;
+        [SerializeField] private bool canBeHeld = true;
+        [SerializeField] private bool interactionDisabled = false;
+        [SerializeField] public HoldType holdType = HoldType.FIXED_POSITION; //TODO: Property
 
         [SerializeField] private Transform holdOffsetTransform;
 
-        public bool useBreakDistance = false;
-        public float breakDistance = 0.1f;
+        [SerializeField] private bool useBreakDistance = false;
+        [SerializeField] private float breakDistance = 0.1f;
         public bool linkedLeftAndRightHeldPositions = true;
         public Vector3 heldPosition = Vector3.zero;
         public Quaternion heldRotation = Quaternion.identity;
@@ -97,7 +97,7 @@ namespace VRInteraction
         public Quaternion heldRotationRightHand = Quaternion.identity;
         public float throwBoost = 1f;
         public float followForce = 1f;
-        public float interactionDistance = 0.1f;
+        [SerializeField] public float interactionDistance = 0.1f; //TODO: Property
         public bool limitAcceptedAction;
         public List<string> acceptedActions = new List<string>();
 
@@ -109,25 +109,27 @@ namespace VRInteraction
         // public List<Material> defaultMats = new List<Material>();
         // public List<Material> hoverMats = new List<Material>();
 
-        public bool toggleToPickup;
-        public UnityEvent pickupEvent;
-        public UnityEvent dropEvent;
-        public UnityEvent enableHoverEvent;
-        public UnityEvent disableHoverEvent;
+        [SerializeField] private bool toggleToPickup;
+        [SerializeField] private UnityEvent pickupEvent;
+        [SerializeField] private UnityEvent dropEvent;
+        [SerializeField] private UnityEvent enableHoverEvent;
+        [SerializeField] private UnityEvent disableHoverEvent;
 
         //Sounds
-        public AudioSource audioSource;
-        public AudioClip enterHover;
-        public AudioClip exitHover;
-        public AudioClip pickupSound;
-        public AudioClip dropSound;
-        public AudioClip forceGrabSound;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip enterHover;
+        [SerializeField] private AudioClip exitHover;
+        [SerializeField] private AudioClip pickupSound;
+        [SerializeField] private AudioClip dropSound;
+        [SerializeField] private AudioClip forceGrabSound;
 
+#if UNITY_EDITOR
         //Editor Vars
         public bool hoverFoldout;
         public bool triggersFoldout;
         public bool soundsFoldout;
         public bool ikFoldout;
+#endif
 
         //protected string originalShaderName;
         protected Rigidbody _selfBody;
