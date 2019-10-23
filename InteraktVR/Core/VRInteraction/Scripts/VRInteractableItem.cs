@@ -78,7 +78,7 @@ namespace VRInteraction
         [SerializeField] private string rightHandIkPoseName;
 
         //Set parent if this item can't be interacted with unless the parent is being held
-        public List<VRInteractableItem> parents = new List<VRInteractableItem>();
+        [SerializeField] private List<VRInteractableItem> parents = new List<VRInteractableItem>();
 
         //Variables
         [SerializeField] private string itemId;
@@ -86,29 +86,16 @@ namespace VRInteraction
         [SerializeField] private bool interactionDisabled = false;
         [SerializeField] public HoldType holdType = HoldType.FIXED_POSITION; //TODO: Property
 
-        [SerializeField] private Transform holdOffsetTransform;
+        [SerializeField] private Vector3 holdOffsetAnchor = Vector3.zero;
 
         [SerializeField] private bool useBreakDistance = false;
         [SerializeField] private float breakDistance = 0.1f;
-        public bool linkedLeftAndRightHeldPositions = true;
-        public Vector3 heldPosition = Vector3.zero;
-        public Quaternion heldRotation = Quaternion.identity;
-        public Vector3 heldPositionRightHand = Vector3.zero;
-        public Quaternion heldRotationRightHand = Quaternion.identity;
-        public float throwBoost = 1f;
-        public float followForce = 1f;
+
+        [SerializeField] private float throwBoost = 1f;
+        [SerializeField] private float followForce = 1f;
         [SerializeField] public float interactionDistance = 0.1f; //TODO: Property
-        public bool limitAcceptedAction;
-        public List<string> acceptedActions = new List<string>();
 
         [SerializeField] private HoverItem[] hovers;
-
-        // public List<HoverMode> hoverModes = new List<HoverMode>();
-        // public List<Shader> defaultShaders = new List<Shader>();
-        // public List<Shader> hoverShaders = new List<Shader>();
-        // public List<Material> defaultMats = new List<Material>();
-        // public List<Material> hoverMats = new List<Material>();
-
         [SerializeField] private bool toggleToPickup;
         [SerializeField] private UnityEvent pickupEvent;
         [SerializeField] private UnityEvent dropEvent;
@@ -122,6 +109,16 @@ namespace VRInteraction
         [SerializeField] private AudioClip pickupSound;
         [SerializeField] private AudioClip dropSound;
         [SerializeField] private AudioClip forceGrabSound;
+
+        // EDITOR CALCULATED
+        public bool linkedLeftAndRightHeldPositions = true;
+        public bool limitAcceptedAction;
+        public List<string> acceptedActions = new List<string>();
+        public Vector3 heldPositionRightHand = Vector3.zero;
+        public Quaternion heldRotationRightHand = Quaternion.identity;
+        public Vector3 heldPosition = Vector3.zero;
+        public Quaternion heldRotation = Quaternion.identity;
+
 
 #if UNITY_EDITOR
         //Editor Vars
@@ -175,7 +172,7 @@ namespace VRInteraction
             }
         }
 
-        private Vector3 LocalOffsetVector => holdOffsetTransform?.localPosition ?? transform.localPosition;
+        private Vector3 LocalOffsetVector => holdOffsetAnchor;
 
         void Start()
         {

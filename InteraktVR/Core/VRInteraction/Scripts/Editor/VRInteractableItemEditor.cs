@@ -62,8 +62,8 @@ namespace VRInteraction
                         newWindow.Init();
                     }
 
-                    SerializedProperty holdOffsetTransform = interactableItem.FindProperty("holdOffsetTransform");
-                    EditorGUILayout.PropertyField(holdOffsetTransform);
+                    SerializedProperty holdOffsetAnchor = interactableItem.FindProperty("holdOffsetAnchor");
+                    EditorGUILayout.PropertyField(holdOffsetAnchor);
 
                     SerializedProperty followForce = interactableItem.FindProperty("followForce");
                     var oldFollowForce = followForce.floatValue;
