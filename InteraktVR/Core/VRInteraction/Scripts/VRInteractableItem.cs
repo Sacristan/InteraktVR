@@ -142,13 +142,14 @@ namespace VRInteraction
 
         protected VRInteractor _heldBy;
         protected List<VRInteractor> _heldBys = new List<VRInteractor>();
-        public VRInteractor heldBy
+
+        public VRInteractor HeldBy
         {
             get { return _heldBy; }
             set { _heldBy = value; }
         }
 
-        public Rigidbody selfBody
+        public Rigidbody SelfBody
         {
             get
             {
@@ -163,7 +164,7 @@ namespace VRInteraction
             set { interactionDisabled = value; }
         }
 
-        protected object[] getSelfParam
+        protected object[] GetSelfParam
         {
             get
             {
@@ -186,11 +187,11 @@ namespace VRInteraction
 
         virtual protected void OnDisable()
         {
-            if (heldBy != null)
+            if (HeldBy != null)
             {
                 var oldCanBeHeld = canBeHeld;
                 canBeHeld = false;
-                heldBy.Drop();
+                HeldBy.Drop();
                 canBeHeld = oldCanBeHeld;
             }
             VRInteractableItem.items.Remove(this);
@@ -210,7 +211,7 @@ namespace VRInteraction
             }
 
             //Initialize self param (This is so it's not being made when the object is being destroyed)
-            selfParam = getSelfParam;
+            selfParam = GetSelfParam;
 
             if (string.IsNullOrEmpty(itemId)) itemId = (1000 + (itemIdIndex++)).ToString();
 
@@ -278,23 +279,23 @@ namespace VRInteraction
 
         virtual protected void Step()
         {
-            if (item == null || heldBy == null || interactionDisabled || holdType == HoldType.SPRING_JOINT || holdType == HoldType.FIXED_JOINT) return;
+            if (item == null || HeldBy == null || interactionDisabled || holdType == HoldType.SPRING_JOINT || holdType == HoldType.FIXED_JOINT) return;
 
-            if (useBreakDistance && Vector3.Distance(heldBy.getControllerAnchorOffset.position, GetWorldHeldPosition(heldBy)) > breakDistance)
+            if (useBreakDistance && Vector3.Distance(HeldBy.getControllerAnchorOffset.position, GetWorldHeldPosition(HeldBy)) > breakDistance)
             {
-                heldBy.Drop();
+                HeldBy.Drop();
                 return;
             }
 
             if (!canBeHeld) return;
 
-            if (selfBody == null)
+            if (SelfBody == null)
             {
-                item.position = GetControllerPosition(heldBy);
-                item.rotation = GetControllerRotation(heldBy);
+                item.position = GetControllerPosition(HeldBy);
+                item.rotation = GetControllerRotation(HeldBy);
                 return;
             }
-            selfBody.maxAngularVelocity = float.MaxValue;
+            SelfBody.maxAngularVelocity = float.MaxValue;
 
             Quaternion rotationDelta = GetHeldRotationDelta();
             Vector3 positionDelta = GetHeldPositionDelta();
@@ -311,19 +312,19 @@ namespace VRInteraction
             if (angle != 0)
             {
                 Vector3 angularTarget = (angle * axis) * (currentFollowForce * (Time.fixedDeltaTime * 100f));
-                selfBody.angularVelocity = angularTarget;
+                SelfBody.angularVelocity = angularTarget;
             }
 
             Vector3 velocityTarget = (positionDelta / Time.fixedDeltaTime) * currentFollowForce;
 
             if (float.IsInfinity(velocityTarget.x) || float.IsNaN(velocityTarget.x))
                 velocityTarget = Vector3.zero;
-            selfBody.velocity = velocityTarget;
+            SelfBody.velocity = velocityTarget;
         }
 
         virtual public bool CanInteract()
         {
-            return heldBy == null && !interactionDisabled && (parents.Count == 0 || IsParentItemHeld());
+            return HeldBy == null && !interactionDisabled && (parents.Count == 0 || IsParentItemHeld());
         }
 
         virtual public bool IsParentItemHeld()
@@ -332,7 +333,7 @@ namespace VRInteraction
             foreach (VRInteractableItem parent in parents)
             {
                 if (parent == null) continue;
-                if (parent.heldBy != null)
+                if (parent.HeldBy != null)
                 {
                     held = true;
                     break;
@@ -343,7 +344,7 @@ namespace VRInteraction
 
         virtual public bool Pickup(VRInteractor hand)
         {
-            Debug.Log("PICKUP");
+            // Debug.Log("PICKUP");
 
             if (canBeHeld && item != null)
             {
@@ -400,7 +401,7 @@ namespace VRInteraction
                 else PlaySound(forceGrabSound, hand.getControllerAnchorOffset.position);
             }
             else CheckIK(true, hand);
-            heldBy = hand;
+            HeldBy = hand;
             if (pickupEvent != null) pickupEvent.Invoke();
             return true;
         }
@@ -435,7 +436,7 @@ namespace VRInteraction
                 if (percent < 0.05f) percent = 0.05f;
                 currentFollowForce = followForce * percent;
                 yield return null;
-                if (this.heldBy != heldBy)
+                if (this.HeldBy != heldBy)
                 {
                     currentFollowForce = followForce;
                     _pickingUp = false;
@@ -457,14 +458,14 @@ namespace VRInteraction
                     case HoldType.FIXED_POSITION:
                     case HoldType.PICKUP_POSITION:
                         VRInteractableItem.UnFreezeItem(item.gameObject);
-                        if (selfBody != null)
+                        if (SelfBody != null)
                         {
                             if (hand != null && addControllerVelocity)
                             {
                                 bool useBoost = hand.Velocity.magnitude > 1f;
-                                selfBody.velocity = hand.Velocity * (useBoost ? throwBoost : 1f);
-                                selfBody.angularVelocity = hand.AngularVelocity;
-                                selfBody.maxAngularVelocity = selfBody.angularVelocity.magnitude;
+                                SelfBody.velocity = hand.Velocity * (useBoost ? throwBoost : 1f);
+                                SelfBody.angularVelocity = hand.AngularVelocity;
+                                SelfBody.maxAngularVelocity = SelfBody.angularVelocity.magnitude;
                             }
                         }
                         break;
@@ -482,7 +483,7 @@ namespace VRInteraction
             }
             CheckIK(false, hand);
             if (dropEvent != null) dropEvent.Invoke();
-            heldBy = null;
+            HeldBy = null;
         }
 
         private void DropJointConfig(VRInteractor hand, List<Joint> joints)
@@ -577,7 +578,7 @@ namespace VRInteraction
 
         virtual public Quaternion GetControllerRotation(VRInteractor hand)
         {
-            return heldBy.getControllerAnchorOffset.rotation * GetLocalHeldRotation(heldBy);
+            return HeldBy.getControllerAnchorOffset.rotation * GetLocalHeldRotation(HeldBy);
         }
 
         /// <summary>
@@ -652,14 +653,14 @@ namespace VRInteraction
 
         virtual protected Vector3 GetHeldPositionDelta()
         {
-            Transform heldByTransform = heldBy.getControllerAnchorOffset;
-            return (heldByTransform.TransformPoint(GetLocalHeldPosition(heldBy))) - item.position;
+            Transform heldByTransform = HeldBy.getControllerAnchorOffset;
+            return (heldByTransform.TransformPoint(GetLocalHeldPosition(HeldBy))) - item.position;
         }
 
         virtual protected Quaternion GetHeldRotationDelta()
         {
-            Transform heldByTransform = heldBy.getControllerAnchorOffset;
-            return (heldByTransform.rotation * GetLocalHeldRotation(heldBy)) * Quaternion.Inverse(item.rotation);
+            Transform heldByTransform = HeldBy.getControllerAnchorOffset;
+            return (heldByTransform.rotation * GetLocalHeldRotation(HeldBy)) * Quaternion.Inverse(item.rotation);
         }
 
         virtual public void EnableHover(VRInteractor hand = null)

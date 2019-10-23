@@ -1,11 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Editor for VRInteractor. Allows you set set the interaction sphere size and
-// Add a reference for an object that will be picked up on enable
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using UnityEditor.SceneManagement;

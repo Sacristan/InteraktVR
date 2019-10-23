@@ -1,11 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Base class for the interaction system, this script is responsible for picking up
-// and interacting with interactable items in the scene.
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
-
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,18 +12,17 @@ namespace VRInteraction
     {
         public const string anchorOffsetName = "ControllerAnchorOffset";
 
-        public GameObject objectReference;
-        public bool objectReferenceIsPrefab;
-        public bool hideControllersWhileHolding = true;
-        public Transform controllerAnchor;
-        public Transform controllerAnchorOffset;
-        public Transform ikTarget;
-        public Vector3 forceGrabDirection = new Vector3(1f, 0f, 0f);
-        public float forceGrabDistance = 0f;
-        public bool useHoverLine;
-        public Material hoverLineMat;
-        public Transform _vrRigRoot;
-        public bool triggerHapticPulse = true;
+        [SerializeField] public GameObject objectReference;
+        [SerializeField] private bool hideControllersWhileHolding = true;
+        [SerializeField] public Transform controllerAnchor;
+        [SerializeField] public Transform controllerAnchorOffset;
+        [SerializeField] public Transform ikTarget;
+        [SerializeField] private Vector3 forceGrabDirection = new Vector3(1f, 0f, 0f);
+        [SerializeField] public float forceGrabDistance = 0f;
+        [SerializeField] private bool useHoverLine;
+        [SerializeField] private Material hoverLineMat;
+        [SerializeField] private Transform _vrRigRoot;
+        [SerializeField] private bool triggerHapticPulse = true;
 
         protected VRInteractableItem _hoverItem;
         protected VRInteractableItem _heldItem;
@@ -43,6 +35,9 @@ namespace VRInteraction
         protected Transform _ikTargetParent;
         protected float _lastDropped;
         protected LineRenderer _hoverLine;
+
+        public bool objectReferenceIsPrefab; //EDITOR VAR
+
 
 #if Int_Oculus
         private Quaternion _currentRotation;
@@ -451,7 +446,7 @@ namespace VRInteraction
         {
             if (_heldItem != null || /*already holding something*/
                 hoverItem == null || /*have something were hovering over*/
-                (hoverItem.holdType != VRInteractableItem.HoldType.SPRING_JOINT && hoverItem.holdType != VRInteractableItem.HoldType.FIXED_JOINT && hoverItem.heldBy != null) /*Thing were hovering over is not a joint hold and is already being held*/)
+                (hoverItem.holdType != VRInteractableItem.HoldType.SPRING_JOINT && hoverItem.holdType != VRInteractableItem.HoldType.FIXED_JOINT && hoverItem.HeldBy != null) /*Thing were hovering over is not a joint hold and is already being held*/)
                 return false;
             _heldItem = hoverItem;
             _heldItem.DisableHover(this);
