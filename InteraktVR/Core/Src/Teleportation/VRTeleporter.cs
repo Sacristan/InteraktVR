@@ -8,6 +8,14 @@ namespace InteraktVR.Core
         const int MaxVertexcount = 100;
         const float VertexDelta = 0.08f;
 
+        enum TeleportSurfaceMode
+        {
+            All,
+            HorizontalOnly,
+            VerticalOnly
+        }
+
+        [SerializeField] TeleportSurfaceMode teleportSurfaceMode;
         [SerializeField] GameObject positionMarker;
         [SerializeField] LineRenderer arcRenderer;
         [SerializeField] LayerMask excludeLayers;
@@ -79,6 +87,15 @@ namespace InteraktVR.Core
             isBeingDisplayed = active;
         }
 
+        private static bool IsHorizontalSurface(Vector3 normal)
+        {
+            return Mathf.Approximately(normal.y, 1f);
+        }
+
+        private static bool IsVerticalSurface(Vector3 normal)
+        {
+            return Mathf.Approximately(Mathf.Abs(normal.x), 1f) || Mathf.Approximately(Mathf.Abs(normal.z), 1f);
+        }
 
         private void UpdatePath()
         {
@@ -101,13 +118,16 @@ namespace InteraktVR.Core
 
                 if (Physics.Linecast(pos, newPos, out RaycastHit hit, ~excludeLayers))
                 {
+                    // if (!IsHorizontalSurface(hit.normal)) return;
+
                     groundDetected = true;
                     detectedGroundPos = hit.point;
                     lastDetectedSurfaceNormal = hit.normal;
+
+                    Debug.Log(hit.normal);
                 }
                 pos = newPos;
             }
-
 
             positionMarker.SetActive(groundDetected);
 

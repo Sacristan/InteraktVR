@@ -2720,6 +2720,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[PlayerRig_InteraktVR]'
       objectReference: {fileID: 0}
+    - target: {fileID: 3946209601223538663, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: enableRigMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3946209601223538660, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: m_LocalPosition.x
