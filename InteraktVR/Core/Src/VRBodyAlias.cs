@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
-public class VRBodyAlias : MonoBehaviour
+namespace InteraktVR.Core
 {
+    public class VRBodyAlias : MonoBehaviour { }
 }

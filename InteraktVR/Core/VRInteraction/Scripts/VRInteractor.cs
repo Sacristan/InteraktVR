@@ -12,14 +12,14 @@ namespace InteraktVR.VRInteraction
 {
     public class VRInteractor : MonoBehaviour
     {
-        public const string anchorOffsetName = "ControllerAnchorOffset";
+        public const string AnchorOffsetName = "ControllerAnchorOffset";
 
         [SerializeField] public GameObject objectReference;
         [SerializeField] private bool hideControllersWhileHolding = true;
         [SerializeField] public Transform controllerAnchor;
         [SerializeField] public Transform controllerAnchorOffset;
         [SerializeField] public Transform ikTarget;
-        [SerializeField] private Vector3 forceGrabDirection = new Vector3(1f, 0f, 0f);
+        [SerializeField] private Vector3 forceGrabDirection = Vector3.right;
         [SerializeField] public float forceGrabDistance = 0f;
         [SerializeField] private bool useHoverLine;
         [SerializeField] private Material hoverLineMat;
@@ -232,7 +232,7 @@ namespace InteraktVR.VRInteraction
             {
                 if (controllerAnchorOffset == null)
                 {
-                    GameObject controllerAnchorObject = new GameObject(VRInteractor.anchorOffsetName);
+                    GameObject controllerAnchorObject = new GameObject(VRInteractor.AnchorOffsetName);
                     controllerAnchorOffset = controllerAnchorObject.transform;
                     controllerAnchorOffset.parent = getControllerAnchor;
                     if (vrInput.isSteamVR())
