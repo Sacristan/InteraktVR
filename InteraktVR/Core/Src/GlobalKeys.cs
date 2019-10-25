@@ -1,4 +1,4 @@
-﻿namespace VRInteraction
+﻿namespace InteraktVR.VRInteraction
 {
     public static class GlobalKeys
     {

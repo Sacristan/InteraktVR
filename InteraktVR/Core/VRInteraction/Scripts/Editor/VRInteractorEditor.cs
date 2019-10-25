@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
 	[CustomEditor(typeof(VRInteractor))]
 	public class VRInteractorEditor : Editor {

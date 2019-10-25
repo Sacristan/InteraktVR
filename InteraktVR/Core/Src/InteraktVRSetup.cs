@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     public class InteraktVRSetup : MonoBehaviour
     {

@@ -7,7 +7,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
 
 	public class DestroyIn : MonoBehaviour {

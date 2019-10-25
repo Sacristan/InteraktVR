@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     public class FPSController : MonoBehaviour
     {

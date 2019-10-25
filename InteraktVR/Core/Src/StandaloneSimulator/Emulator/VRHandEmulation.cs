@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     public class VRHandEmulation : MonoBehaviour
     {

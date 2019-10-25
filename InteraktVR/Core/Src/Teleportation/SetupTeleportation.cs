@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     public class SetupTeleportation : MonoBehaviour
     {
@@ -11,8 +11,8 @@ namespace InteraktVR
 
         IEnumerator Start()
         {
-            yield return new WaitUntil(() => InteraktVR.InteraktVRSetup.IsReady);
-            InteraktVR.InteraktVRSetup.SetupTeleport(rightTeleporter, leftTeleporter);
+            yield return new WaitUntil(() => InteraktVRSetup.IsReady);
+            InteraktVRSetup.SetupTeleport(rightTeleporter, leftTeleporter);
         }
 
     }

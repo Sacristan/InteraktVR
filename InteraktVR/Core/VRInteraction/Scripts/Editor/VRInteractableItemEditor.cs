@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
 
     [CustomEditor(typeof(VRInteractableItem))]

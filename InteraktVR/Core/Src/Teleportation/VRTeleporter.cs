@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     public class VRTeleporter : MonoBehaviour
     {

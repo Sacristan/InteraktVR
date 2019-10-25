@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
 	public class DontHide : MonoBehaviour {}
 }

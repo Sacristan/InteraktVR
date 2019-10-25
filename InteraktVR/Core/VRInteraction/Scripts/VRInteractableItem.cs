@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
     public class VRInteractableItem : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     public class VRSimulatorRig : MonoBehaviour
     {

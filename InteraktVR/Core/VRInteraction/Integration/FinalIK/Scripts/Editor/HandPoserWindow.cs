@@ -14,7 +14,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using RootMotion.FinalIK;
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
 	public class HandPoserWindow : EditorWindow 
 	{

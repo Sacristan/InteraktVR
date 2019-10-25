@@ -2,11 +2,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using InteraktVR.Core;
+
 #if Int_SteamVR
 using Valve.VR;
 #endif
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
     public class VRInteractor : MonoBehaviour
     {
@@ -79,10 +81,10 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
+                if (InteraktVRSetup.IsVRSimulated)
                 {
                     //WORKAROUND
-                    if (_vrRigRoot == null) _vrRigRoot = InteraktVR.VRSimulatorRig.instance.transform;
+                    if (_vrRigRoot == null) _vrRigRoot = VRSimulatorRig.instance.transform;
                     return _vrRigRoot;
                 }
 
@@ -119,7 +121,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
+                if (InteraktVRSetup.IsVRSimulated)
                 {
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetVelocity();
                     // Debug.Log("Velocity: " + velocity);
@@ -156,7 +158,7 @@ namespace VRInteraction
         {
             get
             {
-                if (InteraktVR.InteraktVRSetup.IsVRSimulated)
+                if (InteraktVRSetup.IsVRSimulated)
                 {
                     Vector3 velocity = GetComponent<Zinnia.Tracking.Velocity.AverageVelocityEstimator>().GetAngularVelocity();
                     // Debug.Log("AngularVelocity: " + velocity);
@@ -411,7 +413,7 @@ namespace VRInteraction
             {
                 if (_hoverLine == null)
                 {
-                    GameObject hoverLineObj = new GameObject("Hover Line");
+                    GameObject hoverLineObj = new GameObject("InteraktVR Hover Line");
                     _hoverLine = hoverLineObj.AddComponent<LineRenderer>();
                     _hoverLine.startWidth = _hoverLine.endWidth = 0.01f;
                     _hoverLine.positionCount = 2;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     //#pragma strict
     //#pragma implicit

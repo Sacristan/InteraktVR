@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using VRInteraction;
+using InteraktVR.VRInteraction;
 
-namespace InteraktVR
+namespace InteraktVR.Example
 {
     public class PistolExample : MonoBehaviour
     {

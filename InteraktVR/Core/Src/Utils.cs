@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace InteraktVR
+namespace InteraktVR.Core
 {
     public static class Utils
     {

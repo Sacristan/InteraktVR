@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using Valve.VR;
 #endif
 
-namespace VRInteraction
+namespace InteraktVR.VRInteraction
 {
     [CustomEditor(typeof(VRInput))]
     public class VRInputEditor : Editor
