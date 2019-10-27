@@ -15,7 +15,7 @@ namespace InteraktVR.Core
             VerticalOnly
         }
 
-        [SerializeField] TeleportSurfaceMode teleportSurfaceMode;
+        [SerializeField] TeleportSurfaceMode teleportSurfaceMode = TeleportSurfaceMode.HorizontalOnly;
         [SerializeField] GameObject positionMarker;
         [SerializeField] LineRenderer arcRenderer;
         [SerializeField] LayerMask excludeLayers;
@@ -42,6 +42,37 @@ namespace InteraktVR.Core
             positionMarker.SetActive(false);
         }
 
+        private static bool IsHorizontalSurface(Vector3 normal)
+        {
+            // return ((int) normal.y) == 1;
+            return Mathf.Approximately(normal.y, 1f);
+        }
+
+        private static bool IsVerticalSurface(Vector3 normal)
+        {
+            // return Mathf.Abs((int)normal.x) == 1 || Mathf.Abs((int)normal.z) == 1;
+            return Mathf.Approximately(Mathf.Abs(normal.x), 1f) || Mathf.Approximately(Mathf.Abs(normal.z), 1f);
+        }
+
+        private bool IsValidTeleportationSurface()
+        {
+            // switch (teleportSurfaceMode)
+            // {
+            //     case TeleportSurfaceMode.HorizontalOnly:
+            //         if (lastDetectedSurfaceNormal == Vector3.zero) return true;
+            //         return IsHorizontalSurface(lastDetectedSurfaceNormal);
+            //     case TeleportSurfaceMode.VerticalOnly:
+            //         if (lastDetectedSurfaceNormal == Vector3.zero) return true;
+            //         return IsVerticalSurface(lastDetectedSurfaceNormal);
+
+            //     default:
+            //         return true;
+            // }
+
+            if (lastDetectedSurfaceNormal == Vector3.zero) return true;
+            return IsHorizontalSurface(lastDetectedSurfaceNormal);
+        }
+
         private void Update()
         {
             if (!VRInput) return;
@@ -58,6 +89,7 @@ namespace InteraktVR.Core
                     ToggleDisplay(false);
                 }
             }
+
         }
 
         private void FixedUpdate()
@@ -87,15 +119,7 @@ namespace InteraktVR.Core
             isBeingDisplayed = active;
         }
 
-        private static bool IsHorizontalSurface(Vector3 normal)
-        {
-            return Mathf.Approximately(normal.y, 1f);
-        }
-
-        private static bool IsVerticalSurface(Vector3 normal)
-        {
-            return Mathf.Approximately(Mathf.Abs(normal.x), 1f) || Mathf.Approximately(Mathf.Abs(normal.z), 1f);
-        }
+        const uint MaxPathLookupTries = 30;
 
         private void UpdatePath()
         {
@@ -109,8 +133,12 @@ namespace InteraktVR.Core
 
             vertexList.Add(pos);
 
+            uint currentPathLookupTries = 0;
+            //AVOID ACCIDENTAL INF LOOP
             while (!groundDetected && vertexList.Count < MaxVertexcount)
             {
+                if (++currentPathLookupTries >= MaxPathLookupTries) break;
+
                 Vector3 newPos = pos + lastVertexVelocity * VertexDelta + 0.5f * Physics.gravity * VertexDelta * VertexDelta;
                 lastVertexVelocity += Physics.gravity * VertexDelta;
 
@@ -118,13 +146,9 @@ namespace InteraktVR.Core
 
                 if (Physics.Linecast(pos, newPos, out RaycastHit hit, ~excludeLayers))
                 {
-                    // if (!IsHorizontalSurface(hit.normal)) return;
-
                     groundDetected = true;
                     detectedGroundPos = hit.point;
                     lastDetectedSurfaceNormal = hit.normal;
-
-                    Debug.Log(hit.normal);
                 }
                 pos = newPos;
             }
