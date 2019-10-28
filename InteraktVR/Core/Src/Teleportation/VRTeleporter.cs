@@ -59,33 +59,28 @@ namespace InteraktVR.Core
 
         private static bool IsHorizontalSurface(Vector3 normal)
         {
-            // return ((int) normal.y) == 1;
-            return Mathf.Approximately(normal.y, 1f);
+            return ((int)normal.y) == 1;
         }
 
         private static bool IsVerticalSurface(Vector3 normal)
         {
-            // return Mathf.Abs((int)normal.x) == 1 || Mathf.Abs((int)normal.z) == 1;
-            return Mathf.Approximately(Mathf.Abs(normal.x), 1f) || Mathf.Approximately(Mathf.Abs(normal.z), 1f);
+            return Mathf.Abs((int)normal.x) == 1 || Mathf.Abs((int)normal.z) == 1;
         }
 
         private bool IsValidTeleportationSurface()
         {
-            // switch (teleportSurfaceMode)
-            // {
-            //     case TeleportSurfaceMode.HorizontalOnly:
-            //         if (lastDetectedSurfaceNormal == Vector3.zero) return true;
-            //         return IsHorizontalSurface(lastDetectedSurfaceNormal);
-            //     case TeleportSurfaceMode.VerticalOnly:
-            //         if (lastDetectedSurfaceNormal == Vector3.zero) return true;
-            //         return IsVerticalSurface(lastDetectedSurfaceNormal);
+            switch (teleportSurfaceMode)
+            {
+                case TeleportSurfaceMode.HorizontalOnly:
+                    if (lastDetectedSurfaceNormal == Vector3.zero) return true;
+                    return IsHorizontalSurface(lastDetectedSurfaceNormal);
+                case TeleportSurfaceMode.VerticalOnly:
+                    if (lastDetectedSurfaceNormal == Vector3.zero) return true;
+                    return IsVerticalSurface(lastDetectedSurfaceNormal);
 
-            //     default:
-            //         return true;
-            // }
-
-            if (lastDetectedSurfaceNormal == Vector3.zero) return true;
-            return IsHorizontalSurface(lastDetectedSurfaceNormal);
+                default:
+                    return true;
+            }
         }
 
         private void Update()
