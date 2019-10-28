@@ -26,8 +26,10 @@ namespace InteraktVR.Core
         [SerializeField] MeshRenderer positionMarkerBound;
         [SerializeField] MeshRenderer positionMarkerOK;
         [SerializeField] Material positionMarkerOKMaterial;
+        [SerializeField] Gradient positionMarkerOKGradient;
         [SerializeField] MeshRenderer positionMarkerNOK;
         [SerializeField] Material positionMarkerNOKMaterial;
+        [SerializeField] Gradient positionMarkerNOKGradient;
 
         [Header("Arc:")]
         [SerializeField] float arcAngle = 45f;
@@ -125,15 +127,19 @@ namespace InteraktVR.Core
             }
         }
 
-        public void ToggleDisplay(bool active) //TODO: cache
+        public void ToggleDisplay(bool active)
         {
             arcRenderer.enabled = active;
             positionMarkerRoot.SetActive(active);
 
-            positionMarkerOK.gameObject.SetActive(wasValidTeleporationSurface);
-            positionMarkerNOK.gameObject.SetActive(!wasValidTeleporationSurface);
+            if (active)
+            {
+                positionMarkerOK.gameObject.SetActive(wasValidTeleporationSurface);
+                positionMarkerNOK.gameObject.SetActive(!wasValidTeleporationSurface);
 
-            positionMarkerBound.sharedMaterial = wasValidTeleporationSurface ? positionMarkerOKMaterial : positionMarkerNOKMaterial;
+                positionMarkerBound.sharedMaterial = wasValidTeleporationSurface ? positionMarkerOKMaterial : positionMarkerNOKMaterial;
+                arcRenderer.colorGradient = wasValidTeleporationSurface ? positionMarkerOKGradient : positionMarkerNOKGradient;
+            }
 
             isBeingDisplayed = active;
         }
