@@ -16,10 +16,20 @@ namespace InteraktVR.Core
             VerticalOnly
         }
 
+        [Header("General:")]
         [SerializeField] TeleportSurfaceMode teleportSurfaceMode = TeleportSurfaceMode.HorizontalOnly;
-        [SerializeField] GameObject positionMarker;
-        [SerializeField] LineRenderer arcRenderer;
         [SerializeField] LayerMask excludeLayers;
+        [SerializeField] LineRenderer arcRenderer;
+
+        [Header("Position Marker:")]
+        [SerializeField] GameObject positionMarkerRoot;
+        [SerializeField] MeshRenderer positionMarkerBound;
+        [SerializeField] MeshRenderer positionMarkerOK;
+        [SerializeField] Material positionMarkerOKMaterial;
+        [SerializeField] MeshRenderer positionMarkerNOK;
+        [SerializeField] Material positionMarkerNOKMaterial;
+
+        [Header("Arc:")]
         [SerializeField] float arcAngle = 45f;
         [SerializeField] float arcLength = 10f;
 
@@ -42,7 +52,7 @@ namespace InteraktVR.Core
         private void Awake()
         {
             arcRenderer.enabled = false;
-            positionMarker.SetActive(false);
+            positionMarkerRoot.SetActive(false);
         }
 
         private static bool IsHorizontalSurface(Vector3 normal)
@@ -88,7 +98,7 @@ namespace InteraktVR.Core
             {
                 if (isBeingDisplayed)
                 {
-                    Teleport();
+                    if (wasValidTeleporationSurface) Teleport();
                     ToggleDisplay(false);
                 }
             }
@@ -118,7 +128,13 @@ namespace InteraktVR.Core
         public void ToggleDisplay(bool active) //TODO: cache
         {
             arcRenderer.enabled = active;
-            positionMarker.SetActive(active && wasValidTeleporationSurface);
+            positionMarkerRoot.SetActive(active);
+
+            positionMarkerOK.gameObject.SetActive(wasValidTeleporationSurface);
+            positionMarkerNOK.gameObject.SetActive(!wasValidTeleporationSurface);
+
+            positionMarkerBound.sharedMaterial = wasValidTeleporationSurface ? positionMarkerOKMaterial : positionMarkerNOKMaterial;
+
             isBeingDisplayed = active;
         }
 
@@ -155,12 +171,12 @@ namespace InteraktVR.Core
                 pos = newPos;
             }
 
-            positionMarker.SetActive(groundDetected && wasValidTeleporationSurface);
+            positionMarkerRoot.SetActive(groundDetected);
 
-            if (groundDetected && wasValidTeleporationSurface)
+            if (groundDetected)
             {
-                positionMarker.transform.position = detectedGroundPos + lastDetectedSurfaceNormal * 0.1f;
-                positionMarker.transform.LookAt(detectedGroundPos);
+                positionMarkerRoot.transform.position = detectedGroundPos + lastDetectedSurfaceNormal * 0.1f;
+                positionMarkerRoot.transform.LookAt(detectedGroundPos);
             }
 
             arcRenderer.positionCount = vertexList.Count;

@@ -4,10 +4,25 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: BoundCircle
+    100004: NOKCursor
+    100006: OKCursor
     400000: //RootNode
+    400002: BoundCircle
+    400004: NOKCursor
+    400006: OKCursor
     2300000: //RootNode
+    2300002: BoundCircle
+    2300004: NOKCursor
+    2300006: OKCursor
     3300000: //RootNode
+    3300002: BoundCircle
+    3300004: NOKCursor
+    3300006: OKCursor
     4300000: Cylinder
+    4300002: BoundCircle
+    4300004: NOKCursor
+    4300006: OKCursor
     2186277476908879412: ImportLogs
   externalObjects:
   - first:

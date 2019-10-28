@@ -2720,11 +2720,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[PlayerRig_InteraktVR]'
       objectReference: {fileID: 0}
-    - target: {fileID: 3946209601223538663, guid: 5090900cb9a644b46816ea76a9edefe0,
-        type: 3}
-      propertyPath: enableRigMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3946209601223538660, guid: 5090900cb9a644b46816ea76a9edefe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2780,5 +2775,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3946209601223538663, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: enableRigMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055873244171939166, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a3d685d0064e043cabe768869bcecf50, type: 2}
+    - target: {fileID: 6055873244820521994, guid: 5090900cb9a644b46816ea76a9edefe0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a3d685d0064e043cabe768869bcecf50, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5090900cb9a644b46816ea76a9edefe0, type: 3}

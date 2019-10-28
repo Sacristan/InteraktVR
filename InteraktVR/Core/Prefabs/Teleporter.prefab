@@ -45,11 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb9db596df9a574b90882279a6fb4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionMarker: {fileID: 3298054104206716967}
-  arcRenderer: {fileID: 2575106933142995099}
+  teleportSurfaceMode: 1
   excludeLayers:
     serializedVersion: 2
     m_Bits: 38
+  arcRenderer: {fileID: 2575106933142995099}
+  positionMarkerRoot: {fileID: 3298054104206716967}
+  positionMarkerBound: {fileID: 7118229586151261469}
+  positionMarkerOK: {fileID: 7118229586151261465}
+  positionMarkerOKMaterial: {fileID: 2100000, guid: 1dd7b381967f9f14eadf8038a6eaefcb,
+    type: 2}
+  positionMarkerNOK: {fileID: 7118229586151261467}
+  positionMarkerNOKMaterial: {fileID: 2100000, guid: a3d685d0064e043cabe768869bcecf50,
+    type: 2}
   arcAngle: 45
   arcLength: 10
 --- !u!1 &3298054104206716967
@@ -310,6 +318,24 @@ PrefabInstance:
 --- !u!4 &7118229586149492735 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 33ee2f230ebef804c90b9e9f9815decd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7118229586149367167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7118229586151261469 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300002, guid: 33ee2f230ebef804c90b9e9f9815decd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7118229586149367167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7118229586151261467 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300004, guid: 33ee2f230ebef804c90b9e9f9815decd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7118229586149367167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7118229586151261465 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300006, guid: 33ee2f230ebef804c90b9e9f9815decd,
     type: 3}
   m_PrefabInstance: {fileID: 7118229586149367167}
   m_PrefabAsset: {fileID: 0}
