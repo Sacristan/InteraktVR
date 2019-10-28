@@ -5,6 +5,7 @@ namespace InteraktVR.Core
 {
     public class VRTeleporter : MonoBehaviour
     {
+        const uint MaxPathLookupTries = 30;
         const int MaxVertexcount = 100;
         const float VertexDelta = 0.08f;
 
@@ -27,6 +28,7 @@ namespace InteraktVR.Core
         private Vector3 lastDetectedSurfaceNormal;
 
         private bool groundDetected = false;
+        private bool wasValidTeleporationSurface = false;
         private List<Vector3> vertexList = new List<Vector3>();
         private bool isBeingDisplayed = false;
 
@@ -34,6 +36,7 @@ namespace InteraktVR.Core
         public Transform BodyTransform { get; set; }
         public VRInteraction.VRInteractor VRInteractor { get; set; } = null;
         public VRInteraction.VRInput VRInput { get; set; } = null;
+
         #endregion
 
         private void Awake()
@@ -112,18 +115,17 @@ namespace InteraktVR.Core
             }
         }
 
-        public void ToggleDisplay(bool active)
+        public void ToggleDisplay(bool active) //TODO: cache
         {
             arcRenderer.enabled = active;
-            positionMarker.SetActive(active);
+            positionMarker.SetActive(active && wasValidTeleporationSurface);
             isBeingDisplayed = active;
         }
-
-        const uint MaxPathLookupTries = 30;
 
         private void UpdatePath()
         {
             groundDetected = false;
+            wasValidTeleporationSurface = false;
 
             vertexList.Clear();
 
@@ -134,7 +136,6 @@ namespace InteraktVR.Core
             vertexList.Add(pos);
 
             uint currentPathLookupTries = 0;
-            //AVOID ACCIDENTAL INF LOOP
             while (!groundDetected && vertexList.Count < MaxVertexcount)
             {
                 if (++currentPathLookupTries >= MaxPathLookupTries) break;
@@ -146,6 +147,7 @@ namespace InteraktVR.Core
 
                 if (Physics.Linecast(pos, newPos, out RaycastHit hit, ~excludeLayers))
                 {
+                    wasValidTeleporationSurface = IsValidTeleportationSurface();
                     groundDetected = true;
                     detectedGroundPos = hit.point;
                     lastDetectedSurfaceNormal = hit.normal;
@@ -153,9 +155,9 @@ namespace InteraktVR.Core
                 pos = newPos;
             }
 
-            positionMarker.SetActive(groundDetected);
+            positionMarker.SetActive(groundDetected && wasValidTeleporationSurface);
 
-            if (groundDetected)
+            if (groundDetected && wasValidTeleporationSurface)
             {
                 positionMarker.transform.position = detectedGroundPos + lastDetectedSurfaceNormal * 0.1f;
                 positionMarker.transform.LookAt(detectedGroundPos);
