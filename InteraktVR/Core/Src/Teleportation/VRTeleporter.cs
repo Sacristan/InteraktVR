@@ -67,17 +67,21 @@ namespace InteraktVR.Core
             return Mathf.Abs((int)normal.x) == 1 || Mathf.Abs((int)normal.z) == 1;
         }
 
+        private static bool IsApproxVectorZero(Vector3 normal)
+        {
+            return normal.magnitude < 0.01f;
+        }
+
         private bool IsValidTeleportationSurface()
         {
             switch (teleportSurfaceMode)
             {
                 case TeleportSurfaceMode.HorizontalOnly:
-                    if (lastDetectedSurfaceNormal == Vector3.zero) return true;
+                    if (IsApproxVectorZero(lastDetectedSurfaceNormal)) return true;
                     return IsHorizontalSurface(lastDetectedSurfaceNormal);
                 case TeleportSurfaceMode.VerticalOnly:
-                    if (lastDetectedSurfaceNormal == Vector3.zero) return true;
+                    if (IsApproxVectorZero(lastDetectedSurfaceNormal)) return true;
                     return IsVerticalSurface(lastDetectedSurfaceNormal);
-
                 default:
                     return true;
             }
