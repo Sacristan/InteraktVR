@@ -21,7 +21,7 @@ namespace InteraktVR.Core
         public static bool IsVRSimulated => instance?.enableRigMode == EnableRigMode.StandaloneSimulator; //TODO: need this at editor time
         public static bool IsReady { get; private set; } = false;
 
-        public static Transform Body => instance?.bodyAlias?.transform;
+        public static VRBodyAlias Body => instance?.bodyAlias;
         public static VRInteraction.VRInput LeftController => instance?.leftController;
         public static VRInteraction.VRInput RightController => instance?.rightController;
 
@@ -59,7 +59,7 @@ namespace InteraktVR.Core
 
         private static void SetupTeleporter(VRTeleporter teleporter, VRInteraction.VRInput controller)
         {
-            teleporter.BodyTransform = Body;
+            teleporter.BodyAlias = Body;
 
             teleporter.VRInput = controller;
             teleporter.VRInteractor = controller.GetComponent<VRInteraction.VRInteractor>();

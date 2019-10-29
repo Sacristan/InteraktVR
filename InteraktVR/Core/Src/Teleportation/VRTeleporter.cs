@@ -45,7 +45,7 @@ namespace InteraktVR.Core
         private bool isBeingDisplayed = false;
 
         #region Properties
-        public Transform BodyTransform { get; set; }
+        public VRBodyAlias BodyAlias { get; set; }
         public VRInteraction.VRInteractor VRInteractor { get; set; } = null;
         public VRInteraction.VRInput VRInput { get; set; } = null;
 
@@ -118,7 +118,7 @@ namespace InteraktVR.Core
         {
             if (groundDetected)
             {
-                BodyTransform.position = detectedGroundPos + lastDetectedSurfaceNormal * 0.1f;
+                BodyAlias.Teleport(detectedGroundPos, lastDetectedSurfaceNormal * 0.1f);
             }
             else
             {

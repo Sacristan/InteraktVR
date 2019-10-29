@@ -207,7 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectReference: {fileID: 0}
-  objectReferenceIsPrefab: 0
   hideControllersWhileHolding: 1
   controllerAnchor: {fileID: 3946209599346667245}
   controllerAnchorOffset: {fileID: 3946209601354924179}
@@ -218,6 +217,7 @@ MonoBehaviour:
   hoverLineMat: {fileID: 0}
   _vrRigRoot: {fileID: 0}
   triggerHapticPulse: 1
+  objectReferenceIsPrefab: 0
 --- !u!114 &3946209599346667234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectReference: {fileID: 0}
-  objectReferenceIsPrefab: 0
   hideControllersWhileHolding: 1
   controllerAnchor: {fileID: 3946209599685408819}
   controllerAnchorOffset: {fileID: 3946209601122105383}
@@ -758,6 +757,7 @@ MonoBehaviour:
   hoverLineMat: {fileID: 0}
   _vrRigRoot: {fileID: 0}
   triggerHapticPulse: 1
+  objectReferenceIsPrefab: 0
 --- !u!114 &3946209599685408816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1600,33 +1600,6 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
-  expandMixedRealityCapturePropertySheet: 0
-  enableMixedReality: 0
-  compositionMethod: 0
-  extraHiddenLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  externalCompositionBackdropColor: {r: 0, g: 0, b: 0, a: 0}
-  capturingCameraDevice: 0
-  flipCameraFrameHorizontally: 0
-  flipCameraFrameVertically: 0
-  handPoseStateLatency: 0
-  sandwichCompositionRenderLatency: 0
-  sandwichCompositionBufferedFrames: 8
-  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
-  chromaKeySimilarity: 0.6
-  chromaKeySmoothRange: 0.03
-  chromaKeySpillRange: 0.06
-  useDynamicLighting: 0
-  depthQuality: 1
-  dynamicLightingSmoothFactor: 8
-  dynamicLightingDepthVariationClampingValue: 0.001
-  virtualGreenScreenType: 0
-  virtualGreenScreenTopY: 10
-  virtualGreenScreenBottomY: -10
-  virtualGreenScreenApplyDepthCulling: 0
-  virtualGreenScreenDepthTolerance: 0.2
-  mrcActivationMode: 0
   _trackingOriginType: 1
   usePositionTracking: 1
   useRotationTracking: 1
@@ -1712,7 +1685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectReference: {fileID: 0}
-  objectReferenceIsPrefab: 0
   hideControllersWhileHolding: 1
   controllerAnchor: {fileID: 3946209600180852345}
   controllerAnchorOffset: {fileID: 3946209600225115068}
@@ -1723,6 +1695,7 @@ MonoBehaviour:
   hoverLineMat: {fileID: 0}
   _vrRigRoot: {fileID: 0}
   triggerHapticPulse: 1
+  objectReferenceIsPrefab: 0
 --- !u!114 &3946209600180852351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,7 +2288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectReference: {fileID: 0}
-  objectReferenceIsPrefab: 0
   hideControllersWhileHolding: 1
   controllerAnchor: {fileID: 3946209600299876262}
   controllerAnchorOffset: {fileID: 3946209600254632414}
@@ -2326,6 +2298,7 @@ MonoBehaviour:
   hoverLineMat: {fileID: 0}
   _vrRigRoot: {fileID: 0}
   triggerHapticPulse: 1
+  objectReferenceIsPrefab: 0
 --- !u!114 &3946209600299876260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3097,7 +3070,7 @@ GameObject:
   - component: {fileID: 3946209600732967727}
   - component: {fileID: 3946209600732967726}
   - component: {fileID: 3946209600732967721}
-  - component: {fileID: 1163475425}
+  - component: {fileID: 2991030104612969750}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3263,7 +3236,7 @@ MonoBehaviour:
   crouchBobbing:
     bobSpeed: 0.05
     bobAmount: 0.065
---- !u!114 &1163475425
+--- !u!114 &2991030104612969750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3272,7 +3245,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3946209600732967723}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e481736f8f1a1b42b374a14ea2de007, type: 3}
+  m_Script: {fileID: 11500000, guid: 6485ba019a1584444bcbf86e51beccfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3946209600804234249
@@ -3716,7 +3689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectReference: {fileID: 0}
-  objectReferenceIsPrefab: 0
   hideControllersWhileHolding: 1
   controllerAnchor: {fileID: 3946209601023431938}
   controllerAnchorOffset: {fileID: 3946209600215265102}
@@ -3727,6 +3699,7 @@ MonoBehaviour:
   hoverLineMat: {fileID: 0}
   _vrRigRoot: {fileID: 2988505131368391455}
   triggerHapticPulse: 0
+  objectReferenceIsPrefab: 0
 --- !u!114 &3946209601023431939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3996,7 +3969,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectReference: {fileID: 0}
-  objectReferenceIsPrefab: 0
   hideControllersWhileHolding: 1
   controllerAnchor: {fileID: 3946209601074673646}
   controllerAnchorOffset: {fileID: 3946209600211851475}
@@ -4007,6 +3979,7 @@ MonoBehaviour:
   hoverLineMat: {fileID: 0}
   _vrRigRoot: {fileID: 2988505131368391455}
   triggerHapticPulse: 0
+  objectReferenceIsPrefab: 0
 --- !u!114 &3946209601074673647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4966,6 +4939,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8237574047784123347, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a3d685d0064e043cabe768869bcecf50, type: 2}
+    - target: {fileID: 8237574047376790151, guid: 563e944418bb14520b2acca3b91f946b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a3d685d0064e043cabe768869bcecf50, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 563e944418bb14520b2acca3b91f946b, type: 3}
 --- !u!4 &3946209600208837469 stripped
