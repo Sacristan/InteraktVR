@@ -9,6 +9,7 @@ namespace InteraktVR.Core
         private static InteraktVRSetup instance;
 
         enum EnableRigMode { VR, StandaloneSimulator }
+        enum HandsDisplayMode { Controllers, Hands }
 
         [SerializeField] EnableRigMode enableRigMode;
         [SerializeField] GameObject vrRig;

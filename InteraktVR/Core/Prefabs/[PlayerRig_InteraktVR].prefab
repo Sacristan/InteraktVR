@@ -1548,7 +1548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3946209600124226761
 Transform:
   m_ObjectHideFlags: 0
@@ -4747,7 +4747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3946209601447072945
 Transform:
   m_ObjectHideFlags: 0
@@ -4807,7 +4807,7 @@ PrefabInstance:
     - target: {fileID: 4072534952706226579, guid: 97c3ec17c552d49d78f4716a873ee343,
         type: 3}
       propertyPath: m_Name
-      value: visualisation
+      value: simulatedControllerVisualisation
       objectReference: {fileID: 0}
     - target: {fileID: 4072534952706226576, guid: 97c3ec17c552d49d78f4716a873ee343,
         type: 3}
@@ -4864,6 +4864,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8471024773260780698, guid: 97c3ec17c552d49d78f4716a873ee343,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df6178695510c48d386fad7d12fcbbbe, type: 2}
+    - target: {fileID: 6999408078815168431, guid: 97c3ec17c552d49d78f4716a873ee343,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df6178695510c48d386fad7d12fcbbbe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97c3ec17c552d49d78f4716a873ee343, type: 3}
 --- !u!4 &3946209599401402500 stripped
@@ -4967,7 +4977,7 @@ PrefabInstance:
     - target: {fileID: 4072534952706226579, guid: 97c3ec17c552d49d78f4716a873ee343,
         type: 3}
       propertyPath: m_Name
-      value: visualisation
+      value: simulatedControllerVisualisation
       objectReference: {fileID: 0}
     - target: {fileID: 4072534952706226576, guid: 97c3ec17c552d49d78f4716a873ee343,
         type: 3}
@@ -5024,16 +5034,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8471024773260780698, guid: 97c3ec17c552d49d78f4716a873ee343,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a0777bf4b135421389fc9cc4fcf6948, type: 2}
-    - target: {fileID: 6999408078815168431, guid: 97c3ec17c552d49d78f4716a873ee343,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a0777bf4b135421389fc9cc4fcf6948, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97c3ec17c552d49d78f4716a873ee343, type: 3}
 --- !u!4 &8833090505467819395 stripped
