@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace InteraktVR.Core
 {
-    public class VRBodyAlias : MonoBehaviour
+    public class VRBodyModel : MonoBehaviour
     {
         internal virtual void Teleport(Vector3 loc, Vector3 surfaceOffset)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace InteraktVR.Core
 {
-    public class SimulatedVRBodyAlias : VRBodyAlias
+    public class SimulatedVRBodyModel : VRBodyModel
     {
         private const float YOffset = 0.91f;
 
