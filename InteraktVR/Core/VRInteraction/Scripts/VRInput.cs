@@ -73,6 +73,9 @@ namespace InteraktVR.VRInteraction
         private bool _stickBottomDown;
         private bool _stickRightDown;
 
+        public static VRInput Left { get; private set; }
+        public static VRInput Right { get; private set; }
+
         virtual protected void Start()
         {
 #if Int_Oculus
@@ -81,6 +84,9 @@ namespace InteraktVR.VRInteraction
                 bool leftHand = IsLeftHand; //Assigns LTouch and RTouch if unassigned
             }
 #endif
+
+            if (IsLeftHand) Left = this;
+            else Right = this;
         }
 
 
