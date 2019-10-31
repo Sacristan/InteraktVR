@@ -76,6 +76,18 @@ namespace InteraktVR.VRInteraction
         public static VRInput Left { get; private set; }
         public static VRInput Right { get; private set; }
 
+        VRInteractor _interactor;
+
+        public VRInteractor VRInteractor
+        {
+            get
+            {
+                if (_interactor == null) _interactor = GetComponent<VRInteractor>();
+                return _interactor;
+            }
+        }
+
+
         virtual protected void Start()
         {
 #if Int_Oculus

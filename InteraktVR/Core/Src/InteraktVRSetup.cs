@@ -71,9 +71,9 @@ namespace InteraktVR.Core
             teleporter.BodyModel = Body;
 
             teleporter.VRInput = controller;
-            teleporter.VRInteractor = controller.GetComponent<VRInteraction.VRInteractor>();
+            teleporter.VRInteractor = controller.VRInteractor;
 
-            SetParent(teleporter.transform, teleporter.VRInteractor?.controllerAnchorOffset ?? controller.transform);
+            SetParent(teleporter.transform, teleporter.VRInteractor?.AttachTransform);
         }
         private static void SetParent(Transform source, Transform target)
         {

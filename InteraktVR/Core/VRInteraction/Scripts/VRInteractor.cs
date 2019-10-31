@@ -77,6 +77,8 @@ namespace InteraktVR.VRInteraction
             }
         }
 
+        public Transform AttachTransform => controllerAnchorOffset ?? transform;
+
         virtual public Transform GetVRRigRoot
         {
             get
