@@ -97,10 +97,10 @@ namespace InteraktVR.VRInteraction
 
         [SerializeField] private HoverItem[] hovers;
         [SerializeField] private bool toggleToPickup;
-        [SerializeField] private UnityEvent pickupEvent;
-        [SerializeField] private UnityEvent dropEvent;
-        [SerializeField] private UnityEvent enableHoverEvent;
-        [SerializeField] private UnityEvent disableHoverEvent;
+        [SerializeField] public UnityEvent pickupEvent;
+        [SerializeField] public UnityEvent dropEvent;
+        [SerializeField] public UnityEvent enableHoverEvent;
+        [SerializeField] public UnityEvent disableHoverEvent;
 
         //Sounds
         [SerializeField] private AudioSource audioSource;
