@@ -458,21 +458,12 @@ namespace InteraktVR.VRInteraction
                     case HoldType.FIXED_POSITION:
                     case HoldType.PICKUP_POSITION:
                         VRInteractableItem.UnFreezeItem(item.gameObject);
-                        if (SelfBody != null)
-                        {
-                            if (hand != null && addControllerVelocity)
-                            {
-                                bool useBoost = hand.Velocity.magnitude > 1f;
-                                SelfBody.velocity = hand.Velocity * (useBoost ? throwBoost : 1f);
-                                SelfBody.angularVelocity = hand.AngularVelocity;
-                                SelfBody.maxAngularVelocity = SelfBody.angularVelocity.magnitude;
-                            }
-                        }
+                        ApplyThrowForce(addControllerVelocity, hand);
                         break;
 
                     case HoldType.FIXED_JOINT:
                         DropJointConfig(hand, _fixedJoints);
-
+                        ApplyThrowForce(addControllerVelocity, hand);
                         break;
 
                     case HoldType.SPRING_JOINT:
@@ -482,8 +473,22 @@ namespace InteraktVR.VRInteraction
                 PlaySound(dropSound);
             }
             CheckIK(false, hand);
-            if (dropEvent != null) dropEvent.Invoke();
+            dropEvent?.Invoke();
             HeldBy = null;
+        }
+
+        private void ApplyThrowForce(bool addControllerVelocity, VRInteractor hand)
+        {
+            if (SelfBody != null)
+            {
+                if (hand != null && addControllerVelocity)
+                {
+                    bool useBoost = hand.Velocity.magnitude > 1f;
+                    SelfBody.velocity = hand.Velocity * (useBoost ? throwBoost : 1f);
+                    SelfBody.angularVelocity = hand.AngularVelocity;
+                    SelfBody.maxAngularVelocity = SelfBody.angularVelocity.magnitude;
+                }
+            }
         }
 
         private void DropJointConfig(VRInteractor hand, List<Joint> joints)
@@ -495,6 +500,7 @@ namespace InteraktVR.VRInteraction
                 Destroy(joints[i]);
                 joints.RemoveAt(i);
             }
+
             Rigidbody controllerBody = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
             if (controllerBody != null) Destroy(controllerBody);
         }
