@@ -41,10 +41,14 @@ namespace InteraktVR.VRInteraction
         public bool objectReferenceIsPrefab; //EDITOR VAR
 
 
+
 #if Int_Oculus
         private Quaternion _currentRotation;
         private Quaternion _lastRotation;
 #endif
+
+        public bool IsHoldingSomething => heldItem != null;
+
 
         virtual public VRInput vrInput
         {

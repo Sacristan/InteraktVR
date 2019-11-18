@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 879758573}
+  - component: {fileID: 6301310515005055708}
   m_Layer: 0
   m_Name: bodyAlias
   m_TagString: Untagged
@@ -63,6 +64,18 @@ Transform:
   m_Father: {fileID: 296799126}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6301310515005055708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879758572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 038cee69c6ae6443f82bcd06510d2cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1670113566
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1670113567}
+  - component: {fileID: 1683725273659010716}
   m_Layer: 0
   m_Name: handAliasL
   m_TagString: Untagged
@@ -94,6 +108,18 @@ Transform:
   m_Father: {fileID: 296799126}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1683725273659010716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670113566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9ce52e3bac9438d98842e5fda5847b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1771691000
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771691001}
+  - component: {fileID: 7427997976532772254}
   m_Layer: 0
   m_Name: handAliasR
   m_TagString: Untagged
@@ -125,6 +152,18 @@ Transform:
   m_Father: {fileID: 296799126}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7427997976532772254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771691000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 659f3c7b0bf5047d68f23b778db1c35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2988505131368391454
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,9 +4408,9 @@ MonoBehaviour:
   enableRigMode: 0
   vrRig: {fileID: 3946209601447072944}
   vrSimulatorRig: {fileID: 2988505131368391454}
-  aliasBody: {fileID: 879758573}
-  aliasHandR: {fileID: 1771691001}
-  aliasHandL: {fileID: 1670113567}
+  aliasBody: {fileID: 6301310515005055708}
+  aliasHandR: {fileID: 7427997976532772254}
+  aliasHandL: {fileID: 1683725273659010716}
 --- !u!1 &3946209601228686511
 GameObject:
   m_ObjectHideFlags: 0

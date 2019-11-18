@@ -87,7 +87,6 @@ namespace InteraktVR.VRInteraction
             }
         }
 
-
         virtual protected void Start()
         {
 #if Int_Oculus

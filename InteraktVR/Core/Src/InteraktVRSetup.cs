@@ -18,9 +18,9 @@ namespace InteraktVR.Core
         private VRInteraction.VRInput leftController;
         private VRInteraction.VRInput rightController;
 
-        [SerializeField] private Transform aliasBody;
-        [SerializeField] private Transform aliasHandR;
-        [SerializeField] private Transform aliasHandL;
+        [SerializeField] private BodyAlias aliasBody;
+        [SerializeField] private RightHandAlias aliasHandR;
+        [SerializeField] private LeftHandAlias aliasHandL;
 
         public static bool IsVRSimulated => instance?.enableRigMode == EnableRigMode.StandaloneSimulator; //TODO: need this at editor time
         public static bool IsReady { get; private set; } = false;
@@ -50,9 +50,12 @@ namespace InteraktVR.Core
                 else rightController = vrInputs[i];
             }
 
-            SetParent(aliasBody, bodyModel.transform);
-            SetParent(aliasHandR, rightController.transform);
-            SetParent(aliasHandL, leftController.transform);
+            SetParent(aliasBody.transform, bodyModel.transform);
+            SetParent(aliasHandR.transform, rightController.transform);
+            SetParent(aliasHandL.transform, leftController.transform);
+
+            aliasHandR.VRInput = rightController;
+            aliasHandL.VRInput = leftController;
 
             yield return null;
 
