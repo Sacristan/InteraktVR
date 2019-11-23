@@ -28,6 +28,7 @@ namespace InteraktVR.Core
         public static VRBodyModel Body => instance?.bodyModel;
         public static VRInteraction.VRInput LeftController => instance?.leftController;
         public static VRInteraction.VRInput RightController => instance?.rightController;
+        public static bool IsHoldingAnything => IsReady && (LeftController.VRInteractor.IsHoldingSomething || RightController.VRInteractor.IsHoldingSomething);
 
         private void OnEnable()
         {
