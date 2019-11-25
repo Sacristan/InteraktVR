@@ -1,8 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Collection of useful static methods
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
+﻿// Collection of useful static methods
 
 using UnityEngine;
 using System.Collections;

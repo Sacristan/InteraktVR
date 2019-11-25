@@ -88,6 +88,8 @@ namespace InteraktVR.VRInteraction
 
         [SerializeField] private Vector3 holdOffsetAnchor = Vector3.zero;
 
+        [SerializeField] private float fixedJointMinDistance = 1f;
+
         [SerializeField] private bool useBreakDistance = false;
         [SerializeField] private float breakDistance = 0.1f;
 
@@ -355,7 +357,6 @@ namespace InteraktVR.VRInteraction
 
                 switch (holdType)
                 {
-
                     case HoldType.FIXED_POSITION:
                         item.SetParent(hand.GetVRRigRoot);
                         StartCoroutine(PickingUp(hand));
@@ -372,14 +373,28 @@ namespace InteraktVR.VRInteraction
                         VRInteractableItem.HeldFreezeItem(item.gameObject);
                         break;
                     case HoldType.FIXED_JOINT:
-                        FixedJoint fixedJoint = item.gameObject.AddComponent<FixedJoint>();
-                        Rigidbody controllerBodyFixed = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
-                        if (controllerBodyFixed == null) controllerBodyFixed = hand.getControllerAnchorOffset.gameObject.AddComponent<Rigidbody>();
 
-                        ConfigureJoint(fixedJoint, controllerBodyFixed, hand);
+                        // FixedJoint fixedJoint = item.gameObject.AddComponent<FixedJoint>();
+                        // Rigidbody controllerBodyFixed = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
+                        // if (controllerBodyFixed == null) controllerBodyFixed = hand.getControllerAnchorOffset.gameObject.AddComponent<Rigidbody>();
 
-                        _fixedJoints.Add(fixedJoint);
-                        _heldBys.Add(hand);
+                        // ConfigureJoint(fixedJoint, controllerBodyFixed, hand);
+
+                        // _fixedJoints.Add(fixedJoint);
+                        // _heldBys.Add(hand);
+
+                        StartCoroutine(PickingUpFixedJoint(hand, () =>
+                        {
+                            FixedJoint fixedJoint = item.gameObject.AddComponent<FixedJoint>();
+                            Rigidbody controllerBodyFixed = hand.getControllerAnchorOffset.GetComponent<Rigidbody>();
+                            if (controllerBodyFixed == null) controllerBodyFixed = hand.getControllerAnchorOffset.gameObject.AddComponent<Rigidbody>();
+
+                            ConfigureJoint(fixedJoint, controllerBodyFixed, hand);
+
+                            _fixedJoints.Add(fixedJoint);
+                            _heldBys.Add(hand);
+                        }));
+
                         break;
                     case HoldType.SPRING_JOINT:
 
@@ -415,11 +430,30 @@ namespace InteraktVR.VRInteraction
             joint.anchor = item.InverseTransformPoint(hand.getControllerAnchorOffset.position);
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = LocalOffsetVector;
-
-
         }
 
-        virtual protected IEnumerator PickingUp(VRInteractor heldBy)
+        virtual protected IEnumerator PickingUpFixedJoint(VRInteractor heldBy, System.Action action = null)
+        {
+            yield return null;
+
+            float dist = Vector3.Distance(GetControllerPosition(heldBy), item.position);
+
+            while (dist > fixedJointMinDistance)
+            {
+                if (HeldBy == null) yield break;
+
+                item.position = Vector3.MoveTowards(item.position, GetControllerPosition(heldBy), fixedJointMinDistance);
+
+                yield return null;
+
+                dist = Vector3.Distance(GetControllerPosition(heldBy), item.position);
+            }
+
+
+            if (action != null) action.Invoke();
+        }
+
+        virtual protected IEnumerator PickingUp(VRInteractor heldBy, System.Action action = null)
         {
             currentFollowForce = 0.05f;
             _pickingUp = true;
@@ -446,6 +480,8 @@ namespace InteraktVR.VRInteraction
             CheckIK(true, heldBy);
             _pickingUp = false;
             currentFollowForce = followForce;
+
+            if (action != null) action.Invoke();
         }
 
         virtual public void Drop(bool addControllerVelocity, VRInteractor hand = null)

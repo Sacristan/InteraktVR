@@ -1,8 +1,4 @@
-﻿//========= Copyright 2019, Sam Tague, All rights reserved. ===================
-//
-// Window used to set positions for InteractableItems
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
+﻿// Window used to set positions for InteractableItems
 
 
 #if Int_FinalIK

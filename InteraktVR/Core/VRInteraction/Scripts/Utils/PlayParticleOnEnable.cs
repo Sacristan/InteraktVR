@@ -1,8 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Plays the attached ParticleSystem on enable
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
+﻿// Plays the attached ParticleSystem on enable
 
 using System.Collections;
 using System.Collections.Generic;

@@ -1,8 +1,4 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Destroys or disables the attached object in the given time after being enabled
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
+﻿// Destroys or disables the attached object in the given time after being enabled
 
 using UnityEngine;
 using System.Collections;

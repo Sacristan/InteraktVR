@@ -65,6 +65,9 @@ namespace InteraktVR.VRInteraction
                     SerializedProperty holdOffsetAnchor = interactableItem.FindProperty("holdOffsetAnchor");
                     EditorGUILayout.PropertyField(holdOffsetAnchor);
 
+                    SerializedProperty fixedJointMinDistance = interactableItem.FindProperty("fixedJointMinDistance");
+                    EditorGUILayout.PropertyField(fixedJointMinDistance);
+
                     SerializedProperty followForce = interactableItem.FindProperty("followForce");
                     var oldFollowForce = followForce.floatValue;
                     EditorGUILayout.PropertyField(followForce);

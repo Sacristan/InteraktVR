@@ -1,11 +1,7 @@
-﻿//========= Copyright 2018, Sam Tague, All rights reserved. ===================
-//
-// Static event system, call Listen and give it a method to call and when
+﻿// Static event system, call Listen and give it a method to call and when
 // Send is called with the same name all listener methods will be called.
 // Used for tracking objects being picked up or dropped.
 // But can be used to listen for any kind of event really, sky's the limit!
-//
-//===================Contact Email: Sam@MassGames.co.uk===========================
 
 using System;
 using System.Collections;
