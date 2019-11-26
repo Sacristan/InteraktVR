@@ -54,24 +54,44 @@ namespace InteraktVR.VRInteraction
                     SerializedProperty holdType = interactableItem.FindProperty("holdType");
                     var oldJointHold = holdType.enumValueIndex;
                     holdType.enumValueIndex = (int)(VRInteractableItem.HoldType)EditorGUILayout.EnumPopup("Hold Type", (VRInteractableItem.HoldType)holdType.enumValueIndex);
+
                     if (oldJointHold != holdType.enumValueIndex) changed = true;
-                    if (GUILayout.Button("Setup Held Position"))
+
+                    VRInteractableItem.HoldType holdTypeVal = (VRInteractableItem.HoldType)holdType.enumValueIndex;
+
+                    switch (holdTypeVal)
                     {
-                        HeldPositionWindow newWindow = (HeldPositionWindow)EditorWindow.GetWindow(typeof(HeldPositionWindow), true, "Held Position", true);
-                        newWindow.interactableItem = (VRInteractableItem)interactableItem.targetObject;
-                        newWindow.Init();
+                        case VRInteractableItem.HoldType.FIXED_POSITION:
+                        case VRInteractableItem.HoldType.PICKUP_POSITION:
+                            if (GUILayout.Button("Setup Held Position"))
+                            {
+                                HeldPositionWindow newWindow = (HeldPositionWindow)EditorWindow.GetWindow(typeof(HeldPositionWindow), true, "Held Position", true);
+                                newWindow.interactableItem = (VRInteractableItem)interactableItem.targetObject;
+                                newWindow.Init();
+                            }
+                            break;
+                        case VRInteractableItem.HoldType.SPRING_JOINT:
+                        case VRInteractableItem.HoldType.FIXED_JOINT:
+
+                            SerializedProperty holdOffsetAnchor = interactableItem.FindProperty("holdOffsetAnchor");
+                            EditorGUILayout.PropertyField(holdOffsetAnchor);
+
+                            if (holdTypeVal == VRInteractableItem.HoldType.FIXED_JOINT)
+                            {
+                                SerializedProperty fixedJointMinDistance = interactableItem.FindProperty("fixedJointMinDistance");
+                                EditorGUILayout.PropertyField(fixedJointMinDistance);
+                            }
+
+                            break;
                     }
 
-                    SerializedProperty holdOffsetAnchor = interactableItem.FindProperty("holdOffsetAnchor");
-                    EditorGUILayout.PropertyField(holdOffsetAnchor);
-
-                    SerializedProperty fixedJointMinDistance = interactableItem.FindProperty("fixedJointMinDistance");
-                    EditorGUILayout.PropertyField(fixedJointMinDistance);
-
-                    SerializedProperty followForce = interactableItem.FindProperty("followForce");
-                    var oldFollowForce = followForce.floatValue;
-                    EditorGUILayout.PropertyField(followForce);
-                    if (followForce.floatValue != oldFollowForce) changed = true;
+                    if (holdTypeVal != VRInteractableItem.HoldType.FIXED_JOINT)
+                    {
+                        SerializedProperty followForce = interactableItem.FindProperty("followForce");
+                        var oldFollowForce = followForce.floatValue;
+                        EditorGUILayout.PropertyField(followForce);
+                        if (followForce.floatValue != oldFollowForce) changed = true;
+                    }
 
                     SerializedProperty throwBoost = interactableItem.FindProperty("throwBoost");
                     var oldThrowBoost = throwBoost.floatValue;
