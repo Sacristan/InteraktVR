@@ -86,7 +86,8 @@ namespace InteraktVR.VRInteraction
         [SerializeField] private bool interactionDisabled = false;
         [SerializeField] public HoldType holdType = HoldType.FIXED_POSITION; //TODO: Property
 
-        [SerializeField] private Vector3 holdOffsetAnchor = Vector3.zero;
+        [SerializeField] private bool lerpToOffsetAnchor = false;
+        [SerializeField] private Transform fixedJointHoldOffsetAnchor;
 
         [SerializeField] private float fixedJointMinDistance = 1f;
 
@@ -175,7 +176,8 @@ namespace InteraktVR.VRInteraction
             }
         }
 
-        private Vector3 LocalOffsetVector => holdOffsetAnchor;
+        // private Vector3 LocalOffsetVector => fixedJointHoldOffsetAnchor == null ? Vector3.zero : fixedJointHoldOffsetAnchor.localPosition;
+        private Vector3 LocalOffsetVector => Vector3.zero;
 
         void Start()
         {
@@ -427,7 +429,7 @@ namespace InteraktVR.VRInteraction
             rigidbody.useGravity = false;
 
             joint.connectedBody = rigidbody;
-            joint.anchor = item.InverseTransformPoint(hand.getControllerAnchorOffset.position);
+            joint.anchor = item.InverseTransformPoint(fixedJointHoldOffsetAnchor == null ? hand.getControllerAnchorOffset.position : fixedJointHoldOffsetAnchor.position);
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = LocalOffsetVector;
         }
@@ -436,17 +438,35 @@ namespace InteraktVR.VRInteraction
         {
             yield return null;
 
-            float dist = Vector3.Distance(GetControllerPosition(heldBy), item.position);
-
-            while (dist > fixedJointMinDistance)
+            if (lerpToOffsetAnchor)
             {
-                if (HeldBy == null) yield break;
+                float dist = Vector3.Distance(GetControllerPosition(heldBy), item.position);
+                // Transform = fixedJointHoldOffsetAnchor != null;
+                float t = 0f;
 
-                item.position = Vector3.MoveTowards(item.position, GetControllerPosition(heldBy), fixedJointMinDistance);
+                Vector3 pos = item.position;
+                Quaternion rot = item.rotation;
 
-                yield return null;
+                while (t < 1f)
+                {
+                    if (HeldBy == null) yield break;
+                    t += Time.deltaTime;
 
-                dist = Vector3.Distance(GetControllerPosition(heldBy), item.position);
+                    item.position = Vector3.Lerp(pos, GetControllerPosition(heldBy), t);
+                    item.rotation = Quaternion.Slerp(rot, heldBy.getControllerAnchorOffset.rotation, t);
+                }
+
+                // while (dist > fixedJointMinDistance)
+                // {
+                //     if (HeldBy == null) yield break;
+
+                //     item.position = Vector3.MoveTowards(item.position, GetControllerPosition(heldBy, 1f);
+                //     // item.rotation = Quaternion.RotateTowards(item.rotation, fixedJointHoldOffsetAnchor.rotation, 1f);
+
+                //     yield return null;
+
+                //     dist = Vector3.Distance(GetControllerPosition(heldBy), item.position);
+                // }
             }
 
 

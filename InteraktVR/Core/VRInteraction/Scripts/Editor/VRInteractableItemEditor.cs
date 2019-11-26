@@ -70,14 +70,15 @@ namespace InteraktVR.VRInteraction
                                 newWindow.Init();
                             }
                             break;
-                        case VRInteractableItem.HoldType.SPRING_JOINT:
                         case VRInteractableItem.HoldType.FIXED_JOINT:
-
-                            SerializedProperty holdOffsetAnchor = interactableItem.FindProperty("holdOffsetAnchor");
-                            EditorGUILayout.PropertyField(holdOffsetAnchor);
-
                             if (holdTypeVal == VRInteractableItem.HoldType.FIXED_JOINT)
                             {
+                                SerializedProperty lerpToOffsetAnchor = interactableItem.FindProperty("lerpToOffsetAnchor");
+                                EditorGUILayout.PropertyField(lerpToOffsetAnchor);
+
+                                SerializedProperty holdOffsetAnchor = interactableItem.FindProperty("fixedJointHoldOffsetAnchor");
+                                EditorGUILayout.PropertyField(holdOffsetAnchor);
+
                                 SerializedProperty fixedJointMinDistance = interactableItem.FindProperty("fixedJointMinDistance");
                                 EditorGUILayout.PropertyField(fixedJointMinDistance);
                             }
