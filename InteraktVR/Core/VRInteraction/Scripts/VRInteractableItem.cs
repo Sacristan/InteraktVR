@@ -436,10 +436,12 @@ namespace InteraktVR.VRInteraction
 
         virtual protected IEnumerator PickingUpFixedJoint(VRInteractor heldBy, System.Action action = null)
         {
-            yield return null;
 
             if (lerpToOffsetAnchor)
             {
+
+                yield return null;
+
                 float dist = Vector3.Distance(GetControllerPosition(heldBy), item.position);
                 // Transform = fixedJointHoldOffsetAnchor != null;
                 float t = 0f;
@@ -469,7 +471,8 @@ namespace InteraktVR.VRInteraction
                 // }
             }
 
-
+                yield return null;
+ 
             if (action != null) action.Invoke();
         }
 
