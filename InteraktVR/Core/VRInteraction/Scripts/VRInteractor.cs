@@ -25,6 +25,8 @@ namespace InteraktVR.VRInteraction
         [SerializeField] private Material hoverLineMat;
         [SerializeField] private Transform _vrRigRoot;
         [SerializeField] private bool triggerHapticPulse = true;
+        [SerializeField] private bool checkItemAngle = false;
+        [SerializeField] private float itemCheckHalfAngle = 90;
 
         protected VRInteractableItem _hoverItem;
         protected VRInteractableItem _heldItem;
@@ -355,8 +357,16 @@ namespace InteraktVR.VRInteraction
             foreach (VRInteractableItem item in VRInteractableItem.items)
             {
                 if (item == null || !item.CanInteract()) continue;
+
                 Vector3 controllerPosition = getControllerAnchorOffset.position;
                 Vector3 targetPosition = item.GetWorldHeldPosition(this);
+
+                if (checkItemAngle)
+                {
+                    float angle = Vector3.Angle(getControllerAnchorOffset.forward, (targetPosition - controllerPosition).normalized);
+                    if (angle > itemCheckHalfAngle) continue;
+                }
+
                 float dist = Vector3.Distance(controllerPosition, targetPosition);
 
                 if (dist > closestDist) continue;
@@ -364,6 +374,7 @@ namespace InteraktVR.VRInteraction
                 bool isForceGrab = false;
                 if (dist < item.interactionDistance || ItemWithinColliderBounds(item))
                     canGrab = true;
+
                 if ((item.interactionDistance < forceGrabDistance &&
                     VRUtils.PositionWithinCone(controllerPosition,
                             getControllerAnchorOffset.TransformVector(new Vector3(vrInput.IsLeftHand ? forceGrabDirection.x : -forceGrabDirection.x, forceGrabDirection.y, forceGrabDirection.z)),
@@ -372,6 +383,7 @@ namespace InteraktVR.VRInteraction
                     canGrab = true;
                     isForceGrab = true;
                 }
+
                 if (canGrab)
                 {
                     forceGrab = isForceGrab;

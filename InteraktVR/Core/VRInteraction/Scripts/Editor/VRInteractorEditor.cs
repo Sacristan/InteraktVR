@@ -84,6 +84,15 @@ namespace InteraktVR.VRInteraction
                 objectReferenceIsPrefab.boolValue = objectPrefabType == PrefabType.ModelPrefab || objectPrefabType == PrefabType.Prefab;
             }
 
+            SerializedProperty checkItemAngle = serializedObject.FindProperty("checkItemAngle");
+            EditorGUILayout.PropertyField(checkItemAngle);
+
+            if (checkItemAngle.boolValue)
+            {
+                SerializedProperty itemCheckHalfAngle = serializedObject.FindProperty("itemCheckHalfAngle");
+                EditorGUILayout.PropertyField(itemCheckHalfAngle);
+            }
+
             SerializedProperty useHoverLine = serializedObject.FindProperty("useHoverLine");
             EditorGUILayout.PropertyField(useHoverLine);
             if (useHoverLine.boolValue)
