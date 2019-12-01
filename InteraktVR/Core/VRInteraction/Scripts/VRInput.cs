@@ -106,7 +106,7 @@ namespace InteraktVR.VRInteraction
         {
             if (hmdType == HMDType.STANDALONE)
             {
-                StandaloneOrOculusControls();
+                if (Time.realtimeSinceStartup > 1f) StandaloneOrOculusControls();
                 return;
             }
 
