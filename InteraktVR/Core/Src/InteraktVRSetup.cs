@@ -8,7 +8,12 @@ namespace InteraktVR.Core
     {
         private static InteraktVRSetup instance;
 
-        enum EnableRigMode { VR, StandaloneSimulator }
+        // VR,
+        // Simulator,
+        // VRBuildOnly
+        // if (XRDevice.isPresent)
+
+        enum EnableRigMode { VR, VRSimulatorEditorOnly, VRSimulatorEditorAndBuild }
 
         [SerializeField] EnableRigMode enableRigMode;
         [SerializeField] GameObject vrRig;
@@ -22,7 +27,17 @@ namespace InteraktVR.Core
         [SerializeField] private RightHandAlias aliasHandR;
         [SerializeField] private LeftHandAlias aliasHandL;
 
-        public static bool IsVRSimulated => instance?.enableRigMode == EnableRigMode.StandaloneSimulator; //TODO: need this at editor time
+        public static bool IsVRSimulated
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return instance?.enableRigMode == EnableRigMode.VRSimulatorEditorOnly || instance?.enableRigMode == EnableRigMode.VRSimulatorEditorAndBuild;
+#else
+                return instance?.enableRigMode == EnableRigMode.VRSimulatorAll;
+#endif
+            }
+        }
         public static bool IsReady { get; private set; } = false;
 
         public static VRBodyModel Body => instance?.bodyModel;
@@ -37,8 +52,8 @@ namespace InteraktVR.Core
 
         IEnumerator Start()
         {
-            vrRig.SetActive(enableRigMode == EnableRigMode.VR);
-            vrSimulatorRig.SetActive(enableRigMode == EnableRigMode.StandaloneSimulator);
+            vrRig.SetActive(!IsVRSimulated);
+            vrSimulatorRig.SetActive(IsVRSimulated);
 
             yield return null;
             bodyModel = GetComponentInChildren<VRBodyModel>();
