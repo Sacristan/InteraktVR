@@ -34,7 +34,7 @@ namespace InteraktVR.Core
 #if UNITY_EDITOR
                 return instance?.enableRigMode == EnableRigMode.VRSimulatorEditorOnly || instance?.enableRigMode == EnableRigMode.VRSimulatorEditorAndBuild;
 #else
-                return instance?.enableRigMode == EnableRigMode.VRSimulatorAll;
+                return instance?.enableRigMode == EnableRigMode.VRSimulatorEditorAndBuild;
 #endif
             }
         }
